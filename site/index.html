@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>boatramp — launch the web from your own shore</title>
+  <meta name="description" content="boatramp is a self-hosted, streaming-first platform for publishing the web. One Rust binary is your web server, publishing API, and CLI — atomic, content-addressed deploys with instant rollback.">
+  <link rel="canonical" href="https://boatramp.dev/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+  <!-- Open Graph / social -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://boatramp.dev/">
+  <meta property="og:title" content="boatramp — launch the web from your own shore">
+  <meta property="og:description" content="Self-hosted, streaming-first web publishing in one Rust binary: server, publishing API, and CLI. Atomic, content-addressed deploys; instant rollback.">
+  <meta property="og:image" content="https://boatramp.dev/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preload" href="/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/ibm-plex-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles/fonts.css">
+  <link rel="stylesheet" href="/styles/tokens.css">
+  <link rel="stylesheet" href="/styles/site.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "boatramp",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Linux, macOS, Windows",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "license": "https://spdx.org/licenses/MIT.html",
+    "url": "https://boatramp.dev/",
+    "description": "Self-hosted, streaming-first platform for publishing the web, shipped as one Rust binary (server + publishing API + CLI)."
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- ================= NAV ================= -->
+  <header class="nav">
+    <a class="nav__brand" href="/" aria-label="boatramp home">
+      <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M3 7 L15 18.5" stroke="#ff6b35" stroke-width="2.6" stroke-linecap="round"/>
+        <path d="M10.5 15 L15 21.5 L19.5 15" stroke="#ffd23f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M2 25.5 q3.5 -3.6 7 0 t7 0 t7 0 t2 0" stroke="#35e0c4" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      <span class="wordmark">boatramp</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#capabilities">Features</a>
+      <a href="#quickstart">Install</a>
+      <a href="https://docs.boatramp.dev">Docs<span class="nav__ext" aria-hidden="true">↗</span></a>
+      <a href="https://github.com/BoatRamp/BoatRamp/discussions">Community</a>
+      <a class="nav__star" href="https://github.com/BoatRamp/BoatRamp" data-gh-star aria-label="Star boatramp on GitHub">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>
+        Star
+        <span class="nav__star-count mono" data-gh-star-count hidden></span>
+      </a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <div class="bytes" aria-hidden="true">
+        <span class="byte" style="left:20px;width:8px;height:8px;background:#35e0c4;animation-duration:3.4s"></span>
+        <span class="byte" style="left:44px;width:6px;height:6px;background:#ffd23f;animation-duration:3.9s;animation-delay:.7s"></span>
+        <span class="byte" style="left:8px;width:7px;height:7px;background:#2088c1;animation-duration:4.2s;animation-delay:1.4s"></span>
+        <span class="byte" style="left:60px;width:5px;height:5px;background:#35e0c4;animation-duration:3.1s;animation-delay:2.1s"></span>
+        <span class="byte" style="left:32px;width:7px;height:7px;background:#ff6b35;animation-duration:4.6s;animation-delay:2.8s"></span>
+        <span class="byte" style="left:74px;width:6px;height:6px;background:#35e0c4;animation-duration:3.7s;animation-delay:3.4s"></span>
+      </div>
+      <div class="wrap hero__inner">
+        <p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span>pre-1.0 · come crew it early</p>
+        <h1>Launch the web from<br>your own <span class="accent">shore</span>.</h1>
+        <p class="hero__sub">One Rust binary is your web server, publishing API, and CLI at once. Self-hosted on your hardware, your cloud, or the edge — deploys are atomic, content-addressed, and every byte streams.</p>
+        <div class="actions">
+          <a class="btn btn--primary" href="https://docs.boatramp.dev">Read the docs <span aria-hidden="true">→</span></a>
+          <a class="btn btn--ghost" href="https://github.com/BoatRamp/BoatRamp" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 005.47 7.59c.4.07.55-.17.55-.38v-1.34c-2.23.48-2.7-1.07-2.7-1.07-.36-.93-.9-1.18-.9-1.18-.73-.5.06-.49.06-.49.81.06 1.24.83 1.24.83.72 1.24 1.88.88 2.34.67.07-.52.28-.88.5-1.08-1.78-.2-3.65-.89-3.65-3.96 0-.88.31-1.59.83-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.22 2.2.82a7.6 7.6 0 014 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.52.56.83 1.27.83 2.15 0 3.08-1.87 3.76-3.66 3.96.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            View on GitHub <span class="btn__ext" aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <div class="cli" data-copy-root>
+          <span class="cli__prompt" aria-hidden="true">$</span>
+          <span class="cli__cmd" data-copy-text="curl -sSf boatramp.dev/launch | sh">curl -sSf boatramp.dev/launch | sh</span>
+          <button type="button" class="copy" data-copy>copy</button>
+        </div>
+        <p class="dogfood">
+          <span class="dogfood__badge"><span class="anchor-bob" aria-hidden="true">⚓</span> served by boatramp</span>
+          <span>deploy <span class="dogfood__id" data-deploy-id>dev-local</span> · streaming-first · atomic</span>
+        </p>
+      </div>
+      <div class="waterline" aria-hidden="true">
+        <svg class="wave wave--1" viewBox="0 0 1600 70" preserveAspectRatio="none"><path d="M0 40 q65 -22 130 0 t130 0 t130 0 t130 0 t130 0 t130 0 t130 0 t130 0 t130 0 t130 0 t130 0 t130 0 V70 H0 Z"/></svg>
+        <svg class="wave wave--2" viewBox="0 0 1600 70" preserveAspectRatio="none"><path d="M0 46 q65 -18 130 0 t130 0 t130 0 t130 0 t130 0 t130 0 t130 0 t130 0 t130 0 t130 0 t130 0 t130 0 V70 H0 Z"/></svg>
+      </div>
+    </section>
+
+    <!-- ================= THREE TRUTHS ================= -->
+    <section class="truths" aria-label="Why boatramp">
+      <div class="wrap"><div class="truths__grid">
+        <div class="truth"><div class="truth__idx mono">01</div><div class="truth__title">You own it</div><div class="truth__desc">Server, storage, certs, compute — your shore, not a tenancy.</div></div>
+        <div class="truth"><div class="truth__idx mono">02</div><div class="truth__title">One binary, everywhere</div><div class="truth__desc">One hull, every port — bare metal to the edge, same UX.</div></div>
+        <div class="truth"><div class="truth__idx mono">03</div><div class="truth__title">Streaming &amp; atomic</div><div class="truth__desc">Every byte streams; a deploy flips whole or not at all.</div></div>
+      </div></div>
+    </section>
+
+    <!-- ================= 01 / QUICKSTART ================= -->
+    <section class="module wrap" id="quickstart">
+      <div class="module__head">
+        <span class="eyebrow-mono">01 / QUICKSTART</span>
+        <h2>Cast off in three commands.</h2>
+      </div>
+      <div class="terminal" id="terminal" data-terminal>
+        <div class="terminal__bar">
+          <div class="dots" aria-hidden="true"><span class="dot dot--1"></span><span class="dot dot--2"></span><span class="dot dot--3"></span></div>
+          <div class="tabs" role="tablist" aria-label="Install method" data-tabs>
+            <button type="button" class="tab" role="tab" aria-selected="true"  data-tab="curl">curl</button>
+            <button type="button" class="tab" role="tab" aria-selected="false" data-tab="nix">nix</button>
+            <button type="button" class="tab" role="tab" aria-selected="false" data-tab="cargo">cargo</button>
+          </div>
+          <button type="button" class="terminal__copy copy" data-copy data-copy-text="curl -sSf boatramp.dev/launch | sh&#10;boatramp serve &&#10;boatramp sync ./public --site my-site">copy</button>
+        </div>
+        <div class="terminal__grid">
+          <div class="terminal__body" data-terminal-mount>
+            <div class="term-line"><span class="term-prompt">$ </span><span data-install-cmd>curl -sSf boatramp.dev/launch | sh</span></div>
+            <div class="term-line term-out">  ↳ boatramp 0.1.0 → ~/.local/bin</div>
+            <div class="term-line"><span class="term-prompt">$ </span>boatramp serve &amp;</div>
+            <div class="term-line term-out">  ↳ listening on http://127.0.0.1:8080</div>
+            <div class="term-line"><span class="term-prompt">$ </span>boatramp sync ./public --site my-site</div>
+            <div class="term-line term-out">  ↳ 214 files · sha 7f3a2c1 · streamed, 0 buffered</div>
+            <div class="flip-badge"><span aria-hidden="true">▲</span> it's live — my-site · flipped in one atomic beat</div>
+          </div>
+          <div class="terminal__notes">
+            <div class="terminal__notes-h">// what just happened</div>
+            <div class="note-row"><span aria-hidden="true">›</span> content-addressed build</div>
+            <div class="note-row"><span aria-hidden="true">›</span> 0 bytes buffered in memory</div>
+            <div class="note-row"><span aria-hidden="true">›</span> atomic pointer flip</div>
+            <div class="note-row"><span aria-hidden="true">›</span> prev launch still afloat</div>
+            <div class="note-roll">rollback → boatramp rollback</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 02 / CAPABILITIES ================= -->
+    <section class="module wrap" id="capabilities">
+      <div class="module__head">
+        <span class="eyebrow-mono">02 / CAPABILITIES</span>
+        <h2>The whole harbor, one hull.</h2>
+      </div>
+      <div class="spec-wrap"><div class="spec">
+        <div class="spec__row" style="display:contents">
+          <div class="spec__cell spec__idx">01</div>
+          <div class="spec__cell spec__name"><span class="spec__icon"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><g stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5" y="8" width="14" height="9" rx="1" stroke="#ff6b35"/><path d="M5 12h14M12 8v9" stroke="#ff6b35"/><path d="M4 20q4-2 8 0t8 0" stroke="#35e0c4"/></g></svg></span><b>Atomic deploys</b></div>
+          <div class="spec__cell spec__desc">Content-addressed; launches whole or not at all.</div>
+          <div class="spec__cell spec__tag">sync</div>
+        </div>
+        <div class="spec__row" style="display:contents">
+          <div class="spec__cell spec__idx">02</div>
+          <div class="spec__cell spec__name"><span class="spec__icon"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><g stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 9q3-3 6 0t6 0" stroke="#35e0c4"/><path d="M4 14q3-3 6 0t6 0" stroke="#2088c1"/><path d="M4 19q3-3 6 0t6 0" stroke="#ff6b35"/></g></svg></span><b>Streaming-first</b></div>
+          <div class="spec__cell spec__desc">Byte-for-byte store → socket; flat memory.</div>
+          <div class="spec__cell spec__tag">range: yes</div>
+        </div>
+        <div class="spec__row" style="display:contents">
+          <div class="spec__cell spec__idx">03</div>
+          <div class="spec__cell spec__name"><span class="spec__icon"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><g stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="6" r="2" stroke="#ff6b35"/><path d="M12 8v11M7 12h10M12 19c-3 0-6-2-6-6M12 19c3 0 6-2 6-6" stroke="#ff6b35"/></g></svg></span><b>Instant rollback</b></div>
+          <div class="spec__cell spec__desc">Immutable snapshots; back to shore in one flip.</div>
+          <div class="spec__cell spec__tag">rollback</div>
+        </div>
+        <div class="spec__row" style="display:contents">
+          <div class="spec__cell spec__idx">04</div>
+          <div class="spec__cell spec__name"><span class="spec__icon"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><g stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8h14l-2 8a3 3 0 0 1-3 2H9a3 3 0 0 1-3-2L4 8Z" stroke="#ff6b35"/><path d="M4 8 3 20q4-2 9 0t9 0L20 8" stroke="#35e0c4"/></g></svg></span><b>Single binary</b></div>
+          <div class="spec__cell spec__desc">Server + API + CLI; bare metal to edge, same UX.</div>
+          <div class="spec__cell spec__tag">1 file</div>
+        </div>
+        <div class="spec__row" style="display:contents">
+          <div class="spec__cell spec__idx">05</div>
+          <div class="spec__cell spec__name"><span class="spec__icon"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><g stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="13" r="6" stroke="#ff6b35"/><path d="M12 7V4M8.5 9.5 6.5 7.5M15.5 9.5 17.5 7.5M6 13h12" stroke="#ff6b35"/><path d="M6 20q3-2 6 0t6 0" stroke="#35e0c4"/></g></svg></span><b>You own it</b></div>
+          <div class="spec__cell spec__desc">Your storage, TLS, compute — no tenancy, no phone-home.</div>
+          <div class="spec__cell spec__tag">self-host</div>
+        </div>
+        <div class="spec__row" style="display:contents">
+          <div class="spec__cell spec__idx">06</div>
+          <div class="spec__cell spec__name"><span class="spec__icon"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><g stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 12q2-4 4 0t4 0 4 0 4 0" stroke="#ff6b35"/><path d="M4 17q2-4 4 0t4 0 4 0 4 0" stroke="#35e0c4"/><path d="M14 4h6v6" stroke="#ffd23f"/></g></svg></span><b>Modern edge</b></div>
+          <div class="spec__cell spec__desc">HTTP/3 + auto-TLS; scale-to-zero, wakes on demand.</div>
+          <div class="spec__cell spec__tag">h3 · tls</div>
+        </div>
+      </div></div>
+      <div class="payoff">
+        <div class="payoff__card payoff--launch"><b>0 files held in memory.</b><p>A 40 GB video and a 4 KB page cost the same flat memory — the tide never floods the box.</p></div>
+        <div class="payoff__card payoff--seafoam"><b>Back to shore, instantly.</b><p>Rollback is a pointer flip, not a rebuild — the previous launch is always still floating, ready in a beat.</p></div>
+      </div>
+    </section>
+
+    <!-- ================= 03 / WHERE IT RUNS ================= -->
+    <section class="module wrap" id="targets">
+      <div class="module__head">
+        <span class="eyebrow-mono">03 / WHERE IT RUNS</span>
+        <h2>One hull, every port.</h2>
+        <span class="module__note">same UX · same binary</span>
+      </div>
+      <div class="manifest">
+        <div class="target"><div><div class="target__name">Bare metal</div><div class="target__cmd">boatramp serve</div></div><span class="target__ok">✓ same UX</span></div>
+        <div class="target"><div><div class="target__name">systemd</div><div class="target__cmd">boatramp.service</div></div><span class="target__ok">✓ same UX</span></div>
+        <div class="target"><div><div class="target__name">NixOS</div><div class="target__cmd">services.boatramp</div></div><span class="target__ok">✓ same UX</span></div>
+        <div class="target"><div><div class="target__name">Docker / OCI</div><div class="target__cmd">nix build .#container</div></div><span class="target__ok">✓ same UX</span></div>
+        <div class="target"><div><div class="target__name">Cloudflare</div><div class="target__cmd">boatramp cloudflare</div></div><span class="target__ok">✓ same UX</span></div>
+        <div class="target"><div><div class="target__name">Cluster</div><div class="target__cmd">serve --mode cluster</div></div><span class="target__ok">✓ same UX</span></div>
+      </div>
+    </section>
+
+    <!-- ================= HONESTY ================= -->
+    <section class="honesty wrap">
+      <div class="honesty__box">
+        <span class="honesty__label">pre-1.0</span>
+        <p>boatramp is young and honest about it. APIs will still shift, edges are still being sanded. What's here is real and dogfooded — this site sails on it. If you like owning your stack and shaping tools early, <a href="https://github.com/BoatRamp/BoatRamp/discussions">come crew it</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <div class="footer__brand-row">
+            <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M3 7 L15 18.5" stroke="#ff6b35" stroke-width="2.6" stroke-linecap="round"/><path d="M10.5 15 L15 21.5 L19.5 15" stroke="#ffd23f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 25.5 q3.5 -3.6 7 0 t7 0 t7 0 t2 0" stroke="#35e0c4" stroke-width="2.2" stroke-linecap="round"/></svg>
+            <span class="wordmark" style="font-size:18px">boatramp</span>
+          </div>
+          <p>Launch the web from your own shore. One binary — server, API, CLI.</p>
+        </div>
+        <div class="footer__cols">
+          <div class="footer__col"><span class="footer__col-h">PRODUCT</span><a href="#capabilities">Features</a><a href="#quickstart">Install</a><a href="https://docs.boatramp.dev">Docs ↗</a></div>
+          <div class="footer__col"><span class="footer__col-h">CREW</span><a href="https://github.com/BoatRamp/BoatRamp/discussions">Community</a><a href="https://github.com/BoatRamp/BoatRamp">GitHub ↗</a><a href="/blog/rss.xml">RSS</a></div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>MIT OR Apache-2.0 · © 2026 boatramp</span>
+        <span class="footer__served">⚓ served by boatramp · deploy <span data-deploy-id>dev-local</span></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dynamic parts (Rust/Dioxus CSR, compiled to WASM). Progressive enhancement:
+       the page is complete without it; this only animates the terminal and wires
+       copy/tab interactions. -->
+  <script type="module">
+    import init from "/island/boatramp_island.js";
+    init().catch((e) => console.warn("boatramp island failed to load:", e));
+  </script>
+</body>
+</html>

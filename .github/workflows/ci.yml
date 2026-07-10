@@ -1,0 +1,24 @@
+name: CI
+
+# Build the site (Dioxus WASM island + static assets) and lint the Rust on every
+# push / PR, so a broken build never reaches `main` (and never deploys). Uses the
+# lean `.#build` devshell (toolchain only — does not build boatramp).
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - name: Build site (island + static)
+        run: nix develop .#build --command just build
+      - name: Lint (fmt + clippy)
+        run: nix develop .#build --command just check

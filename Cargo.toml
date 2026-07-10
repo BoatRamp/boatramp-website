@@ -1,0 +1,11 @@
+[workspace]
+resolver = "2"
+members = ["crates/island"]
+
+[profile.release]
+# Small, fast WASM: optimize for size, strip, and let wasm-opt finish the job.
+opt-level = "s"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#072436"/>
+      <stop offset="0.34" stop-color="#05141f"/>
+      <stop offset="0.75" stop-color="#041018"/>
+      <stop offset="1" stop-color="#020a11"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- brand -->
+  <g transform="translate(80,80)">
+    <g transform="scale(1.4)">
+      <path d="M3 7 L15 18.5" stroke="#ff6b35" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M10.5 15 L15 21.5 L19.5 15" stroke="#ffd23f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M2 25.5 q3.5 -3.6 7 0 t7 0 t7 0 t2 0" stroke="#35e0c4" stroke-width="2.2" stroke-linecap="round"/>
+    </g>
+    <text x="56" y="30" font-family="'Space Grotesk','DejaVu Sans',sans-serif" font-weight="700" font-size="30" fill="#eef7fb" letter-spacing="-0.5">boatramp</text>
+  </g>
+
+  <!-- headline -->
+  <text x="80" y="300" font-family="'Space Grotesk','DejaVu Sans',sans-serif" font-weight="700" font-size="76" letter-spacing="-2" fill="#eef7fb">Launch the web from</text>
+  <text x="80" y="388" font-family="'Space Grotesk','DejaVu Sans',sans-serif" font-weight="700" font-size="76" letter-spacing="-2" fill="#eef7fb">your own <tspan fill="#ff6b35">shore</tspan>.</text>
+
+  <!-- sub -->
+  <text x="82" y="452" font-family="'DejaVu Sans',sans-serif" font-size="27" fill="#a9c6d4">Self-hosted, streaming-first web publishing in one Rust binary.</text>
+
+  <!-- install one-liner -->
+  <text x="82" y="512" font-family="'DejaVu Sans Mono',monospace" font-size="24" fill="#35e0c4">$ curl -sSf boatramp.dev/launch | sh</text>
+
+  <!-- waterline -->
+  <path d="M0 560 q75 -26 150 0 t150 0 t150 0 t150 0 t150 0 t150 0 t150 0 t150 0 V630 H0 Z" fill="rgba(32,136,193,0.18)"/>
+  <path d="M0 578 q75 -20 150 0 t150 0 t150 0 t150 0 t150 0 t150 0 t150 0 t150 0 V630 H0 Z" fill="rgba(53,224,196,0.12)"/>
+</svg>

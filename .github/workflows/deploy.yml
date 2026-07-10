@@ -1,0 +1,75 @@
+name: Deploy site
+
+# Build the site and publish it to the live boatramp instance that serves
+# boatramp.dev with `boatramp sync`, then purge the Cloudflare cache. This
+# mirrors the docs deploy in the main repo (BoatRamp/BoatRamp deploy-docs.yml):
+# content is published with the CLI — no server image redeploy.
+#
+# No-ops (stays green) until configured. Set these repo secrets to activate:
+#   BOATRAMP_DEPLOY_TOKEN  — a publisher token for site `www` (`boatramp token create`)
+#   CF_ZONE_ID             — the boatramp.dev Cloudflare zone id
+#   CF_PURGE_TOKEN         — a Cloudflare token scoped to Cache Purge on that zone
+on:
+  push:
+    branches: [main]
+    paths:
+      - "site/**"
+      - "crates/**"
+      - "scripts/**"
+      - "Cargo.*"
+      - "justfile"
+      - "flake.*"
+      - "project.cfg"
+      - ".github/workflows/deploy.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-site
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: build + sync
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configured?
+        id: cfg
+        env:
+          BOATRAMP_TOKEN: ${{ secrets.BOATRAMP_DEPLOY_TOKEN }}
+        run: |
+          if [ -n "${BOATRAMP_TOKEN:-}" ]; then echo "ready=true"  >> "$GITHUB_OUTPUT"
+          else echo "ready=false" >> "$GITHUB_OUTPUT"; echo "BOATRAMP_DEPLOY_TOKEN unset — deploy not configured; skipping."; fi
+
+      - if: steps.cfg.outputs.ready == 'true'
+        uses: actions/checkout@v5
+      - if: steps.cfg.outputs.ready == 'true'
+        uses: DeterminateSystems/nix-installer-action@main
+      - if: steps.cfg.outputs.ready == 'true'
+        uses: DeterminateSystems/magic-nix-cache-action@main
+
+      - name: Build site (island + static)
+        if: steps.cfg.outputs.ready == 'true'
+        run: nix develop .#build --command just build
+
+      - name: Publish with boatramp + purge Cloudflare
+        if: steps.cfg.outputs.ready == 'true'
+        env:
+          BOATRAMP_TOKEN: ${{ secrets.BOATRAMP_DEPLOY_TOKEN }}
+          CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
+          CF_PURGE_TOKEN: ${{ secrets.CF_PURGE_TOKEN }}
+        run: |
+          set -euo pipefail
+          # The real boatramp CLI, via this flake (built once, then nix-cached).
+          nix run .#boatramp -- sync dist \
+            --server https://boatramp.dev --site www -m "${GITHUB_SHA::7}"
+          if [ -n "${CF_ZONE_ID:-}" ] && [ -n "${CF_PURGE_TOKEN:-}" ]; then
+            curl -fsS -X POST "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/purge_cache" \
+              -H "Authorization: Bearer ${CF_PURGE_TOKEN}" -H "Content-Type: application/json" \
+              --data '{"purge_everything":true}' >/dev/null
+            echo "Cloudflare cache purged."
+          else
+            echo "CF_ZONE_ID/CF_PURGE_TOKEN unset — skipped cache purge."
+          fi

@@ -1,0 +1,24 @@
+# Build output
+dist/
+
+# Rust
+target/
+
+# Nix / direnv
+result
+result-*
+.direnv/
+
+# Node (only used transiently for font vendoring)
+node_modules/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Editor / OS
+.DS_Store
+*.log
+.vscode/
+.idea/

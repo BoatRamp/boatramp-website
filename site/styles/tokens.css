@@ -1,0 +1,131 @@
+/* ============================================================================
+   boatramp.dev — design tokens
+   Single source of truth for the brand. Dark theme is fully specified;
+   the light theme ("foam & paper") is stubbed and still needs designing.
+   Verify AA contrast (4.5:1 text, 3:1 UI) for every pair before shipping.
+   ============================================================================ */
+
+:root {
+  /* --- Marine depth scale ------------------------------------------------- */
+  --depth-900: #05141f;   /* page background (dark) */
+  --depth-850: #041018;   /* lower page gradient stop */
+  --depth-800: #072436;   /* upper page gradient stop / surface */
+  --depth-700: #0a1c28;   /* raised surface (terminal title bar) */
+  --depth-600: #123143;
+  --depth-500: #1b566f;
+  --depth-abyss: #02090f; /* deepest: desk behind cards, footer */
+
+  --depth-100: #cfe6ef;   /* foam (light theme bg) */
+  --depth-050: #eef7fb;   /* paper (light theme bg) / primary text on dark */
+
+  /* --- Accents ------------------------------------------------------------ */
+  --tide:     #2088c1;    /* mid blue; bridge to docs badge; wave fill */
+  --launch:   #ff6b35;    /* PRECIOUS: primary CTA + the one "flip to live" moment */
+  --launch-2: #ffd23f;    /* buoy yellow; sparing secondary highlight */
+  --seafoam:  #35e0c4;    /* streaming/success; links on dark; mono labels */
+
+  /* --- Semantic surfaces (dark, default) ---------------------------------- */
+  --bg:            var(--depth-900);
+  --bg-desk:       var(--depth-abyss);
+  --surface:       #0c2230;
+  --surface-inset: #020c13;           /* code / terminal body */
+
+  /* --- Text (on dark) ----------------------------------------------------- */
+  --text-strong: #eef7fb;
+  --text:        #a9c6d4;
+  --text-muted:  #7fa6b8;
+  --text-faint:  #546e7c;
+
+  /* --- Lines / borders ---------------------------------------------------- */
+  --hairline:         rgba(207, 230, 239, 0.08);
+  --hairline-strong:  rgba(207, 230, 239, 0.14);
+  --hairline-seafoam: rgba(53, 224, 196, 0.18);
+
+  /* --- Links (define both — never leave browser-default blue) -------------- */
+  --link:       var(--seafoam);
+  --link-hover: #6fecd7;
+
+  /* --- Typography --------------------------------------------------------- */
+  --font-display: "Space Grotesk", system-ui, sans-serif; /* self-hosted */
+  --font-body:    "IBM Plex Sans", system-ui, sans-serif; /* self-hosted */
+  --font-mono:    "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* Type scale (px → rem at 16px base) */
+  --fs-hero:    4.125rem; /* 66px, line-height 1.02, tracking -0.03em */
+  --fs-h2:      2.375rem; /* 38px */
+  --fs-h2-sm:   2rem;     /* 32px */
+  --fs-stat:    1.5rem;   /* 24px payoff numbers */
+  --fs-lead:    1.1875rem;/* 19px hero sub */
+  --fs-body:    1rem;     /* 16px */
+  --fs-sm:      0.9375rem;/* 15px */
+  --fs-cap:     0.84375rem;/* 13.5px */
+  --fs-mono:    0.875rem; /* 14px */
+  --fs-eyebrow: 0.75rem;  /* 12px mono eyebrow, tracking 0.14em */
+
+  --tracking-tight: -0.03em;
+  --tracking-h2:    -0.02em;
+  --tracking-eyebrow: 0.14em;
+
+  /* --- Radius ------------------------------------------------------------- */
+  --radius-card:   14px;
+  --radius-outer:  20px;
+  --radius-btn:    10px;
+  --radius-chip:   8px;
+  --radius-pill:   100px;
+
+  /* --- Elevation ---------------------------------------------------------- */
+  --shadow-cta:   0 10px 30px -8px rgba(255, 107, 53, 0.55);
+  --shadow-panel: 0 30px 80px -30px rgba(0, 0, 0, 0.7);
+  --shadow-card:  0 40px 120px -40px rgba(0, 0, 0, 0.8);
+
+  /* --- Layout ------------------------------------------------------------- */
+  --content-max: 1120px;
+  --gutter: 44px;
+
+  /* --- Motion ------------------------------------------------------------- */
+  --ease-launch: cubic-bezier(0.2, 0.9, 0.2, 1.05); /* the flip-to-live feel */
+  --dur-fast:   180ms;
+  --dur:        240ms;
+  --dur-flip:   420ms;
+}
+
+/* ----------------------------------------------------------------------------
+   Light theme — "foam & paper". PLACEHOLDER values; design + contrast-check.
+   Toggle by setting data-theme="light" on <html>.
+   ---------------------------------------------------------------------------- */
+:root[data-theme="light"] {
+  --bg:            var(--depth-050);
+  --bg-desk:       var(--depth-100);
+  --surface:       #ffffff;
+  --surface-inset: #eaf3f8;
+
+  --text-strong: #05141f;
+  --text:        #274b5c;
+  --text-muted:  #547587;
+  --text-faint:  #7fa6b8;
+
+  --hairline:        rgba(5, 20, 31, 0.10);
+  --hairline-strong: rgba(5, 20, 31, 0.16);
+
+  --link:       #147a9e;   /* darker tide for AA on paper — verify */
+  --link-hover: #0f5f7c;
+  /* accents (--launch/--launch-2/--seafoam/--tide) stay; re-verify contrast on light */
+}
+
+/* ----------------------------------------------------------------------------
+   Reduced motion — the page must be fully understandable with zero animation.
+   ---------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Base link styling — always defined so user/added links never fall back to blue */
+a { color: var(--link); }
+a:hover { color: var(--link-hover); }
