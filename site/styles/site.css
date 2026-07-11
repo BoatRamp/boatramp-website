@@ -68,6 +68,8 @@ a:hover { color: var(--link-hover); }
 .nav__star:hover { color: var(--depth-900); filter: brightness(0.95); }
 .nav__star-count { font-family: var(--font-mono); font-size: 12px; color: var(--depth-500); background: rgba(5, 20, 31, 0.07); padding: 1px 8px; border-radius: var(--radius-pill); }
 .nav__star-count[hidden] { display: none; }
+/* Depth signal on the Features nav link — one item that advertises scale. */
+.nav__count { font-family: var(--font-mono); font-size: 11px; color: var(--seafoam); background: rgba(53, 224, 196, 0.12); padding: 0 6px; border-radius: var(--radius-pill); margin-left: 5px; vertical-align: middle; }
 
 /* ---- Hero ----------------------------------------------------------------- */
 .hero { position: relative; overflow: hidden; padding: 78px 0 34px; }
@@ -197,6 +199,38 @@ a:hover { color: var(--link-hover); }
 .beyond-card__desc { font-size: 13.5px; line-height: 1.5; color: var(--text); margin: 0 0 16px; flex: 1; }
 .beyond-card__desc code, .feat__desc code { font-family: var(--font-mono); font-size: 0.88em; color: var(--depth-100); }
 .beyond-card__more { font-size: 12.5px; color: var(--seafoam); }
+
+/* ---- Features CTA band (home → /features) --------------------------------- */
+/* Seafoam-bordered band, NOT orange: keeps --launch reserved for the hero CTA.
+   The whole band is the link; the inner .btn--ghost is a visual affordance. */
+.features-cta {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px; flex-wrap: wrap; margin-top: 24px; padding: 26px 28px;
+  border: 1px solid var(--hairline-seafoam); border-radius: var(--radius-card);
+  background: linear-gradient(180deg, rgba(53, 224, 196, 0.05), rgba(53, 224, 196, 0.02));
+  color: var(--text);
+  transition: border-color var(--dur) var(--ease-launch), transform var(--dur) var(--ease-launch);
+}
+.features-cta:hover { color: var(--text); border-color: rgba(53, 224, 196, 0.4); transform: translateY(-2px); }
+.features-cta__body { display: flex; flex-direction: column; gap: 7px; min-width: 0; max-width: 62ch; }
+.features-cta__title { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-h2-sm); line-height: 1.1; letter-spacing: var(--tracking-h2); color: var(--text-strong); }
+.features-cta__desc { font-size: var(--fs-sm); line-height: 1.55; color: var(--text); }
+.features-cta__action { flex: 0 0 auto; }
+.features-cta__btn { transition: border-color var(--dur-fast) var(--ease-launch), transform var(--dur-fast) var(--ease-launch); }
+.features-cta:hover .features-cta__btn { border-color: rgba(207, 230, 239, 0.4); transform: translateY(-2px); }
+.features-cta__arrow { display: inline-block; transition: transform var(--dur-fast) var(--ease-launch); }
+.features-cta:hover .features-cta__arrow { transform: translateX(3px); }
+.features-cta:focus-visible { outline: 2px solid var(--seafoam); outline-offset: 3px; border-radius: var(--radius-card); }
+@media (max-width: 860px) {
+  .features-cta { flex-direction: column; align-items: flex-start; padding: 22px 20px; }
+  .features-cta__action { align-self: stretch; }
+  .features-cta__btn { width: 100%; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .features-cta, .features-cta:hover, .features-cta__btn,
+  .features-cta:hover .features-cta__btn, .features-cta__arrow,
+  .features-cta:hover .features-cta__arrow { transform: none; }
+}
 
 /* ---- Features page --------------------------------------------------------- */
 .feat-hero { padding: 56px 0 8px; }
