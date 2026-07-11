@@ -63,7 +63,11 @@ jobs:
         run: |
           set -euo pipefail
           # The real boatramp CLI, via this flake (built once, then nix-cached).
-          nix run .#boatramp -- sync dist \
+          # `dist` was already built in the previous step (inside the `.#build`
+          # shell that has `just`); pass --no-build so `sync` publishes it as-is
+          # rather than re-running the project.cfg build command, which would need
+          # `just` on PATH here (it isn't under `nix run .#boatramp`).
+          nix run .#boatramp -- sync dist --no-build \
             --server https://boatramp.dev --site www -m "${GITHUB_SHA::7}"
           if [ -n "${CF_ZONE_ID:-}" ] && [ -n "${CF_PURGE_TOKEN:-}" ]; then
             curl -fsS -X POST "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/purge_cache" \
