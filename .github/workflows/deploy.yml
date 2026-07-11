@@ -47,8 +47,13 @@ jobs:
         uses: actions/checkout@v5
       - if: steps.cfg.outputs.ready == 'true'
         uses: DeterminateSystems/nix-installer-action@main
+      # Public Cachix cache: first run builds + pushes boatramp; later runs pull
+      # it in seconds instead of rebuilding from source.
       - if: steps.cfg.outputs.ready == 'true'
-        uses: DeterminateSystems/magic-nix-cache-action@main
+        uses: cachix/cachix-action@v15
+        with:
+          name: boatramp
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
 
       - name: Build site (island + static)
         if: steps.cfg.outputs.ready == 'true'
