@@ -55,8 +55,10 @@ a:hover { color: var(--link-hover); }
 .nav__brand { display: inline-flex; align-items: center; gap: 11px; }
 .wordmark { font-family: var(--font-display); font-weight: 700; font-size: 20px; color: var(--text-strong); letter-spacing: -0.02em; }
 .nav__links { display: flex; align-items: center; gap: 28px; font-size: 14.5px; }
-.nav__links a { color: var(--depth-100); }
-.nav__links a:hover { color: var(--text-strong); }
+/* Exclude the solid Star pill: the generic link color (light foam) would
+   otherwise win on specificity and render its label near-invisible on white. */
+.nav__links a:not(.nav__star) { color: var(--depth-100); }
+.nav__links a:not(.nav__star):hover { color: var(--text-strong); }
 .nav__ext { font-size: 11px; color: var(--text-muted); }
 .nav__star {
   display: inline-flex; align-items: center; gap: 8px;

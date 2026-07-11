@@ -23,8 +23,13 @@ pub fn start() {
     wire_hero_copy();
     wasm_bindgen_futures::spawn_local(fetch_and_render_stars());
 
-    // Mount the interactive terminal into the existing #terminal element,
-    // replacing its static (no-JS) fallback content.
+    // Mount the interactive terminal into the existing #terminal element.
+    // Dioxus's web renderer *appends* into the root rather than clearing it, so
+    // we must empty the static (no-JS) fallback first — otherwise the terminal
+    // renders twice (the fallback + the interactive one stacked).
+    if let Some(root) = gloo_utils::document().get_element_by_id("terminal") {
+        root.set_inner_html("");
+    }
     dioxus::LaunchBuilder::new()
         .with_cfg(dioxus_web::Config::new().rootname("terminal"))
         .launch(Terminal);
