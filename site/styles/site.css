@@ -187,6 +187,41 @@ a:hover { color: var(--link-hover); }
 .payoff--launch { border: 1px solid rgba(255, 107, 53, 0.22); background: rgba(255, 107, 53, 0.05); }
 .payoff--seafoam { border: 1px solid rgba(53, 224, 196, 0.22); background: rgba(53, 224, 196, 0.05); }
 
+/* ---- Beyond static (home) -------------------------------------------------- */
+.module__note--link:hover { color: var(--link-hover); }
+.beyond-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.beyond-card { display: flex; flex-direction: column; border: 1px solid var(--hairline-strong); border-radius: var(--radius-card); padding: 22px 20px; background: rgba(7, 26, 38, 0.5); transition: border-color var(--dur) var(--ease-launch), transform var(--dur) var(--ease-launch); }
+.beyond-card:hover { border-color: rgba(53, 224, 196, 0.4); transform: translateY(-3px); }
+.beyond-card__tag { font-size: 11px; letter-spacing: 0.08em; color: var(--seafoam); margin-bottom: 12px; }
+.beyond-card__name { font-family: var(--font-display); font-weight: 600; font-size: 18px; color: var(--text-strong); margin: 0 0 10px; letter-spacing: -0.01em; }
+.beyond-card__desc { font-size: 13.5px; line-height: 1.5; color: var(--text); margin: 0 0 16px; flex: 1; }
+.beyond-card__desc code, .feat__desc code { font-family: var(--font-mono); font-size: 0.88em; color: var(--depth-100); }
+.beyond-card__more { font-size: 12.5px; color: var(--seafoam); }
+
+/* ---- Features page --------------------------------------------------------- */
+.feat-hero { padding: 56px 0 8px; }
+.feat-hero h1 { font-size: clamp(2.4rem, 6vw, 3.25rem); line-height: 1.04; letter-spacing: var(--tracking-tight); margin: 0 0 16px; }
+.feat-hero p { font-size: var(--fs-lead); color: var(--text); max-width: 620px; margin: 0; }
+.feat-legend { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-top: 22px; font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); }
+.feat-toc { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 26px 0 0; font-family: var(--font-mono); font-size: 12.5px; }
+.feat-toc a { color: var(--text-muted); }
+.feat-toc a:hover { color: var(--seafoam); }
+.feat-group { padding: 44px 0 4px; scroll-margin-top: 80px; }
+
+.feat-wrap { border: 1px solid rgba(207, 230, 239, 0.1); border-radius: var(--radius-card); overflow: hidden; background: rgba(7, 26, 38, 0.4); }
+.feat { display: grid; grid-template-columns: minmax(150px, 1fr) 1.7fr auto; }
+.feat__row { display: contents; }
+.feat__cell { padding: 16px 18px; border-bottom: 1px solid rgba(53, 224, 196, 0.1); display: flex; align-items: center; }
+.feat__row:last-child .feat__cell { border-bottom: none; }
+.feat__name { font-family: var(--font-display); font-weight: 600; font-size: 15px; color: var(--text-strong); gap: 8px; flex-wrap: wrap; }
+.feat__desc { font-size: 14px; color: var(--text); line-height: 1.5; }
+.feat__tag { font-family: var(--font-mono); font-size: 11.5px; color: var(--seafoam); white-space: nowrap; justify-content: flex-end; }
+
+.chip { font-family: var(--font-mono); font-size: 10px; padding: 1px 7px; border-radius: var(--radius-pill); white-space: nowrap; }
+.chip--beta { color: var(--launch-2); border: 1px solid rgba(255, 210, 63, 0.4); }
+.chip--seam { color: var(--tide); border: 1px solid rgba(32, 136, 193, 0.45); }
+.chip--wip { color: var(--launch); border: 1px solid rgba(255, 107, 53, 0.4); }
+
 /* ---- Deploy targets ------------------------------------------------------- */
 .manifest { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .target { border: 1px solid rgba(53, 224, 196, 0.16); border-radius: var(--radius-btn); padding: 16px; background: rgba(4, 18, 27, 0.5); display: flex; align-items: center; justify-content: space-between; gap: 10px; }
@@ -236,4 +271,12 @@ a:hover { color: var(--link-hover); }
   .spec__desc, .spec__tag { display: none; }
   .payoff, .manifest { grid-template-columns: 1fr; }
   .bytes { display: none; }
+  .beyond-grid { grid-template-columns: 1fr 1fr; }
+  .feat { grid-template-columns: 1fr; }
+  .feat__tag { display: none; }
+  .feat__name { border-bottom: none; padding-bottom: 2px; }
+  .feat__desc { padding-top: 0; }
+}
+@media (max-width: 560px) {
+  .beyond-grid { grid-template-columns: 1fr; }
 }

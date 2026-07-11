@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Features — boatramp</title>
+  <meta name="description" content="Everything boatramp does: atomic publishing, a real web server, domains & TLS, Wasm handlers, containers & microVMs, an edge gateway, HA clustering, auth & access control, pluggable storage, and observability — one Rust binary.">
+  <link rel="canonical" href="https://boatramp.dev/features">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://boatramp.dev/features">
+  <meta property="og:title" content="boatramp — features">
+  <meta property="og:description" content="Atomic publishing, a real web server, Wasm handlers, containers & microVMs, an edge gateway, HA clustering, auth & access control — one Rust binary.">
+  <meta property="og:image" content="https://boatramp.dev/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/ibm-plex-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles/fonts.css">
+  <link rel="stylesheet" href="/styles/tokens.css">
+  <link rel="stylesheet" href="/styles/site.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- ================= NAV ================= -->
+  <header class="nav">
+    <a class="nav__brand" href="/" aria-label="boatramp home">
+      <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M3 7 L15 18.5" stroke="#ff6b35" stroke-width="2.6" stroke-linecap="round"/>
+        <path d="M10.5 15 L15 21.5 L19.5 15" stroke="#ffd23f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M2 25.5 q3.5 -3.6 7 0 t7 0 t7 0 t2 0" stroke="#35e0c4" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      <span class="wordmark">boatramp</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/features">Features</a>
+      <a href="/#quickstart">Install</a>
+      <a href="https://docs.boatramp.dev">Docs<span class="nav__ext" aria-hidden="true">↗</span></a>
+      <a href="https://github.com/BoatRamp/BoatRamp/discussions">Community</a>
+      <a class="nav__star" href="https://github.com/BoatRamp/BoatRamp" data-gh-star aria-label="Star boatramp on GitHub">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>
+        Star
+        <span class="nav__star-count mono" data-gh-star-count hidden></span>
+      </a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ================= HERO ================= -->
+    <section class="feat-hero wrap">
+      <p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span>features</p>
+      <h1>The whole harbor, in one hull.</h1>
+      <p>boatramp is more than a static host. The same single binary publishes sites, serves them over modern HTTP, runs code at the edge, fronts your private services, scales to a cluster, and hands you the keys to all of it — with the same commands everywhere.</p>
+      <div class="feat-legend">
+        <span>Everything is <a href="https://docs.boatramp.dev/explanation/maturity.html">pre-1.0</a>. Where a capability's live validation is still in flight, it's marked:</span>
+        <span class="chip chip--seam">live seam</span>
+        <span class="chip chip--beta">beta</span>
+        <span class="chip chip--wip">in progress</span>
+      </div>
+      <nav class="feat-toc" aria-label="Feature groups">
+        <a href="#publish">01 Publish</a><a href="#serve">02 Serve</a><a href="#tls">03 Domains &amp; TLS</a>
+        <a href="#compute">04 Edge compute</a><a href="#containers">05 Containers &amp; microVMs</a><a href="#gateway">06 Gateway</a>
+        <a href="#scale">07 Scale</a><a href="#secure">08 Secure</a><a href="#storage">09 Storage</a>
+        <a href="#operate">10 Operate</a><a href="#ship">11 Ship</a>
+      </nav>
+    </section>
+
+    <!-- 01 PUBLISH -->
+    <section class="feat-group wrap" id="publish">
+      <div class="module__head"><span class="eyebrow-mono">01 / PUBLISH</span><h2>Cast off, roll back, never look down.</h2></div>
+      <div class="feat-wrap"><div class="feat">
+        <div class="feat__row"><div class="feat__cell feat__name">Atomic deploys</div><div class="feat__cell feat__desc">Every publish is an immutable, content-addressed deployment; going live is one atomic pointer flip — readers never see a half-written mix.</div><div class="feat__cell feat__tag">sync</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Dedup + delta uploads</div><div class="feat__cell feat__desc">Identical bytes are stored once; re-running <code>sync</code> streams only the blobs that actually changed.</div><div class="feat__cell feat__tag">content-addressed</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Instant rollback</div><div class="feat__cell feat__desc">Re-activate any previous deployment in a single flip — nothing to rebuild, nothing to re-upload.</div><div class="feat__cell feat__tag">rollback</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">History &amp; status</div><div class="feat__cell feat__desc">Inspect the live deployment and the full history — id, age, and file count.</div><div class="feat__cell feat__tag">deployments · status</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Aliases &amp; previews</div><div class="feat__cell feat__desc">Named pointers for staging and per-branch previews, plus immutable per-deploy preview hosts.</div><div class="feat__cell feat__tag">alias</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Build step + bundler</div><div class="feat__cell feat__desc">Run any build tool before publishing, or the in-process Rolldown + lightningcss bundler.</div><div class="feat__cell feat__tag">build · bundle</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Dry-run &amp; validate</div><div class="feat__cell feat__desc">Preview exactly what an upload would change, and validate routing before anything ships.</div><div class="feat__cell feat__tag">--dry-run · validate</div></div>
+      </div></div>
+    </section>
+
+    <!-- 02 SERVE -->
+    <section class="feat-group wrap" id="serve">
+      <div class="module__head"><span class="eyebrow-mono">02 / SERVE</span><h2>A real web server, not a bucket.</h2></div>
+      <div class="feat-wrap"><div class="feat">
+        <div class="feat__row"><div class="feat__cell feat__name">Static serving</div><div class="feat__cell feat__desc">Range requests, conditional GETs, and strong ETags — automatic, nothing to configure.</div><div class="feat__cell feat__tag">range · 304</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">HTTP/1.1, /2, /3</div><div class="feat__cell feat__desc">HTTP/3 over QUIC served alongside the TLS listener.</div><div class="feat__cell feat__tag">h1 · h2 · h3</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Routing</div><div class="feat__cell feat__desc">Redirects, internal rewrites, reverse-proxy targets, header rules, clean URLs, and a trailing-slash policy.</div><div class="feat__cell feat__tag">routing</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">SPA &amp; error docs</div><div class="feat__cell feat__desc">SPA fallback and custom error documents, folded into the immutable deployment so they roll back with content.</div><div class="feat__cell feat__tag">spa · 404</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Caching</div><div class="feat__cell feat__desc">Sensible Cache-Control + ETag defaults, with per-path immutable overrides.</div><div class="feat__cell feat__tag">cache-control</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Compression</div><div class="feat__cell feat__desc">Brotli and gzip precompressed at publish; on-the-fly compression for dynamic output.</div><div class="feat__cell feat__tag">br · gzip</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Netlify / CF Pages compatible</div><div class="feat__cell feat__desc">Existing <code>_redirects</code> and <code>_headers</code> files are folded into the routing manifest on <code>sync</code>.</div><div class="feat__cell feat__tag">migrate</div></div>
+      </div></div>
+    </section>
+
+    <!-- 03 DOMAINS & TLS -->
+    <section class="feat-group wrap" id="tls">
+      <div class="module__head"><span class="eyebrow-mono">03 / DOMAINS &amp; TLS</span><h2>Bring a domain; keep your certs.</h2></div>
+      <div class="feat-wrap"><div class="feat">
+        <div class="feat__row"><div class="feat__cell feat__name">Virtualhosts</div><div class="feat__cell feat__desc">Attach any number of hostnames — exact and wildcard — to a site, with canonical redirects.</div><div class="feat__cell feat__tag">domain add</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Ownership verification</div><div class="feat__cell feat__desc">Prove control over a host via HTTP self-verify or a DNS-TXT record before it ever routes.</div><div class="feat__cell feat__tag">domain verify</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Automatic HTTPS (ACME)</div><div class="feat__cell feat__desc">HTTP-01 certificates requested on first start, cached, and renewed before expiry — no cron, no certbot.</div><div class="feat__cell feat__tag">--tls acme</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Wildcard / DNS-01</div><div class="feat__cell feat__desc">Wildcard certificates via the DNS-01 challenge, plus per-deploy preview certs.</div><div class="feat__cell feat__tag">--tls acme-dns</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">10 managed DNS providers</div><div class="feat__cell feat__desc">Cloudflare, Route 53, Google, Azure, DigitalOcean, Hetzner, NS1, DNSimple, OCI, and Akamai — plus a manual fallback.</div><div class="feat__cell feat__tag">auto-dns</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">BYO cert + transport security</div><div class="feat__cell feat__desc">Serve your own certificate, and set HSTS, CSP, and frame-options per site.</div><div class="feat__cell feat__tag">--tls custom</div></div>
+      </div></div>
+    </section>
+
+    <!-- 04 EDGE COMPUTE -->
+    <section class="feat-group wrap" id="compute">
+      <div class="module__head"><span class="eyebrow-mono">04 / EDGE COMPUTE</span><h2>Run code where you serve.</h2></div>
+      <div class="feat-wrap"><div class="feat">
+        <div class="feat__row"><div class="feat__cell feat__name">Wasm handlers</div><div class="feat__cell feat__desc"><code>wasi:http</code> components bound to a route, validated at deploy time and run in a fuel-metered wasmtime sandbox.</div><div class="feat__cell feat__tag">handlers</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Per-site SQL</div><div class="feat__cell feat__desc">A real libsql database per site — an embedded file on one node, or a sqld namespace across a cluster.</div><div class="feat__cell feat__tag">sql</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">KV · blob · queue</div><div class="feat__cell feat__desc">Per-site key/value, blob store, and durable messaging bindings on the request path.</div><div class="feat__cell feat__tag">kv · blobstore · messaging</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Consumers &amp; crons</div><div class="feat__cell feat__desc">Invoke components off the request path — once per message on a topic, or on a cron schedule.</div><div class="feat__cell feat__tag">consumers · crons</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Streams (SSE / WebSocket)</div><div class="feat__cell feat__desc">Fan messaging topics out to connected clients over Server-Sent Events or WebSocket.</div><div class="feat__cell feat__tag">streams</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Deny-by-default imports</div><div class="feat__cell feat__desc">A handler receives only the capabilities the site grants; anything else is refused at activation.</div><div class="feat__cell feat__tag">imports</div></div>
+      </div></div>
+    </section>
+
+    <!-- 05 CONTAINERS & microVMs -->
+    <section class="feat-group wrap" id="containers">
+      <div class="module__head"><span class="eyebrow-mono">05 / CONTAINERS &amp; microVMs</span><h2>Heavier cargo, still one hull.</h2></div>
+      <div class="feat-wrap"><div class="feat">
+        <div class="feat__row"><div class="feat__cell feat__name">Firecracker-class microVMs</div><div class="feat__cell feat__desc">Run an OCI image in a hardware-isolated VM with its own kernel, via an embedded rust-vmm VMM.</div><div class="feat__cell feat__tag">--isolation untrusted</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Native OCI containers</div><div class="feat__cell feat__desc">Shared-kernel containers (namespaces, cgroups, seccomp) for code you trust.</div><div class="feat__cell feat__tag">--isolation trusted</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Remote Docker</div><div class="feat__cell feat__desc">Run workloads against a remote Docker host — the compute path on macOS and Windows.</div><div class="feat__cell feat__tag">remote-docker</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Scale-to-zero <span class="chip chip--wip">in progress</span></div><div class="feat__cell feat__desc">Snapshot an idle microVM and restore it — resuming, not rebooting — on the next request. Snapshot/restore is validated live; the automatic idle→snapshot reconcile is still being finished.</div><div class="feat__cell feat__tag">--scale-to-zero</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Verified boot + posture</div><div class="feat__cell feat__desc">A signed first-party kernel is verified before boot; strict posture forces microVM isolation for untrusted code.</div><div class="feat__cell feat__tag">security explain</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Cloudflare Containers <span class="chip chip--beta">beta</span></div><div class="feat__cell feat__desc">The same binary running as a Cloudflare cluster, with R2 for blobs and D1 for the SQL binding. Live cloud deploy/scale is a beta seam.</div><div class="feat__cell feat__tag">cloudflare</div></div>
+      </div></div>
+    </section>
+
+    <!-- 06 GATEWAY -->
+    <section class="feat-group wrap" id="gateway">
+      <div class="module__head"><span class="eyebrow-mono">06 / GATEWAY</span><h2>Front your private services.</h2></div>
+      <div class="feat-wrap"><div class="feat">
+        <div class="feat__row"><div class="feat__cell feat__name">Reverse-proxy pools</div><div class="feat__cell feat__desc">Route paths to a pool of backends — a compute workload, a server pool, or a private service.</div><div class="feat__cell feat__tag">gateway route add</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Load balancing</div><div class="feat__cell feat__desc">Round-robin (default) or random across the backend pool.</div><div class="feat__cell feat__tag">--lb</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Health checks</div><div class="feat__cell feat__desc">Passive ejection after consecutive failures, plus active path probing with a cooldown.</div><div class="feat__cell feat__tag">--probe-path</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Retries</div><div class="feat__cell feat__desc">Retry a body-less request against another backend on a connect failure.</div><div class="feat__cell feat__tag">--retries</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">DNS discovery</div><div class="feat__cell feat__desc">Resolve the pool from an A/AAAA record set instead of listing backends by hand.</div><div class="feat__cell feat__tag">--discover-host</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Request rewriting</div><div class="feat__cell feat__desc">Override the upstream Host header, strip a path prefix, and set per-route timeouts.</div><div class="feat__cell feat__tag">--strip-prefix</div></div>
+      </div></div>
+    </section>
+
+    <!-- 07 SCALE -->
+    <section class="feat-group wrap" id="scale">
+      <div class="module__head"><span class="eyebrow-mono">07 / SCALE</span><h2>One node to a fleet, same commands.</h2></div>
+      <div class="feat-wrap"><div class="feat">
+        <div class="feat__row"><div class="feat__cell feat__name">Single node</div><div class="feat__cell feat__desc">Filesystem blobs + an embedded SlateDB KV store. Nothing else to run.</div><div class="feat__cell feat__tag">serve</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Shared-store frontends</div><div class="feat__cell feat__desc">Many stateless serving processes over one shared KV, kept coherent by a changelog — scales reads without consensus.</div><div class="feat__cell feat__tag">shared-cache</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Raft cluster (HA) <span class="chip chip--seam">live seam</span></div><div class="feat__cell feat__desc">An openraft-replicated control plane: voters form quorum in one region, learners serve local reads elsewhere. In-process complete; live multi-host operation is the remaining seam.</div><div class="feat__cell feat__tag">[cluster]</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Database per site</div><div class="feat__cell feat__desc">A real libsql database per site — a file on one node, or a sqld namespace across the cluster.</div><div class="feat__cell feat__tag">sqld</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Cluster certificates</div><div class="feat__cell feat__desc">The leader issues each cert once and commits it to the log; every node replicates and hot-swaps on renewal.</div><div class="feat__cell feat__tag">cert-status</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Mesh membership</div><div class="feat__cell feat__desc">Peer mesh over raw-public-key mutual TLS; nodes join with single-use signed tokens.</div><div class="feat__cell feat__tag">cluster join-token</div></div>
+      </div></div>
+    </section>
+
+    <!-- 08 SECURE -->
+    <section class="feat-group wrap" id="secure">
+      <div class="module__head"><span class="eyebrow-mono">08 / SECURE</span><h2>Own the controls.</h2></div>
+      <div class="feat-wrap"><div class="feat">
+        <div class="feat__row"><div class="feat__cell feat__name">COSE/CWT tokens</div><div class="feat__cell feat__desc">Signed control-plane tokens verified offline with a public key — no per-request database lookup.</div><div class="feat__cell feat__tag">token create</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Cedar RBAC</div><div class="feat__cell feat__desc">Roles map to rights (read / write / deploy / admin) per resource, via a replaceable Cedar policy.</div><div class="feat__cell feat__tag">cedar</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">OIDC login</div><div class="feat__cell feat__desc">Exchange an IdP JWT — Okta, Keycloak, Auth0, Entra ID — for a short-TTL boatramp token.</div><div class="feat__cell feat__tag">oidc</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">External signers <span class="chip chip--seam">live seam</span></div><div class="feat__cell feat__desc">Keep the signing key in HashiCorp Vault, a PKCS#11 HSM, or AWS / GCP / Azure KMS. Each specific service has a live seam.</div><div class="feat__cell feat__tag">signer</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Offline delegation</div><div class="feat__cell feat__desc">Attenuate a token — one site, read-only, shorter expiry — by signing a restrict-only block, no server round-trip.</div><div class="feat__cell feat__tag">cnf</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Visitor access control</div><div class="feat__cell feat__desc">Basic auth, IP allow/deny, rate limiting, and a WAF stage — per site, applied before any content is read.</div><div class="feat__cell feat__tag">access</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Postures &amp; secrets-at-rest</div><div class="feat__cell feat__desc">Operator-only security postures (multi-tenant / single-tenant / dev), and envelope-encrypted certificate keys.</div><div class="feat__cell feat__tag">security explain</div></div>
+      </div></div>
+    </section>
+
+    <!-- 09 STORAGE -->
+    <section class="feat-group wrap" id="storage">
+      <div class="module__head"><span class="eyebrow-mono">09 / STORAGE</span><h2>Your bytes, your backend.</h2></div>
+      <div class="feat-wrap"><div class="feat">
+        <div class="feat__row"><div class="feat__cell feat__name">Content-addressed blobs</div><div class="feat__cell feat__desc">Every file is a SHA-256 blob, stored once and streamed end-to-end — never held whole in memory.</div><div class="feat__cell feat__tag">blobs</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Filesystem or S3</div><div class="feat__cell feat__desc">Local disk, or any S3-compatible object store — AWS, Cloudflare R2, or MinIO.</div><div class="feat__cell feat__tag">--blobs s3</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Metadata KV</div><div class="feat__cell feat__desc">Embedded SlateDB (an LSM over disk / S3 / R2 / GCS), in-memory, or Cloudflare KV.</div><div class="feat__cell feat__tag">--kv slatedb</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Write-through cache</div><div class="feat__cell feat__desc">Hot metadata is fronted by an LRU cache, kept coherent across processes by the shared store.</div><div class="feat__cell feat__tag">cached-kv</div></div>
+      </div></div>
+    </section>
+
+    <!-- 10 OPERATE -->
+    <section class="feat-group wrap" id="operate">
+      <div class="module__head"><span class="eyebrow-mono">10 / OPERATE</span><h2>See everything, fix anything.</h2></div>
+      <div class="feat-wrap"><div class="feat">
+        <div class="feat__row"><div class="feat__cell feat__name">Prometheus metrics</div><div class="feat__cell feat__desc">Requests, response bytes, deployments, activations, and cert renewals at <code>/api/metrics</code>.</div><div class="feat__cell feat__tag">/api/metrics</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Structured logs</div><div class="feat__cell feat__desc">JSON access logs, plus per-site guest stdout/stderr with live tailing.</div><div class="feat__cell feat__tag">logs --follow</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Handler stats &amp; DLQ</div><div class="feat__cell feat__desc">Invocations, errors, consumer lag, and dead-letters — redrive or purge a stuck topic.</div><div class="feat__cell feat__tag">stats · dlq</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Health endpoints</div><div class="feat__cell feat__desc">Liveness and a readiness probe that fails when the metadata backend is unreachable.</div><div class="feat__cell feat__tag">/healthz · /readyz</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Backup &amp; integrity</div><div class="feat__cell feat__desc">Snapshot each backend, and re-hash every stored blob to confirm it still matches its key.</div><div class="feat__cell feat__tag">scrub</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">GC + dynamic config</div><div class="feat__cell feat__desc">Prune orphaned deployments and blobs; change operational knobs fleet-wide with no restart.</div><div class="feat__cell feat__tag">prune · config</div></div>
+      </div></div>
+    </section>
+
+    <!-- 11 SHIP -->
+    <section class="feat-group wrap" id="ship">
+      <div class="module__head"><span class="eyebrow-mono">11 / SHIP</span><h2>One hull, every port.</h2></div>
+      <div class="feat-wrap"><div class="feat">
+        <div class="feat__row"><div class="feat__cell feat__name">Single static binary</div><div class="feat__cell feat__desc">Server + publishing API + CLI in one file; every heavy backend lives behind a compile-time feature.</div><div class="feat__cell feat__tag">1 file</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Prebuilt everywhere</div><div class="feat__cell feat__desc">Linux, macOS, and Windows binaries, an install script, and a Homebrew tap.</div><div class="feat__cell feat__tag">install.sh</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">OCI image</div><div class="feat__cell feat__desc">A multi-arch, non-root container image at <code>ghcr.io/boatramp/boatramp</code>.</div><div class="feat__cell feat__tag">docker</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">NixOS + systemd</div><div class="feat__cell feat__desc">A flake, an overlay, and a declarative <code>services.boatramp</code> module with a hardened systemd unit.</div><div class="feat__cell feat__tag">services.boatramp</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Cloudflare generate <span class="chip chip--beta">beta</span></div><div class="feat__cell feat__desc">Generate a Worker + Containers deployment — configs, Dockerfile, and edge Worker — from one command.</div><div class="feat__cell feat__tag">cloudflare</div></div>
+      </div></div>
+    </section>
+
+    <!-- CTA -->
+    <section class="honesty wrap">
+      <div class="honesty__box">
+        <span class="honesty__label">pre-1.0</span>
+        <p>Every capability above is implemented and dogfooded — this site runs on it. Interfaces may still shift before 1.0. Start with <a href="/#quickstart">the quickstart</a>, dig into the <a href="https://docs.boatramp.dev">docs</a>, or <a href="https://github.com/BoatRamp/BoatRamp/discussions">come crew it</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <div class="footer__brand-row">
+            <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M3 7 L15 18.5" stroke="#ff6b35" stroke-width="2.6" stroke-linecap="round"/><path d="M10.5 15 L15 21.5 L19.5 15" stroke="#ffd23f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 25.5 q3.5 -3.6 7 0 t7 0 t7 0 t2 0" stroke="#35e0c4" stroke-width="2.2" stroke-linecap="round"/></svg>
+            <span class="wordmark" style="font-size:18px">boatramp</span>
+          </div>
+          <p>Launch the web from your own shore. One binary — server, API, CLI.</p>
+        </div>
+        <div class="footer__cols">
+          <div class="footer__col"><span class="footer__col-h">PRODUCT</span><a href="/features">Features</a><a href="/#quickstart">Install</a><a href="https://docs.boatramp.dev">Docs ↗</a></div>
+          <div class="footer__col"><span class="footer__col-h">CREW</span><a href="https://github.com/BoatRamp/BoatRamp/discussions">Community</a><a href="https://github.com/BoatRamp/BoatRamp">GitHub ↗</a><a href="/blog/rss.xml">RSS</a></div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>MIT OR Apache-2.0 · © 2026 boatramp</span>
+        <span class="footer__served">⚓ served by boatramp · deploy <span data-deploy-id>dev-local</span></span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import init from "/island/boatramp_island.js";
+    init().catch((e) => console.warn("boatramp island failed to load:", e));
+  </script>
+</body>
+</html>

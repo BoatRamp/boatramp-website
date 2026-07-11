@@ -23,16 +23,17 @@ pub fn start() {
     wire_hero_copy();
     wasm_bindgen_futures::spawn_local(fetch_and_render_stars());
 
-    // Mount the interactive terminal into the existing #terminal element.
-    // Dioxus's web renderer *appends* into the root rather than clearing it, so
-    // we must empty the static (no-JS) fallback first — otherwise the terminal
-    // renders twice (the fallback + the interactive one stacked).
+    // The interactive terminal only exists on the home page. Mount it only when
+    // #terminal is present, so the island loads harmlessly on other pages (e.g.
+    // /features) — the star count and copy buttons still run everywhere. Clear
+    // the static fallback first, because Dioxus's web renderer appends into the
+    // root rather than clearing it (otherwise the terminal renders twice).
     if let Some(root) = gloo_utils::document().get_element_by_id("terminal") {
         root.set_inner_html("");
+        dioxus::LaunchBuilder::new()
+            .with_cfg(dioxus_web::Config::new().rootname("terminal"))
+            .launch(Terminal);
     }
-    dioxus::LaunchBuilder::new()
-        .with_cfg(dioxus_web::Config::new().rootname("terminal"))
-        .launch(Terminal);
 }
 
 // ---------------------------------------------------------------------------

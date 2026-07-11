@@ -50,7 +50,7 @@
       <span class="wordmark">boatramp</span>
     </a>
     <nav class="nav__links" aria-label="Primary">
-      <a href="#capabilities">Features</a>
+      <a href="/features">Features</a>
       <a href="#quickstart">Install</a>
       <a href="https://docs.boatramp.dev">Docs<span class="nav__ext" aria-hidden="true">↗</span></a>
       <a href="https://github.com/BoatRamp/BoatRamp/discussions">Community</a>
@@ -197,10 +197,45 @@
       </div>
     </section>
 
-    <!-- ================= 03 / WHERE IT RUNS ================= -->
+    <!-- ================= 03 / BEYOND STATIC ================= -->
+    <section class="module wrap" id="compute">
+      <div class="module__head">
+        <span class="eyebrow-mono">03 / BEYOND STATIC</span>
+        <h2>Run code at the edge.</h2>
+        <a class="module__note module__note--link" href="/features">see all features →</a>
+      </div>
+      <div class="beyond-grid">
+        <article class="beyond-card">
+          <div class="beyond-card__tag mono">handlers</div>
+          <h3 class="beyond-card__name">Wasm handlers</h3>
+          <p class="beyond-card__desc">Run <code>wasi:http</code> components per route, validated at deploy time — each with a per-site SQL database, KV, blob store, and durable queue.</p>
+          <a class="beyond-card__more mono" href="/features#compute">→ edge compute</a>
+        </article>
+        <article class="beyond-card">
+          <div class="beyond-card__tag mono">compute</div>
+          <h3 class="beyond-card__name">Containers &amp; microVMs</h3>
+          <p class="beyond-card__desc">Heavier workloads in Firecracker-class microVMs or OCI containers — snapshot/restore and scale-to-zero, same binary and commands.</p>
+          <a class="beyond-card__more mono" href="/features#containers">→ containers</a>
+        </article>
+        <article class="beyond-card">
+          <div class="beyond-card__tag mono">gateway</div>
+          <h3 class="beyond-card__name">Edge gateway</h3>
+          <p class="beyond-card__desc">Publish private services through the edge: load balancing, passive + active health checks, retries, and DNS-based discovery.</p>
+          <a class="beyond-card__more mono" href="/features#gateway">→ gateway</a>
+        </article>
+        <article class="beyond-card">
+          <div class="beyond-card__tag mono">secure</div>
+          <h3 class="beyond-card__name">Own the controls</h3>
+          <p class="beyond-card__desc">COSE/CWT tokens + Cedar policies, OIDC login, KMS/HSM signers, and per-site visitor access control at the edge.</p>
+          <a class="beyond-card__more mono" href="/features#secure">→ auth &amp; access</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= 04 / WHERE IT RUNS ================= -->
     <section class="module wrap" id="targets">
       <div class="module__head">
-        <span class="eyebrow-mono">03 / WHERE IT RUNS</span>
+        <span class="eyebrow-mono">04 / WHERE IT RUNS</span>
         <h2>One hull, every port.</h2>
         <span class="module__note">same UX · same binary</span>
       </div>
@@ -208,9 +243,9 @@
         <div class="target"><div><div class="target__name">Bare metal</div><div class="target__cmd">boatramp serve</div></div><span class="target__ok">✓ same UX</span></div>
         <div class="target"><div><div class="target__name">systemd</div><div class="target__cmd">boatramp.service</div></div><span class="target__ok">✓ same UX</span></div>
         <div class="target"><div><div class="target__name">NixOS</div><div class="target__cmd">services.boatramp</div></div><span class="target__ok">✓ same UX</span></div>
-        <div class="target"><div><div class="target__name">Docker / OCI</div><div class="target__cmd">nix build .#container</div></div><span class="target__ok">✓ same UX</span></div>
+        <div class="target"><div><div class="target__name">Docker / OCI</div><div class="target__cmd">ghcr.io/boatramp/boatramp</div></div><span class="target__ok">✓ same UX</span></div>
         <div class="target"><div><div class="target__name">Cloudflare</div><div class="target__cmd">boatramp cloudflare</div></div><span class="target__ok">✓ same UX</span></div>
-        <div class="target"><div><div class="target__name">Cluster</div><div class="target__cmd">serve --mode cluster</div></div><span class="target__ok">✓ same UX</span></div>
+        <div class="target"><div><div class="target__name">Cluster</div><div class="target__cmd">boatramp.cfg · [cluster]</div></div><span class="target__ok">✓ same UX</span></div>
       </div>
     </section>
 
@@ -235,7 +270,7 @@
           <p>Launch the web from your own shore. One binary — server, API, CLI.</p>
         </div>
         <div class="footer__cols">
-          <div class="footer__col"><span class="footer__col-h">PRODUCT</span><a href="#capabilities">Features</a><a href="#quickstart">Install</a><a href="https://docs.boatramp.dev">Docs ↗</a></div>
+          <div class="footer__col"><span class="footer__col-h">PRODUCT</span><a href="/features">Features</a><a href="#quickstart">Install</a><a href="https://docs.boatramp.dev">Docs ↗</a></div>
           <div class="footer__col"><span class="footer__col-h">CREW</span><a href="https://github.com/BoatRamp/BoatRamp/discussions">Community</a><a href="https://github.com/BoatRamp/BoatRamp">GitHub ↗</a><a href="/blog/rss.xml">RSS</a></div>
         </div>
       </div>
