@@ -248,7 +248,9 @@ a:hover { color: var(--link-hover); }
 .feat__cell { padding: 16px 18px; border-bottom: 1px solid rgba(53, 224, 196, 0.1); display: flex; align-items: flex-start; }
 .feat__row:last-child .feat__cell { border-bottom: none; }
 .feat__name { font-family: var(--font-display); font-weight: 600; font-size: 15px; color: var(--text-strong); gap: 8px; flex-wrap: wrap; }
-.feat__desc { font-size: 14px; color: var(--text); line-height: 1.5; }
+/* Block flow (NOT the flex from .feat__cell) so the description reads as one
+   paragraph — otherwise each text run and inline <code> becomes a flex item. */
+.feat__desc { display: block; font-size: 14px; color: var(--text); line-height: 1.5; }
 .feat__tag { font-family: var(--font-mono); font-size: 11.5px; color: var(--seafoam); white-space: nowrap; justify-content: flex-end; }
 
 .chip { font-family: var(--font-mono); font-size: 10px; padding: 1px 7px; border-radius: var(--radius-pill); white-space: nowrap; }
