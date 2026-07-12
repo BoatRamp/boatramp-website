@@ -257,7 +257,7 @@ a:hover { color: var(--link-hover); }
 .chip--wip { color: var(--launch); border: 1px solid rgba(255, 107, 53, 0.4); }
 
 /* ---- Deploy targets ------------------------------------------------------- */
-.manifest { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.manifest { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
 .target { border: 1px solid rgba(53, 224, 196, 0.16); border-radius: var(--radius-btn); padding: 16px; background: rgba(4, 18, 27, 0.5); display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .target__name { font-family: var(--font-display); font-weight: 600; font-size: 15px; color: var(--text-strong); margin-bottom: 5px; }
 .target__cmd { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); }
