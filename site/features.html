@@ -59,7 +59,7 @@
       </div>
       <nav class="feat-toc" aria-label="Feature groups">
         <a href="#publish">01 Publish</a><a href="#serve">02 Serve</a><a href="#tls">03 Domains &amp; TLS</a>
-        <a href="#compute">04 Edge compute</a><a href="#containers">05 Containers &amp; microVMs</a><a href="#gateway">06 Gateway</a>
+        <a href="#compute">04 Functions</a><a href="#containers">05 Containers &amp; microVMs</a><a href="#gateway">06 Gateway</a>
         <a href="#scale">07 Scale</a><a href="#secure">08 Secure</a><a href="#storage">09 Storage</a>
         <a href="#operate">10 Operate</a><a href="#ship">11 Ship</a>
       </nav>
@@ -110,14 +110,18 @@
 
     <!-- 04 EDGE COMPUTE -->
     <section class="feat-group wrap" id="compute">
-      <div class="module__head"><span class="eyebrow-mono">04 / EDGE COMPUTE</span><h2>Run code where you serve.</h2></div>
+      <div class="module__head"><span class="eyebrow-mono">04 / FUNCTIONS</span><h2>Everything that runs is a function.</h2></div>
       <div class="feat-wrap"><div class="feat">
-        <div class="feat__row"><div class="feat__cell feat__name">Wasm handlers</div><div class="feat__cell feat__desc"><code>wasi:http</code> components bound to a route, validated at deploy time and run in a fuel-metered wasmtime sandbox.</div><div class="feat__cell feat__tag">handlers</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">One primitive, many doors</div><div class="feat__cell feat__desc">A function is a portable WASI 0.2 component. Reach the same component as a route <em>handler</em>, invoke it by name, put it on a cron, or drive it from a queue — a different door, one sandbox.</div><div class="feat__cell feat__tag">function</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Invoke by name</div><div class="feat__cell feat__desc">Top-level functions carry their own version line — <code>function deploy</code> / <code>alias</code> / <code>rollback</code> — and invoke sync or async: durable, idempotency-keyed, and dead-lettered on failure.</div><div class="feat__cell feat__tag">function invoke</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Event triggers</div><div class="feat__cell feat__desc">Fire a function from a signature-verified HMAC webhook, or a blob-change event — the changed key arrives as the invocation body — via the backend's native notifications.</div><div class="feat__cell feat__tag">webhook · blob</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Multi-language</div><div class="feat__cell feat__desc">Author in Rust, JavaScript (jco), or Python (componentize-py); scaffold, build, and test locally — <code>function init · build · test · dev</code>.</div><div class="feat__cell feat__tag">rust · js · py</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Metering &amp; quotas</div><div class="feat__cell feat__desc">Every invocation is metered and exported to Prometheus, with fail-closed rate-limit and concurrency quotas.</div><div class="feat__cell feat__tag">function usage</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Workflows</div><div class="feat__cell feat__desc">Chain functions into a durable DAG — fan-out, barrier fan-in, per-step retries, and saga compensation on failure. Runs survive restarts.</div><div class="feat__cell feat__tag">workflow</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Per-site SQL</div><div class="feat__cell feat__desc">A real libsql database per site — an embedded file on one node, or a sqld namespace across a cluster.</div><div class="feat__cell feat__tag">sql</div></div>
-        <div class="feat__row"><div class="feat__cell feat__name">KV · blob · queue</div><div class="feat__cell feat__desc">Per-site key/value, blob store, and durable messaging bindings on the request path.</div><div class="feat__cell feat__tag">kv · blobstore · messaging</div></div>
-        <div class="feat__row"><div class="feat__cell feat__name">Consumers &amp; crons</div><div class="feat__cell feat__desc">Invoke components off the request path — once per message on a topic, or on a cron schedule.</div><div class="feat__cell feat__tag">consumers · crons</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">KV · blob · queue</div><div class="feat__cell feat__desc">Per-site key/value, blob store, and durable messaging bindings, granted to the function.</div><div class="feat__cell feat__tag">kv · blobstore · messaging</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Streams (SSE / WebSocket)</div><div class="feat__cell feat__desc">Fan messaging topics out to connected clients over Server-Sent Events or WebSocket.</div><div class="feat__cell feat__tag">streams</div></div>
-        <div class="feat__row"><div class="feat__cell feat__name">Deny-by-default imports</div><div class="feat__cell feat__desc">A handler receives only the capabilities the site grants; anything else is refused at activation.</div><div class="feat__cell feat__tag">imports</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Deny-by-default imports</div><div class="feat__cell feat__desc">A function receives only the capabilities the site grants; anything else is refused at activation.</div><div class="feat__cell feat__tag">imports</div></div>
       </div></div>
     </section>
 
@@ -140,6 +144,7 @@
       <div class="feat-wrap"><div class="feat">
         <div class="feat__row"><div class="feat__cell feat__name">Reverse-proxy pools</div><div class="feat__cell feat__desc">Route paths to a pool of backends — a compute workload, a server pool, or a private service.</div><div class="feat__cell feat__tag">gateway route add</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Load balancing</div><div class="feat__cell feat__desc">Round-robin (default) or random across the backend pool.</div><div class="feat__cell feat__tag">--lb</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Geo dispatch <span class="chip chip--seam">live seam</span></div><div class="feat__cell feat__desc">Route each request to the nearest healthy backend by region (<code>--lb nearest</code>) — compute-backed pools auto-tag replicas by their node's region, so there's no manual map.</div><div class="feat__cell feat__tag">--lb nearest</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Health checks</div><div class="feat__cell feat__desc">Passive ejection after consecutive failures, plus active path probing with a cooldown.</div><div class="feat__cell feat__tag">--probe-path</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Retries</div><div class="feat__cell feat__desc">Retry a body-less request against another backend on a connect failure.</div><div class="feat__cell feat__tag">--retries</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">DNS discovery</div><div class="feat__cell feat__desc">Resolve the pool from an A/AAAA record set instead of listing backends by hand.</div><div class="feat__cell feat__tag">--discover-host</div></div>
@@ -184,6 +189,7 @@
       <div class="feat-wrap"><div class="feat">
         <div class="feat__row"><div class="feat__cell feat__name">Content-addressed blobs</div><div class="feat__cell feat__desc">Every file is a SHA-256 blob, stored once and streamed end-to-end — never held whole in memory.</div><div class="feat__cell feat__tag">blobs</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Filesystem or S3</div><div class="feat__cell feat__desc">Local disk, or any S3-compatible object store — AWS, Cloudflare R2, or MinIO.</div><div class="feat__cell feat__tag">--blobs s3</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Cloud object stores <span class="chip chip--seam">live seam</span></div><div class="feat__cell feat__desc">Google Cloud Storage (<code>--blobs gcs</code>) and Azure Blob (<code>--blobs azure</code>), streaming, with change-notification pipelines (GCS→Pub/Sub, Azure→Event Grid) that drive blob triggers.</div><div class="feat__cell feat__tag">gcs · azure</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Metadata KV</div><div class="feat__cell feat__desc">Embedded SlateDB (an LSM over disk / S3 / R2 / GCS), in-memory, or Cloudflare KV.</div><div class="feat__cell feat__tag">--kv slatedb</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Write-through cache</div><div class="feat__cell feat__desc">Hot metadata is fronted by an LRU cache, kept coherent across processes by the shared store.</div><div class="feat__cell feat__tag">cached-kv</div></div>
       </div></div>
