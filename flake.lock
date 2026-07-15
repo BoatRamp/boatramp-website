@@ -9,11 +9,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1783699081,
-        "narHash": "sha256-s5I1AfvV5dWccEgBKiK2Xmd4r/IMqmu2Dk8aniNWhco=",
+        "lastModified": 1784149706,
+        "narHash": "sha256-k/pUTFFSExwTPRlLmDU2N5gReeBmceBgxXKCuAsAk6k=",
         "owner": "BoatRamp",
         "repo": "BoatRamp",
-        "rev": "9d408481eeea48f58e08938bdd02146cd1331b19",
+        "rev": "4318afaeffd1fed00b78fc070a5198029d7d28da",
         "type": "github"
       },
       "original": {
