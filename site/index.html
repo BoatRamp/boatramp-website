@@ -50,7 +50,7 @@
       <span class="wordmark">boatramp</span>
     </a>
     <nav class="nav__links" aria-label="Primary">
-      <a href="/features">Features <span class="nav__count mono">79</span></a>
+      <a href="/features">Features <span class="nav__count mono">85</span></a>
       <a href="#quickstart">Install</a>
       <a href="https://docs.boatramp.dev">Docs<span class="nav__ext" aria-hidden="true">↗</span></a>
       <a href="https://discord.gg/A78gHFF3F3">Community</a>
@@ -150,7 +150,7 @@
     <!-- ================= 02 / CAPABILITIES ================= -->
     <section class="module wrap" id="capabilities">
       <div class="module__head">
-        <span class="eyebrow-mono">02 / CAPABILITIES · 6 OF 79</span>
+        <span class="eyebrow-mono">02 / CAPABILITIES · 6 OF 85</span>
         <h2>Six you'll feel on day one.</h2>
       </div>
       <div class="spec-wrap"><div class="spec">
@@ -199,7 +199,7 @@
         <div class="features-cta__body">
           <span class="features-cta__eyebrow eyebrow-mono">02 · THE FULL MANIFEST</span>
           <span class="features-cta__title">Those six are just the shallows.</span>
-          <span class="features-cta__desc">The hull holds 79 capabilities across 11 systems — edge compute, containers &amp; microVMs, the gateway, HA clustering, auth &amp; access, storage, and observability.</span>
+          <span class="features-cta__desc">The hull holds 85 capabilities across 12 systems — edge compute, containers &amp; microVMs, the gateway, HA clustering, auth &amp; access, storage, observability, and an agent-native MCP control plane.</span>
         </div>
         <span class="features-cta__action">
           <span class="btn btn--ghost features-cta__btn">Explore all features <span class="features-cta__arrow" aria-hidden="true">→</span></span>
@@ -242,10 +242,34 @@
       </div>
     </section>
 
-    <!-- ================= 04 / WHERE IT RUNS ================= -->
+    <!-- ================= 04 / AGENT-NATIVE ================= -->
+    <section class="module wrap" id="agent">
+      <div class="module__head">
+        <span class="eyebrow-mono">04 / AGENT-NATIVE</span>
+        <h2>Hand the helm to an agent.</h2>
+        <a class="module__note module__note--link" href="/features#agent">see all features →</a>
+      </div>
+      <div class="mcp-band">
+        <div class="mcp-band__lede">
+          <span class="mcp-band__kicker mono">model context protocol</span>
+          <p class="mcp-band__title">boatramp ships an MCP server. Point Claude or Codex at it and drive the whole control plane in plain language.</p>
+          <div class="mcp-band__demo mono">
+            <span class="mcp-band__you">you ▸</span> roll <span class="mcp-band__arg">docs</span> back to the previous deployment, then tail the last 50 log lines
+          </div>
+        </div>
+        <ul class="mcp-band__points">
+          <li><span class="mono">boatramp mcp</span> over stdio for a desktop agent, or <span class="mono">POST /mcp</span> on <span class="mono">serve</span> — on by default.</li>
+          <li>Typed, enumerated tools — one per operation, no generic passthrough, every call legible in an audit log.</li>
+          <li>Runs with <em>your</em> token's authority — hand it a read-only token and the write tools simply <span class="mono">403</span>.</li>
+          <li>One agent, many nodes — address them by name from <span class="mono">mcp.toml</span>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= 05 / WHERE IT RUNS ================= -->
     <section class="module wrap" id="targets">
       <div class="module__head">
-        <span class="eyebrow-mono">04 / WHERE IT RUNS</span>
+        <span class="eyebrow-mono">05 / WHERE IT RUNS</span>
         <h2>One hull, every port.</h2>
         <span class="module__note">same UX · same binary</span>
       </div>

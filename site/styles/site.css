@@ -232,6 +232,35 @@ a:hover { color: var(--link-hover); }
   .features-cta:hover .features-cta__arrow { transform: none; }
 }
 
+/* ---- Agent-native / MCP band (home 04) ------------------------------------ */
+/* Two-up: a lede with a natural-language demo prompt, and the how-it-works
+   points. Seafoam/tide gradient — --launch stays reserved for the hero CTA. */
+.mcp-band {
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px;
+  margin-top: 22px; padding: 30px 32px;
+  border: 1px solid var(--hairline-seafoam); border-radius: var(--radius-card);
+  background: linear-gradient(135deg, rgba(53, 224, 196, 0.06), rgba(32, 136, 193, 0.045));
+}
+.mcp-band__lede { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.mcp-band__kicker { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--seafoam); }
+.mcp-band__title { font-family: var(--font-display); font-weight: 600; font-size: 18px; line-height: 1.35; color: var(--text-strong); margin: 0; }
+.mcp-band__demo {
+  font-size: 12.5px; line-height: 1.6; color: var(--text);
+  padding: 14px 16px; border-radius: var(--radius-btn);
+  border: 1px solid rgba(53, 224, 196, 0.16); background: rgba(4, 18, 27, 0.55);
+  overflow-wrap: anywhere;
+}
+.mcp-band__you { color: var(--seafoam); }
+.mcp-band__arg { color: var(--launch-2); }
+.mcp-band__points { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
+.mcp-band__points li { position: relative; padding-left: 20px; font-size: 13.5px; line-height: 1.5; color: var(--text); }
+.mcp-band__points li::before { content: "▸"; position: absolute; left: 0; top: 1px; color: var(--seafoam); font-size: 11px; }
+.mcp-band__points .mono { color: var(--depth-100); font-size: 0.92em; }
+.mcp-band__points em { color: var(--text-strong); font-style: italic; }
+@media (max-width: 860px) {
+  .mcp-band { grid-template-columns: 1fr; gap: 22px; padding: 24px 22px; }
+}
+
 /* ---- Features page --------------------------------------------------------- */
 .feat-hero { padding: 56px 0 8px; }
 .feat-hero h1 { font-size: clamp(2.4rem, 6vw, 3.25rem); line-height: 1.04; letter-spacing: var(--tracking-tight); margin: 0 0 16px; }

@@ -61,7 +61,7 @@
         <a href="#publish">01 Publish</a><a href="#serve">02 Serve</a><a href="#tls">03 Domains &amp; TLS</a>
         <a href="#compute">04 Functions</a><a href="#containers">05 Containers &amp; microVMs</a><a href="#gateway">06 Gateway</a>
         <a href="#scale">07 Scale</a><a href="#secure">08 Secure</a><a href="#storage">09 Storage</a>
-        <a href="#operate">10 Operate</a><a href="#ship">11 Ship</a>
+        <a href="#operate">10 Operate</a><a href="#ship">11 Ship</a><a href="#agent">12 Agent-native</a>
       </nav>
     </section>
 
@@ -76,7 +76,6 @@
         <div class="feat__row"><div class="feat__cell feat__name">Aliases &amp; previews</div><div class="feat__cell feat__desc">Named pointers for staging and per-branch previews, plus immutable per-deploy preview hosts.</div><div class="feat__cell feat__tag">alias</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Build step + bundler</div><div class="feat__cell feat__desc">Run any build tool before publishing, or the in-process Rolldown + lightningcss bundler.</div><div class="feat__cell feat__tag">build · bundle</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Dry-run &amp; validate</div><div class="feat__cell feat__desc">Preview exactly what an upload would change, and validate routing before anything ships.</div><div class="feat__cell feat__tag">--dry-run · validate</div></div>
-        <div class="feat__row"><div class="feat__cell feat__name">Agent-ready</div><div class="feat__cell feat__desc">Ships an <code>AGENTS.md</code> guide so an AI coding agent (Claude Code, Codex, …) can build a project on boatramp and deploy it out of the box.</div><div class="feat__cell feat__tag">AGENTS.md</div></div>
       </div></div>
     </section>
 
@@ -218,6 +217,20 @@
         <div class="feat__row"><div class="feat__cell feat__name">OCI image</div><div class="feat__cell feat__desc">A multi-arch, non-root container image at <code>ghcr.io/boatramp/boatramp</code>.</div><div class="feat__cell feat__tag">docker</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">NixOS + systemd</div><div class="feat__cell feat__desc">A flake, an overlay, and a declarative <code>services.boatramp</code> module with a hardened systemd unit.</div><div class="feat__cell feat__tag">services.boatramp</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Cloudflare generate <span class="chip chip--beta">beta</span></div><div class="feat__cell feat__desc">Generate a Worker + Containers deployment — configs, Dockerfile, and edge Worker — from one command.</div><div class="feat__cell feat__tag">cloudflare</div></div>
+      </div></div>
+    </section>
+
+    <!-- 12 AGENT-NATIVE -->
+    <section class="feat-group wrap" id="agent">
+      <div class="module__head"><span class="eyebrow-mono">12 / AGENT-NATIVE</span><h2>Hand the helm to an agent.</h2></div>
+      <div class="feat-wrap"><div class="feat">
+        <div class="feat__row"><div class="feat__cell feat__name">MCP server</div><div class="feat__cell feat__desc">The same binary ships a <a href="https://modelcontextprotocol.io">Model Context Protocol</a> server, so an agent like Claude (Desktop, Code) or Codex operates your control plane in natural language — list sites, activate or roll back, tail logs, invoke functions, inspect the cluster.</div><div class="feat__cell feat__tag">boatramp mcp</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Two transports</div><div class="feat__cell feat__desc">A <code>boatramp mcp</code> stdio subcommand a desktop agent spawns, and a <code>POST /mcp</code> endpoint on <code>boatramp serve</code> to drive a node over the network — on by default, same tool set on both.</div><div class="feat__cell feat__tag">stdio · /mcp</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Typed, enumerated tools</div><div class="feat__cell feat__desc">One named tool per control-plane operation — no generic passthrough — so every call is legible in an audit log rather than an opaque shell.</div><div class="feat__cell feat__tag">no passthrough</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Your token, your authority</div><div class="feat__cell feat__desc">Every call runs with the caller's own bearer, re-checked per operation; hand the agent a least-privilege token and the write and fleet-admin tools simply <code>403</code>. The endpoint grants nothing the token doesn't.</div><div class="feat__cell feat__tag">least-privilege</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Many instances, one agent</div><div class="feat__cell feat__desc">Register several boatramp nodes by name in <code>mcp.toml</code> and address them per request (<em>"on prod, …"</em>); secrets are stored as specs, never resolved into the file.</div><div class="feat__cell feat__tag">mcp.toml</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Kill-switch &amp; rebinding guard</div><div class="feat__cell feat__desc">Turn the HTTP surface off fleet-wide with no restart (<code>config set mcp.enabled false</code>), and a <code>Host</code>-header allowlist keeps it loopback- or origin-only as a DNS-rebinding defence.</div><div class="feat__cell feat__tag">mcp.enabled</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Agent-ready scaffold</div><div class="feat__cell feat__desc">Ships an <code>AGENTS.md</code> guide so an AI coding agent (Claude Code, Codex, …) can build a project on boatramp and deploy it out of the box.</div><div class="feat__cell feat__tag">AGENTS.md</div></div>
       </div></div>
     </section>
 
