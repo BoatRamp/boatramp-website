@@ -261,6 +261,33 @@ a:hover { color: var(--link-hover); }
   .mcp-band { grid-template-columns: 1fr; gap: 22px; padding: 24px 22px; }
 }
 
+/* ---- Projects / apply band (home 04) -------------------------------------- */
+/* Two-up: a declarative apply.cfg snippet, and how projects + apply work.
+   Seafoam→amber wash to read distinct from the MCP band above it. */
+.proj-band {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: stretch;
+  margin-top: 22px; padding: 26px 28px;
+  border: 1px solid var(--hairline-seafoam); border-radius: var(--radius-card);
+  background: linear-gradient(135deg, rgba(53, 224, 196, 0.05), rgba(255, 210, 63, 0.035));
+}
+.proj-band__code { display: flex; flex-direction: column; min-width: 0; border: 1px solid rgba(53, 224, 196, 0.16); border-radius: var(--radius-btn); background: rgba(4, 18, 27, 0.6); overflow: hidden; }
+.proj-band__code-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 9px 14px; border-bottom: 1px solid rgba(53, 224, 196, 0.14); font-size: 11px; }
+.proj-band__file { color: var(--seafoam); }
+.proj-band__hint { color: var(--text-muted); }
+.proj-band__pre { margin: 0; padding: 14px 16px; font-size: 12px; line-height: 1.55; color: var(--text); overflow-x: auto; flex: 1; }
+.proj-band__pre code { font-family: var(--font-mono); }
+.proj-band__run { padding: 11px 16px; border-top: 1px solid rgba(53, 224, 196, 0.14); font-size: 12.5px; color: var(--text); overflow-wrap: anywhere; }
+.proj-band__you { color: var(--seafoam); margin-right: 6px; }
+.proj-band__points { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; justify-content: center; gap: 13px; }
+.proj-band__points li { position: relative; padding-left: 20px; font-size: 13.5px; line-height: 1.5; color: var(--text); }
+.proj-band__points li::before { content: "▸"; position: absolute; left: 0; top: 1px; color: var(--seafoam); font-size: 11px; }
+.proj-band__points .mono { color: var(--depth-100); font-size: 0.92em; }
+.proj-band__points strong { color: var(--text-strong); font-weight: 600; }
+.proj-band__points em { color: var(--text-strong); font-style: italic; }
+@media (max-width: 860px) {
+  .proj-band { grid-template-columns: 1fr; gap: 20px; padding: 22px; }
+}
+
 /* ---- Features page --------------------------------------------------------- */
 .feat-hero { padding: 56px 0 8px; }
 .feat-hero h1 { font-size: clamp(2.4rem, 6vw, 3.25rem); line-height: 1.04; letter-spacing: var(--tracking-tight); margin: 0 0 16px; }

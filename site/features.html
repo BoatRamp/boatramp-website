@@ -58,10 +58,10 @@
         <span class="chip chip--wip">in progress</span>
       </div>
       <nav class="feat-toc" aria-label="Feature groups">
-        <a href="#publish">01 Publish</a><a href="#serve">02 Serve</a><a href="#tls">03 Domains &amp; TLS</a>
-        <a href="#compute">04 Functions</a><a href="#containers">05 Containers &amp; microVMs</a><a href="#gateway">06 Gateway</a>
-        <a href="#scale">07 Scale</a><a href="#secure">08 Secure</a><a href="#storage">09 Storage</a>
-        <a href="#operate">10 Operate</a><a href="#ship">11 Ship</a><a href="#agent">12 Agent-native</a>
+        <a href="#publish">01 Publish</a><a href="#projects">02 Projects</a><a href="#serve">03 Serve</a><a href="#tls">04 Domains &amp; TLS</a>
+        <a href="#compute">05 Functions</a><a href="#containers">06 Containers &amp; microVMs</a><a href="#gateway">07 Gateway</a>
+        <a href="#scale">08 Scale</a><a href="#secure">09 Secure</a><a href="#storage">10 Storage</a>
+        <a href="#operate">11 Operate</a><a href="#ship">12 Ship</a><a href="#agent">13 Agent-native</a>
       </nav>
     </section>
 
@@ -79,9 +79,22 @@
       </div></div>
     </section>
 
-    <!-- 02 SERVE -->
+    <!-- 02 PROJECTS -->
+    <section class="feat-group wrap" id="projects">
+      <div class="module__head"><span class="eyebrow-mono">02 / PROJECTS</span><h2>Many sites, one tenant boundary.</h2></div>
+      <div class="feat-wrap"><div class="feat">
+        <div class="feat__row"><div class="feat__cell feat__name">First-class projects</div><div class="feat__cell feat__desc">A project owns many sites plus their functions and compute. A site name is unique only <em>within</em> its project, so two teams can each own a <code>blog</code> — deploys, aliases, crons, and workflow runs stay independent.</div><div class="feat__cell feat__tag">project</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Tenant data isolation</div><div class="feat__cell feat__desc">Each project is the tenant a handler's row-level scope resolves to: <code>kv</code>, <code>blobstore</code>, <code>sql</code>, and <code>messaging</code> namespaces are scoped to the owning project, so same-named resources never share a data plane.</div><div class="feat__cell feat__tag">tenant</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Per-project RBAC</div><div class="feat__cell feat__desc">A Cedar <code>Project</code> resource with <code>project_admin</code> / <code>project_publisher</code> / <code>project_viewer</code> roles; a token scoped to one project is refused (403) on any other.</div><div class="feat__cell feat__tag">cedar</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Declarative <code>apply</code></div><div class="feat__cell feat__desc">One RON manifest declares a whole project — its sites (content + build + routing), top-level functions, and compute — reconciled to desired state in a single pass.</div><div class="feat__cell feat__tag">apply.cfg</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Upsert, never prunes</div><div class="feat__cell feat__desc"><code>apply</code> is create-or-replace and touches only what it names, so declarative and imperative management coexist; <code>--dry-run</code> prints the plan and writes nothing.</div><div class="feat__cell feat__tag">--dry-run</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Default project = no change</div><div class="feat__cell feat__desc">Everything that predates projects lives in a reserved <code>default</code> project, so an omitted <code>--project</code> is byte-identical to single-site boatramp — no migration of your URLs or behaviour.</div><div class="feat__cell feat__tag">default</div></div>
+      </div></div>
+    </section>
+
+    <!-- 03 SERVE -->
     <section class="feat-group wrap" id="serve">
-      <div class="module__head"><span class="eyebrow-mono">02 / SERVE</span><h2>A real web server, not a bucket.</h2></div>
+      <div class="module__head"><span class="eyebrow-mono">03 / SERVE</span><h2>A real web server, not a bucket.</h2></div>
       <div class="feat-wrap"><div class="feat">
         <div class="feat__row"><div class="feat__cell feat__name">Static serving</div><div class="feat__cell feat__desc">Range requests, conditional GETs, and strong ETags — automatic, nothing to configure.</div><div class="feat__cell feat__tag">range · 304</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">HTTP/1.1, /2, /3</div><div class="feat__cell feat__desc">HTTP/3 over QUIC served alongside the TLS listener.</div><div class="feat__cell feat__tag">h1 · h2 · h3</div></div>
@@ -94,9 +107,9 @@
       </div></div>
     </section>
 
-    <!-- 03 DOMAINS & TLS -->
+    <!-- 04 DOMAINS & TLS -->
     <section class="feat-group wrap" id="tls">
-      <div class="module__head"><span class="eyebrow-mono">03 / DOMAINS &amp; TLS</span><h2>Bring a domain; keep your certs.</h2></div>
+      <div class="module__head"><span class="eyebrow-mono">04 / DOMAINS &amp; TLS</span><h2>Bring a domain; keep your certs.</h2></div>
       <div class="feat-wrap"><div class="feat">
         <div class="feat__row"><div class="feat__cell feat__name">Virtualhosts</div><div class="feat__cell feat__desc">Attach any number of hostnames — exact and wildcard — to a site, with canonical redirects.</div><div class="feat__cell feat__tag">domain add</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Ownership verification</div><div class="feat__cell feat__desc">Prove control over a host via HTTP self-verify or a DNS-TXT record before it ever routes.</div><div class="feat__cell feat__tag">domain verify</div></div>
@@ -107,12 +120,13 @@
       </div></div>
     </section>
 
-    <!-- 04 EDGE COMPUTE -->
+    <!-- 05 FUNCTIONS -->
     <section class="feat-group wrap" id="compute">
-      <div class="module__head"><span class="eyebrow-mono">04 / FUNCTIONS</span><h2>Everything that runs is a function.</h2></div>
+      <div class="module__head"><span class="eyebrow-mono">05 / FUNCTIONS</span><h2>Everything that runs is a function.</h2></div>
       <div class="feat-wrap"><div class="feat">
         <div class="feat__row"><div class="feat__cell feat__name">One primitive, many doors</div><div class="feat__cell feat__desc">A function is a portable WASI 0.2 component. Reach the same component as a route <em>handler</em>, invoke it by name, put it on a cron, or drive it from a queue — a different door, one sandbox.</div><div class="feat__cell feat__tag">function</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Invoke by name</div><div class="feat__cell feat__desc">Top-level functions carry their own version line — <code>function deploy</code> / <code>alias</code> / <code>rollback</code> — and invoke sync or async: durable, idempotency-keyed, and dead-lettered on failure.</div><div class="feat__cell feat__tag">function invoke</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Function mesh</div><div class="feat__cell feat__desc">A site handler can call sibling functions <em>in-process</em> through a deny-by-default <code>invoke_targets</code> allowlist — the caller's bearer is forwarded unchanged, the callee quota-admitted and depth-capped. A mesh orchestrator with no network hop.</div><div class="feat__cell feat__tag">invoke_targets</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Event triggers</div><div class="feat__cell feat__desc">Fire a function from a signature-verified HMAC webhook, or a blob-change event — the changed key arrives as the invocation body — via the backend's native notifications.</div><div class="feat__cell feat__tag">webhook · blob</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Multi-language</div><div class="feat__cell feat__desc">Author in Rust, JavaScript (jco), or Python (componentize-py); scaffold, build, and test locally — <code>function init · build · test · dev</code>.</div><div class="feat__cell feat__tag">rust · js · py</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Metering &amp; quotas</div><div class="feat__cell feat__desc">Every invocation is metered and exported to Prometheus, with fail-closed rate-limit and concurrency quotas.</div><div class="feat__cell feat__tag">function usage</div></div>
@@ -125,9 +139,9 @@
       </div></div>
     </section>
 
-    <!-- 05 CONTAINERS & microVMs -->
+    <!-- 06 CONTAINERS & microVMs -->
     <section class="feat-group wrap" id="containers">
-      <div class="module__head"><span class="eyebrow-mono">05 / CONTAINERS &amp; microVMs</span><h2>Heavier cargo, still one hull.</h2></div>
+      <div class="module__head"><span class="eyebrow-mono">06 / CONTAINERS &amp; microVMs</span><h2>Heavier cargo, still one hull.</h2></div>
       <div class="feat-wrap"><div class="feat">
         <div class="feat__row"><div class="feat__cell feat__name">Firecracker-class microVMs</div><div class="feat__cell feat__desc">Run an OCI image in a hardware-isolated VM with its own kernel, via an embedded rust-vmm VMM.</div><div class="feat__cell feat__tag">--isolation untrusted</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Native OCI containers</div><div class="feat__cell feat__desc">Shared-kernel containers (namespaces, cgroups, seccomp) for code you trust.</div><div class="feat__cell feat__tag">--isolation trusted</div></div>
@@ -138,9 +152,9 @@
       </div></div>
     </section>
 
-    <!-- 06 GATEWAY -->
+    <!-- 07 GATEWAY -->
     <section class="feat-group wrap" id="gateway">
-      <div class="module__head"><span class="eyebrow-mono">06 / GATEWAY</span><h2>Front your private services.</h2></div>
+      <div class="module__head"><span class="eyebrow-mono">07 / GATEWAY</span><h2>Front your private services.</h2></div>
       <div class="feat-wrap"><div class="feat">
         <div class="feat__row"><div class="feat__cell feat__name">Reverse-proxy pools</div><div class="feat__cell feat__desc">Route paths to a pool of backends — a compute workload, a server pool, or a private service.</div><div class="feat__cell feat__tag">gateway route add</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Load balancing</div><div class="feat__cell feat__desc">Round-robin (default) or random across the backend pool.</div><div class="feat__cell feat__tag">--lb</div></div>
@@ -152,9 +166,9 @@
       </div></div>
     </section>
 
-    <!-- 07 SCALE -->
+    <!-- 08 SCALE -->
     <section class="feat-group wrap" id="scale">
-      <div class="module__head"><span class="eyebrow-mono">07 / SCALE</span><h2>One node to a fleet, same commands.</h2></div>
+      <div class="module__head"><span class="eyebrow-mono">08 / SCALE</span><h2>One node to a fleet, same commands.</h2></div>
       <div class="feat-wrap"><div class="feat">
         <div class="feat__row"><div class="feat__cell feat__name">Single node</div><div class="feat__cell feat__desc">Filesystem blobs + an embedded SlateDB KV store. Nothing else to run.</div><div class="feat__cell feat__tag">serve</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Shared-store frontends</div><div class="feat__cell feat__desc">Many stateless serving processes over one shared KV, kept coherent by a changelog — scales reads without consensus.</div><div class="feat__cell feat__tag">shared-cache</div></div>
@@ -167,9 +181,9 @@
       </div></div>
     </section>
 
-    <!-- 08 SECURE -->
+    <!-- 09 SECURE -->
     <section class="feat-group wrap" id="secure">
-      <div class="module__head"><span class="eyebrow-mono">08 / SECURE</span><h2>Own the controls.</h2></div>
+      <div class="module__head"><span class="eyebrow-mono">09 / SECURE</span><h2>Own the controls.</h2></div>
       <div class="feat-wrap"><div class="feat">
         <div class="feat__row"><div class="feat__cell feat__name">COSE/CWT tokens</div><div class="feat__cell feat__desc">Signed control-plane tokens verified offline with a public key — no per-request database lookup.</div><div class="feat__cell feat__tag">token create</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Cedar RBAC</div><div class="feat__cell feat__desc">Roles map to rights (read / write / deploy / admin) per resource, via a replaceable Cedar policy.</div><div class="feat__cell feat__tag">cedar</div></div>
@@ -183,9 +197,9 @@
       </div></div>
     </section>
 
-    <!-- 09 STORAGE -->
+    <!-- 10 STORAGE -->
     <section class="feat-group wrap" id="storage">
-      <div class="module__head"><span class="eyebrow-mono">09 / STORAGE</span><h2>Your bytes, your backend.</h2></div>
+      <div class="module__head"><span class="eyebrow-mono">10 / STORAGE</span><h2>Your bytes, your backend.</h2></div>
       <div class="feat-wrap"><div class="feat">
         <div class="feat__row"><div class="feat__cell feat__name">Content-addressed blobs</div><div class="feat__cell feat__desc">Every file is a SHA-256 blob, stored once and streamed end-to-end — never held whole in memory.</div><div class="feat__cell feat__tag">blobs</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Filesystem or S3</div><div class="feat__cell feat__desc">Local disk, or any S3-compatible object store — AWS, Cloudflare R2, or MinIO.</div><div class="feat__cell feat__tag">--blobs s3</div></div>
@@ -195,22 +209,23 @@
       </div></div>
     </section>
 
-    <!-- 10 OPERATE -->
+    <!-- 11 OPERATE -->
     <section class="feat-group wrap" id="operate">
-      <div class="module__head"><span class="eyebrow-mono">10 / OPERATE</span><h2>See everything, fix anything.</h2></div>
+      <div class="module__head"><span class="eyebrow-mono">11 / OPERATE</span><h2>See everything, fix anything.</h2></div>
       <div class="feat-wrap"><div class="feat">
         <div class="feat__row"><div class="feat__cell feat__name">Prometheus metrics</div><div class="feat__cell feat__desc">Requests, response bytes, deployments, activations, and cert renewals at <code>/api/metrics</code>.</div><div class="feat__cell feat__tag">/api/metrics</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Structured logs</div><div class="feat__cell feat__desc">JSON access logs, plus per-site guest stdout/stderr with live tailing.</div><div class="feat__cell feat__tag">logs --follow</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Handler stats &amp; DLQ</div><div class="feat__cell feat__desc">Invocations, errors, consumer lag, and dead-letters — redrive or purge a stuck topic.</div><div class="feat__cell feat__tag">stats · dlq</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Health endpoints</div><div class="feat__cell feat__desc">Liveness and a readiness probe that fails when the metadata backend is unreachable.</div><div class="feat__cell feat__tag">/healthz · /readyz</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Backup &amp; integrity</div><div class="feat__cell feat__desc">Snapshot each backend, and re-hash every stored blob to confirm it still matches its key.</div><div class="feat__cell feat__tag">scrub</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Online store migrations</div><div class="feat__cell feat__desc">A versioned registry of forward-only store migrations the engine walks by a monotonic schema version — online, idempotent, and resumable (copy-before-delete), by hand with <code>migrate</code> or automatically via <code>serve --auto-migrate</code>.</div><div class="feat__cell feat__tag">migrate</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">GC + dynamic config</div><div class="feat__cell feat__desc">Prune orphaned deployments and blobs; change operational knobs fleet-wide with no restart.</div><div class="feat__cell feat__tag">prune · config</div></div>
       </div></div>
     </section>
 
-    <!-- 11 SHIP -->
+    <!-- 12 SHIP -->
     <section class="feat-group wrap" id="ship">
-      <div class="module__head"><span class="eyebrow-mono">11 / SHIP</span><h2>One hull, every port.</h2></div>
+      <div class="module__head"><span class="eyebrow-mono">12 / SHIP</span><h2>One hull, every port.</h2></div>
       <div class="feat-wrap"><div class="feat">
         <div class="feat__row"><div class="feat__cell feat__name">Single static binary</div><div class="feat__cell feat__desc">Server + publishing API + CLI in one file; every heavy backend lives behind a compile-time feature.</div><div class="feat__cell feat__tag">1 file</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Prebuilt everywhere</div><div class="feat__cell feat__desc">Linux (x86_64 + arm64), macOS, and Windows binaries, an install script, and a Homebrew tap.</div><div class="feat__cell feat__tag">install.sh</div></div>
@@ -220,9 +235,9 @@
       </div></div>
     </section>
 
-    <!-- 12 AGENT-NATIVE -->
+    <!-- 13 AGENT-NATIVE -->
     <section class="feat-group wrap" id="agent">
-      <div class="module__head"><span class="eyebrow-mono">12 / AGENT-NATIVE</span><h2>Hand the helm to an agent.</h2></div>
+      <div class="module__head"><span class="eyebrow-mono">13 / AGENT-NATIVE</span><h2>Hand the helm to an agent.</h2></div>
       <div class="feat-wrap"><div class="feat">
         <div class="feat__row"><div class="feat__cell feat__name">MCP server</div><div class="feat__cell feat__desc">The same binary ships a <a href="https://modelcontextprotocol.io">Model Context Protocol</a> server, so an agent like Claude (Desktop, Code) or Codex operates your control plane in natural language — list sites, activate or roll back, tail logs, invoke functions, inspect the cluster.</div><div class="feat__cell feat__tag">boatramp mcp</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Two transports</div><div class="feat__cell feat__desc">A <code>boatramp mcp</code> stdio subcommand a desktop agent spawns, and a <code>POST /mcp</code> endpoint on <code>boatramp serve</code> to drive a node over the network — on by default, same tool set on both.</div><div class="feat__cell feat__tag">stdio · /mcp</div></div>

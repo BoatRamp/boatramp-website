@@ -50,7 +50,7 @@
       <span class="wordmark">boatramp</span>
     </a>
     <nav class="nav__links" aria-label="Primary">
-      <a href="/features">Features <span class="nav__count mono">85</span></a>
+      <a href="/features">Features <span class="nav__count mono">93</span></a>
       <a href="#quickstart">Install</a>
       <a href="https://docs.boatramp.dev">Docs<span class="nav__ext" aria-hidden="true">↗</span></a>
       <a href="https://discord.gg/A78gHFF3F3">Community</a>
@@ -128,7 +128,7 @@
         <div class="terminal__grid">
           <div class="terminal__body">
             <div class="term-line"><span class="term-prompt">$ </span><span data-install-cmd>curl -sSf boatramp.dev/launch | sh</span></div>
-            <div class="term-line term-out">  ↳ boatramp 0.1.0 → ~/.local/bin</div>
+            <div class="term-line term-out">  ↳ boatramp 0.2.0 → ~/.local/bin</div>
             <div class="term-line"><span class="term-prompt">$ </span>boatramp serve &amp;</div>
             <div class="term-line term-out">  ↳ listening on http://127.0.0.1:8080</div>
             <div class="term-line"><span class="term-prompt">$ </span>boatramp sync ./public --site my-site</div>
@@ -150,7 +150,7 @@
     <!-- ================= 02 / CAPABILITIES ================= -->
     <section class="module wrap" id="capabilities">
       <div class="module__head">
-        <span class="eyebrow-mono">02 / CAPABILITIES · 6 OF 85</span>
+        <span class="eyebrow-mono">02 / CAPABILITIES · 6 OF 93</span>
         <h2>Six you'll feel on day one.</h2>
       </div>
       <div class="spec-wrap"><div class="spec">
@@ -199,7 +199,7 @@
         <div class="features-cta__body">
           <span class="features-cta__eyebrow eyebrow-mono">02 · THE FULL MANIFEST</span>
           <span class="features-cta__title">Those six are just the shallows.</span>
-          <span class="features-cta__desc">The hull holds 85 capabilities across 12 systems — edge compute, containers &amp; microVMs, the gateway, HA clustering, auth &amp; access, storage, observability, and an agent-native MCP control plane.</span>
+          <span class="features-cta__desc">The hull holds 93 capabilities across 13 systems — projects &amp; multi-tenancy, edge compute, containers &amp; microVMs, the gateway, HA clustering, auth &amp; access, storage, observability, and an agent-native MCP control plane.</span>
         </div>
         <span class="features-cta__action">
           <span class="btn btn--ghost features-cta__btn">Explore all features <span class="features-cta__arrow" aria-hidden="true">→</span></span>
@@ -242,10 +242,42 @@
       </div>
     </section>
 
-    <!-- ================= 04 / AGENT-NATIVE ================= -->
+    <!-- ================= 04 / PROJECTS ================= -->
+    <section class="module wrap" id="projects">
+      <div class="module__head">
+        <span class="eyebrow-mono">04 / PROJECTS</span>
+        <h2>Many sites. One tenant boundary.</h2>
+        <a class="module__note module__note--link" href="/features#projects">see all features →</a>
+      </div>
+      <div class="proj-band">
+        <div class="proj-band__code">
+          <div class="proj-band__code-head mono"><span class="proj-band__file">apply.cfg</span><span class="proj-band__hint">one project, one file</span></div>
+          <pre class="proj-band__pre mono"><code>(
+  project: "acme",
+  sites: [
+    ( name: "www",  path: "www/dist" ),
+    ( name: "blog", path: "blog/dist",
+      routing: ( clean_urls: true ) ),
+  ],
+  functions: [
+    ( name: "resize", component: "resize.wasm" ),
+  ],
+)</code></pre>
+          <div class="proj-band__run mono"><span class="proj-band__you">$</span> boatramp apply -f apply.cfg</div>
+        </div>
+        <ul class="proj-band__points">
+          <li>A <strong>project</strong> owns many sites plus their functions and compute — same-named sites in two projects stay fully isolated.</li>
+          <li>Each project is a <em>tenant boundary</em>: kv, blob, SQL, and messaging namespaces are scoped to it — nothing bleeds across.</li>
+          <li>One <span class="mono">apply.cfg</span> reconciles the whole project in a single pass — pure upsert, never prunes, <span class="mono">--dry-run</span> to preview.</li>
+          <li>Per-project Cedar roles — <span class="mono">admin</span> / <span class="mono">publisher</span> / <span class="mono">viewer</span>; a token scoped to one project can't touch another.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= 05 / AGENT-NATIVE ================= -->
     <section class="module wrap" id="agent">
       <div class="module__head">
-        <span class="eyebrow-mono">04 / AGENT-NATIVE</span>
+        <span class="eyebrow-mono">05 / AGENT-NATIVE</span>
         <h2>Hand the helm to an agent.</h2>
         <a class="module__note module__note--link" href="/features#agent">see all features →</a>
       </div>
@@ -266,10 +298,10 @@
       </div>
     </section>
 
-    <!-- ================= 05 / WHERE IT RUNS ================= -->
+    <!-- ================= 06 / WHERE IT RUNS ================= -->
     <section class="module wrap" id="targets">
       <div class="module__head">
-        <span class="eyebrow-mono">05 / WHERE IT RUNS</span>
+        <span class="eyebrow-mono">06 / WHERE IT RUNS</span>
         <h2>One hull, every port.</h2>
         <span class="module__note">same UX · same binary</span>
       </div>
