@@ -211,7 +211,7 @@
     <section class="module wrap" id="compute">
       <div class="module__head">
         <span class="eyebrow-mono">03 / BEYOND STATIC</span>
-        <h2>Run code at the edge.</h2>
+        <h2>Everything a static host isn't.</h2>
         <a class="module__note module__note--link" href="/features">see all features →</a>
       </div>
       <div class="beyond-grid">
@@ -238,6 +238,30 @@
           <h3 class="beyond-card__name">Own the controls</h3>
           <p class="beyond-card__desc">COSE/CWT tokens + Cedar policies, OIDC login, KMS/HSM signers, and per-site visitor access control at the edge.</p>
           <a class="beyond-card__more mono" href="/features#secure">→ auth &amp; access</a>
+        </article>
+        <article class="beyond-card">
+          <div class="beyond-card__tag mono">graphql</div>
+          <h3 class="beyond-card__name">GraphQL from your DB</h3>
+          <p class="beyond-card__desc">A read + write GraphQL API generated from a managed database — no resolver code, one SQL statement per query, tenant-isolated at every depth.</p>
+          <a class="beyond-card__more mono" href="/features#graphql">→ graphql</a>
+        </article>
+        <article class="beyond-card">
+          <div class="beyond-card__tag mono">project</div>
+          <h3 class="beyond-card__name">Projects &amp; tenancy</h3>
+          <p class="beyond-card__desc">One boundary owns many sites, their functions, and compute — same-named resources isolated, per-project RBAC, declared in one <code>apply.cfg</code>.</p>
+          <a class="beyond-card__more mono" href="/features#projects">→ projects</a>
+        </article>
+        <article class="beyond-card">
+          <div class="beyond-card__tag mono">storage</div>
+          <h3 class="beyond-card__name">Your storage</h3>
+          <p class="beyond-card__desc">Content-addressed blobs on local disk, S3, R2, GCS, or Azure; metadata in embedded SlateDB or Cloudflare KV. Your bytes, your backend.</p>
+          <a class="beyond-card__more mono" href="/features#storage">→ storage</a>
+        </article>
+        <article class="beyond-card">
+          <div class="beyond-card__tag mono">operate</div>
+          <h3 class="beyond-card__name">Observability</h3>
+          <p class="beyond-card__desc">Prometheus metrics, JSON logs with live tailing, handler stats and dead-letter queues, health probes, and online store migrations.</p>
+          <a class="beyond-card__more mono" href="/features#operate">→ operate</a>
         </article>
       </div>
     </section>
@@ -326,10 +350,83 @@
       </div>
     </section>
 
-    <!-- ================= 07 / WHERE IT RUNS ================= -->
+    <!-- ================= 07 / WHAT YOU CAN BUILD ================= -->
+    <section class="module wrap" id="build">
+      <div class="module__head">
+        <span class="eyebrow-mono">07 / WHAT YOU CAN BUILD</span>
+        <h2>You've seen the parts. Here's the work.</h2>
+        <a class="module__note module__note--link" href="/features">see all features →</a>
+      </div>
+      <div class="usecase-grid">
+        <article class="beyond-card">
+          <div class="beyond-card__tag mono">saas</div>
+          <h3 class="beyond-card__name">A SaaS backend</h3>
+          <p class="beyond-card__desc">GraphQL straight from your Postgres, OIDC + cookie sessions, and cron jobs — on a database boatramp runs and whose credential it manages for you.</p>
+          <a class="beyond-card__more mono" href="/features#graphql">→ graphql · sql · auth</a>
+        </article>
+        <article class="beyond-card">
+          <div class="beyond-card__tag mono">multi-tenant</div>
+          <h3 class="beyond-card__name">A multi-tenant app</h3>
+          <p class="beyond-card__desc">One project per customer, isolated at every depth — or many tenants as rows in one project, gated by a claim from your own app token.</p>
+          <a class="beyond-card__more mono" href="/features#projects">→ projects · row_filter</a>
+        </article>
+        <article class="beyond-card">
+          <div class="beyond-card__tag mono">docs + api</div>
+          <h3 class="beyond-card__name">Docs with an API</h3>
+          <p class="beyond-card__desc">A static site plus a Wasm function behind <code>/api</code>, edge-cached and shipped in one atomic deploy that rolls back just as fast.</p>
+          <a class="beyond-card__more mono" href="/features#compute">→ functions · cache</a>
+        </article>
+        <article class="beyond-card">
+          <div class="beyond-card__tag mono">internal</div>
+          <h3 class="beyond-card__name">Internal tools</h3>
+          <p class="beyond-card__desc">Front private services through the gateway — health checks, retries, geo routing — behind OIDC and per-site access control. No VPN.</p>
+          <a class="beyond-card__more mono" href="/features#gateway">→ gateway · oidc</a>
+        </article>
+        <article class="beyond-card">
+          <div class="beyond-card__tag mono">media</div>
+          <h3 class="beyond-card__name">Media &amp; streaming</h3>
+          <p class="beyond-card__desc">Serve a 40 GB video at flat memory with range requests and HTTP/3 — every byte goes store → socket, never buffered whole.</p>
+          <a class="beyond-card__more mono" href="/features#serve">→ serve · range</a>
+        </article>
+        <article class="beyond-card">
+          <div class="beyond-card__tag mono">agentic</div>
+          <h3 class="beyond-card__name">An agent-run platform</h3>
+          <p class="beyond-card__desc">Let Claude or Codex drive the whole control plane over MCP — deploy, roll back, tail logs, invoke functions, in natural language.</p>
+          <a class="beyond-card__more mono" href="/features#agent">→ agent-native</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= 08 / HOW IT WORKS ================= -->
+    <section class="module wrap" id="how">
+      <div class="module__head">
+        <span class="eyebrow-mono">08 / HOW IT WORKS</span>
+        <h2>One binary. One request path.</h2>
+      </div>
+      <p class="how-lead">No control plane to run beside the data plane, no sidecars, no build servers. The same process terminates TLS, routes the request, serves a file or runs your code, and reads from a content-addressed store — everywhere it runs.</p>
+      <div class="arch" aria-label="Request pipeline">
+        <div class="arch__row">
+          <span class="arch__node">client</span>
+          <span class="arch__wire mono" aria-hidden="true">TLS · h1 · h2 · h3 →</span>
+          <span class="arch__node arch__node--accent">one binary · router</span>
+        </div>
+        <div class="arch__fan">
+          <div class="arch__branch"><span class="arch__tag mono">static</span><span class="arch__note">streamed, ranged, 0 buffered</span></div>
+          <div class="arch__branch"><span class="arch__tag mono">wasm handler</span><span class="arch__note">sql · kv · blob · queue</span></div>
+          <div class="arch__branch"><span class="arch__tag mono">graphql</span><span class="arch__note">→ one SQL statement</span></div>
+          <div class="arch__branch"><span class="arch__tag mono">gateway</span><span class="arch__note">compute / private upstream</span></div>
+        </div>
+        <div class="arch__base">
+          <span class="arch__wire mono" aria-hidden="true">↓</span>
+          <span class="arch__node arch__node--wide">content-addressed store · atomic pointer flip</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 09 / WHERE IT RUNS ================= -->
     <section class="module wrap" id="targets">
       <div class="module__head">
-        <span class="eyebrow-mono">07 / WHERE IT RUNS</span>
+        <span class="eyebrow-mono">09 / WHERE IT RUNS</span>
         <h2>One hull, every port.</h2>
         <span class="module__note">same UX · same binary</span>
       </div>

@@ -316,6 +316,40 @@ a:hover { color: var(--link-hover); }
   .gql-band { grid-template-columns: 1fr; gap: 20px; padding: 22px; }
 }
 
+/* ---- Use-cases grid (home 07) --------------------------------------------- */
+/* Reuses .beyond-card; three across on desktop (6 cards → 2 rows). */
+.usecase-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+@media (max-width: 900px) { .usecase-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .usecase-grid { grid-template-columns: 1fr; } }
+
+/* ---- How it works / request pipeline (home 08) ---------------------------- */
+.how-lead { max-width: 68ch; margin: 0 0 22px; font-size: var(--fs-sm); line-height: 1.6; color: var(--text); }
+.arch {
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+  padding: 28px 22px; border: 1px solid var(--hairline-strong);
+  border-radius: var(--radius-card); background: rgba(7, 26, 38, 0.4);
+}
+.arch__row, .arch__base { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.arch__node {
+  border: 1px solid rgba(53, 224, 196, 0.22); border-radius: var(--radius-btn);
+  padding: 9px 16px; font-family: var(--font-display); font-weight: 600;
+  font-size: 14px; color: var(--text-strong); background: rgba(4, 18, 27, 0.5);
+  white-space: nowrap;
+}
+.arch__node--accent { border-color: var(--seafoam); color: var(--seafoam); }
+.arch__node--wide { white-space: normal; text-align: center; }
+.arch__wire { font-size: 11px; color: var(--text-muted); letter-spacing: 0.04em; }
+.arch__fan { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; width: 100%; }
+.arch__branch {
+  display: flex; flex-direction: column; gap: 6px; padding: 14px; min-width: 0;
+  border: 1px solid rgba(53, 224, 196, 0.16); border-radius: var(--radius-btn);
+  background: rgba(4, 18, 27, 0.4);
+}
+.arch__tag { font-size: 12px; color: var(--seafoam); }
+.arch__note { font-size: 12px; color: var(--text-muted); line-height: 1.4; overflow-wrap: anywhere; }
+@media (max-width: 860px) { .arch__fan { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .arch__fan { grid-template-columns: 1fr; } }
+
 /* ---- Features page --------------------------------------------------------- */
 .feat-hero { padding: 56px 0 8px; }
 .feat-hero h1 { font-size: clamp(2.4rem, 6vw, 3.25rem); line-height: 1.04; letter-spacing: var(--tracking-tight); margin: 0 0 16px; }
