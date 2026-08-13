@@ -50,7 +50,7 @@
       <span class="wordmark">boatramp</span>
     </a>
     <nav class="nav__links" aria-label="Primary">
-      <a href="/features">Features <span class="nav__count mono">98</span></a>
+      <a href="/features">Features <span class="nav__count mono">112</span></a>
       <a href="#quickstart">Install</a>
       <a href="https://docs.boatramp.dev">Docs<span class="nav__ext" aria-hidden="true">↗</span></a>
       <a href="https://discord.gg/A78gHFF3F3">Community</a>
@@ -128,7 +128,7 @@
         <div class="terminal__grid">
           <div class="terminal__body">
             <div class="term-line"><span class="term-prompt">$ </span><span data-install-cmd>curl -sSf boatramp.dev/launch | sh</span></div>
-            <div class="term-line term-out">  ↳ boatramp 0.2.3 → ~/.local/bin</div>
+            <div class="term-line term-out">  ↳ boatramp 0.2.5 → ~/.local/bin</div>
             <div class="term-line"><span class="term-prompt">$ </span>boatramp serve &amp;</div>
             <div class="term-line term-out">  ↳ listening on http://127.0.0.1:8080</div>
             <div class="term-line"><span class="term-prompt">$ </span>boatramp sync ./public --site my-site</div>
@@ -150,7 +150,7 @@
     <!-- ================= 02 / CAPABILITIES ================= -->
     <section class="module wrap" id="capabilities">
       <div class="module__head">
-        <span class="eyebrow-mono">02 / CAPABILITIES · 6 OF 98</span>
+        <span class="eyebrow-mono">02 / CAPABILITIES · 6 OF 112</span>
         <h2>Six you'll feel on day one.</h2>
       </div>
       <div class="spec-wrap"><div class="spec">
@@ -199,7 +199,7 @@
         <div class="features-cta__body">
           <span class="features-cta__eyebrow eyebrow-mono">02 · THE FULL MANIFEST</span>
           <span class="features-cta__title">Those six are just the shallows.</span>
-          <span class="features-cta__desc">The hull holds 98 capabilities across 13 systems — projects &amp; multi-tenancy, edge compute, containers &amp; microVMs, the gateway, HA clustering, auth &amp; access, storage, observability, and an agent-native MCP control plane.</span>
+          <span class="features-cta__desc">The hull holds 112 capabilities across 14 systems — projects &amp; multi-tenancy, a GraphQL edge, edge compute, containers &amp; microVMs, the gateway, HA clustering, auth &amp; access, storage, observability, and an agent-native MCP control plane.</span>
         </div>
         <span class="features-cta__action">
           <span class="btn btn--ghost features-cta__btn">Explore all features <span class="features-cta__arrow" aria-hidden="true">→</span></span>
@@ -242,10 +242,38 @@
       </div>
     </section>
 
-    <!-- ================= 04 / PROJECTS ================= -->
+    <!-- ================= 04 / GRAPHQL ================= -->
+    <section class="module wrap" id="graphql">
+      <div class="module__head">
+        <span class="eyebrow-mono">04 / GRAPHQL</span>
+        <h2>A GraphQL API from your database. No resolvers.</h2>
+        <a class="module__note module__note--link" href="/features#graphql">see all features →</a>
+      </div>
+      <div class="gql-band">
+        <div class="gql-band__code">
+          <div class="gql-band__code-head mono"><span class="gql-band__file">query</span><span class="gql-band__hint">→ one SQL statement</span></div>
+          <pre class="gql-band__pre mono"><code>{
+  posts(where: { published: { _eq: true } },
+        order_by: { created_at: desc }, limit: 10) {
+    title
+    author { name }      <span class="gql-band__c"># FK → subquery</span>
+  }
+}</code></pre>
+          <div class="gql-band__run mono"><span class="gql-band__you">▸</span> introspected · compiled · one round-trip, no N+1</div>
+        </div>
+        <ul class="gql-band__points">
+          <li>Point boatramp at a <strong>managed database</strong> and it generates the read + write API — <span class="mono">[handlers.graphql.data]</span>, zero resolver code.</li>
+          <li><em>Deny-by-default</em>: only exposed tables and columns are visible, and a row filter bound to the <span class="mono">project</span> claim isolates tenants at every depth.</li>
+          <li>Multi-tenant SaaS by an app-token claim, an edge <span class="mono">query-guard</span>, persisted-query safelists, subscriptions, and GraphiQL.</li>
+          <li><strong>Federate</strong> many subgraphs — wasm or SQL — into one supergraph, planned and stitched over the in-process invoke path.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= 05 / PROJECTS ================= -->
     <section class="module wrap" id="projects">
       <div class="module__head">
-        <span class="eyebrow-mono">04 / PROJECTS</span>
+        <span class="eyebrow-mono">05 / PROJECTS</span>
         <h2>Many sites. One tenant boundary.</h2>
         <a class="module__note module__note--link" href="/features#projects">see all features →</a>
       </div>
@@ -274,10 +302,10 @@
       </div>
     </section>
 
-    <!-- ================= 05 / AGENT-NATIVE ================= -->
+    <!-- ================= 06 / AGENT-NATIVE ================= -->
     <section class="module wrap" id="agent">
       <div class="module__head">
-        <span class="eyebrow-mono">05 / AGENT-NATIVE</span>
+        <span class="eyebrow-mono">06 / AGENT-NATIVE</span>
         <h2>Hand the helm to an agent.</h2>
         <a class="module__note module__note--link" href="/features#agent">see all features →</a>
       </div>
@@ -298,10 +326,10 @@
       </div>
     </section>
 
-    <!-- ================= 06 / WHERE IT RUNS ================= -->
+    <!-- ================= 07 / WHERE IT RUNS ================= -->
     <section class="module wrap" id="targets">
       <div class="module__head">
-        <span class="eyebrow-mono">06 / WHERE IT RUNS</span>
+        <span class="eyebrow-mono">07 / WHERE IT RUNS</span>
         <h2>One hull, every port.</h2>
         <span class="module__note">same UX · same binary</span>
       </div>

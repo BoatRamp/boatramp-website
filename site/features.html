@@ -59,9 +59,9 @@
       </div>
       <nav class="feat-toc" aria-label="Feature groups">
         <a href="#publish">01 Publish</a><a href="#projects">02 Projects</a><a href="#serve">03 Serve</a><a href="#tls">04 Domains &amp; TLS</a>
-        <a href="#compute">05 Functions</a><a href="#containers">06 Containers &amp; microVMs</a><a href="#gateway">07 Gateway</a>
-        <a href="#scale">08 Scale</a><a href="#secure">09 Secure</a><a href="#storage">10 Storage</a>
-        <a href="#operate">11 Operate</a><a href="#ship">12 Ship</a><a href="#agent">13 Agent-native</a>
+        <a href="#compute">05 Functions</a><a href="#graphql">06 GraphQL</a><a href="#containers">07 Containers &amp; microVMs</a><a href="#gateway">08 Gateway</a>
+        <a href="#scale">09 Scale</a><a href="#secure">10 Secure</a><a href="#storage">11 Storage</a>
+        <a href="#operate">12 Operate</a><a href="#ship">13 Ship</a><a href="#agent">14 Agent-native</a>
       </nav>
     </section>
 
@@ -102,6 +102,7 @@
         <div class="feat__row"><div class="feat__cell feat__name">Conditional routing</div><div class="feat__cell feat__desc">Gate redirects and rewrites on a <code>when</code> predicate (a bounded CEL subset) — language, cookie, header, or <code>file_exists</code> — with computed <code>${…}</code> destinations and automatic <code>Vary</code>. Edge logic without a handler.</div><div class="feat__cell feat__tag">when</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">SPA &amp; error docs</div><div class="feat__cell feat__desc">SPA fallback and custom error documents, folded into the immutable deployment so they roll back with content.</div><div class="feat__cell feat__tag">spa · 404</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Caching</div><div class="feat__cell feat__desc">Sensible Cache-Control + ETag defaults, with per-path immutable overrides.</div><div class="feat__cell feat__tag">cache-control</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Edge response cache</div><div class="feat__cell feat__desc">Serve a cacheable <code>GET</code>/<code>HEAD</code> from a host-level cache <em>without re-instantiating the handler</em> — opt-in via <code>Cache-Control</code>, keyed per project scope, honoring <code>Vary</code> and never storing a private (<code>Set-Cookie</code>, <code>no-store</code>) response.</div><div class="feat__cell feat__tag">handlers.cache</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Compression</div><div class="feat__cell feat__desc">Brotli and gzip precompressed at publish; on-the-fly compression for dynamic output.</div><div class="feat__cell feat__tag">br · gzip</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Netlify / CF Pages compatible</div><div class="feat__cell feat__desc">Existing <code>_redirects</code> and <code>_headers</code> files are folded into the routing manifest on <code>sync</code>.</div><div class="feat__cell feat__tag">migrate</div></div>
       </div></div>
@@ -127,6 +128,8 @@
         <div class="feat__row"><div class="feat__cell feat__name">One primitive, many doors</div><div class="feat__cell feat__desc">A function is a portable WASI 0.2 component. Reach the same component as a route <em>handler</em>, invoke it by name, put it on a cron, or drive it from a queue — a different door, one sandbox.</div><div class="feat__cell feat__tag">function</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Invoke by name</div><div class="feat__cell feat__desc">Top-level functions carry their own version line — <code>function deploy</code> / <code>alias</code> / <code>rollback</code> — and invoke sync or async: durable, idempotency-keyed, and dead-lettered on failure.</div><div class="feat__cell feat__tag">function invoke</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Function mesh</div><div class="feat__cell feat__desc">A site handler can call sibling functions <em>in-process</em> through a deny-by-default <code>invoke_targets</code> allowlist — the caller's bearer is forwarded unchanged, the callee quota-admitted and depth-capped. A mesh orchestrator with no network hop.</div><div class="feat__cell feat__tag">invoke_targets</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Streaming invoke</div><div class="feat__cell feat__desc">Consume a sibling function's response as a <em>stream</em> — status and headers up front, the body pulled incrementally through an <code>incoming-response</code> resource — so a large or <code>@defer</code>-style result is never buffered whole in host memory.</div><div class="feat__cell feat__tag">invoke --stream</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Compose components</div><div class="feat__cell feat__desc">Author resolvers and middleware as separate WIT-typed components and fuse them into one linked component <em>in-process</em> with <code>boatramp compose</code> — no network hop, checked at compile time — then deploy the single <code>.wasm</code>.</div><div class="feat__cell feat__tag">compose</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Event triggers</div><div class="feat__cell feat__desc">Fire a function from a signature-verified HMAC webhook, or a blob-change event — the changed key arrives as the invocation body — via the backend's native notifications.</div><div class="feat__cell feat__tag">webhook · blob</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Multi-language</div><div class="feat__cell feat__desc">Author in Rust, JavaScript (jco), or Python (componentize-py); scaffold, build, and test locally — <code>function init · build · test · dev</code>.</div><div class="feat__cell feat__tag">rust · js · py</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Metering &amp; quotas</div><div class="feat__cell feat__desc">Every invocation is metered and exported to Prometheus, with fail-closed rate-limit and concurrency quotas.</div><div class="feat__cell feat__tag">function usage</div></div>
@@ -140,9 +143,24 @@
       </div></div>
     </section>
 
-    <!-- 06 CONTAINERS & microVMs -->
+    <!-- 06 GRAPHQL -->
+    <section class="feat-group wrap" id="graphql">
+      <div class="module__head"><span class="eyebrow-mono">06 / GRAPHQL</span><h2>GraphQL, understood at the edge.</h2></div>
+      <div class="feat-wrap"><div class="feat">
+        <div class="feat__row"><div class="feat__cell feat__name">GraphQL from your database</div><div class="feat__cell feat__desc">Generate a read + write GraphQL API from a managed database with <em>no resolver code</em>: boatramp introspects the schema and compiles each query to <em>one</em> parameterized SQL statement — relationships become correlated JSON subqueries, so a nested query is one round-trip with no N+1.</div><div class="feat__cell feat__tag">graphql.data</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Deny-by-default, tenant-isolated</div><div class="feat__cell feat__desc">Only the tables and columns the policy names are visible; a per-table row filter bound to the host-asserted <code>project</code> claim isolates tenants at <em>every</em> depth — a missing claim denies, never widens. Mutations are opt-in and transactional.</div><div class="feat__cell feat__tag">row_filter</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Multi-tenant SaaS by claim</div><div class="feat__cell feat__desc">A row filter can bind a claim from your app's own verified bearer (<code>claims_from_token</code> — sig / <code>iss</code> / <code>exp</code> / <code>kid</code> checked), so many tenants live as rows in one project, isolated by a claim like <code>tid</code> and never able to override the project.</div><div class="feat__cell feat__tag">claims_from_token</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Edge query-guard</div><div class="feat__cell feat__desc">Parse operations at the edge and reject them <em>before the handler runs</em> when they exceed a depth / complexity limit or (unless allowed) introspect — fragments expanded so nesting can't hide, cyclic ones terminated.</div><div class="feat__cell feat__tag">query-guard</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Persisted queries + safelist</div><div class="feat__cell feat__desc">Clients send a query hash instead of the full query; in safelist mode only pre-registered hashes run and the edge never registers a new one — turning persisted queries into a security allowlist.</div><div class="feat__cell feat__tag">persisted</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Federation gateway</div><div class="feat__cell feat__desc">Register each subgraph's SDL — or let a wasm function self-register on deploy — and boatramp composes + validates a supergraph, then plans and executes a query across subgraphs over the in-process invoke path; the caller's identity is forwarded and re-verified per subgraph.</div><div class="feat__cell feat__tag">federated · @key</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Subscriptions over SSE</div><div class="feat__cell feat__desc">Stream a GraphQL subscription to the browser over graphql-sse — with <code>Last-Event-ID</code> resume, a heartbeat, and the site's stream connection caps.</div><div class="feat__cell feat__tag">graphql-sse</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">GraphiQL &amp; in-process supergraph</div><div class="feat__cell feat__desc">A baked GraphiQL IDE (opt-in) for exploring the schema in the browser, and a guest <code>graphql::run</code> capability so a handler runs a safelisted supergraph operation in-process — the same planner, no network hop.</div><div class="feat__cell feat__tag">graphiql</div></div>
+      </div></div>
+    </section>
+
+    <!-- 07 CONTAINERS & microVMs -->
     <section class="feat-group wrap" id="containers">
-      <div class="module__head"><span class="eyebrow-mono">06 / CONTAINERS &amp; microVMs</span><h2>Heavier cargo, still one hull.</h2></div>
+      <div class="module__head"><span class="eyebrow-mono">07 / CONTAINERS &amp; microVMs</span><h2>Heavier cargo, still one hull.</h2></div>
       <div class="feat-wrap"><div class="feat">
         <div class="feat__row"><div class="feat__cell feat__name">Firecracker-class microVMs</div><div class="feat__cell feat__desc">Run an OCI image in a hardware-isolated VM with its own kernel, via an embedded rust-vmm VMM.</div><div class="feat__cell feat__tag">--isolation untrusted</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Native OCI containers</div><div class="feat__cell feat__desc">Shared-kernel containers (namespaces, cgroups, seccomp) for code you trust.</div><div class="feat__cell feat__tag">--isolation trusted</div></div>
@@ -151,16 +169,18 @@
         <div class="feat__row"><div class="feat__cell feat__name">Scale-to-zero <span class="chip chip--seam">live seam</span></div><div class="feat__cell feat__desc">Park an idle replica to disk and wake it with its in-RAM state intact — a microVM (Linux KVM or macOS <code>vmm-vz</code>) or a native container (via CRIU). Capability-detected, so a workload only lands on a node that can wake it.</div><div class="feat__cell feat__tag">--scale-to-zero</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Persistent volumes</div><div class="feat__cell feat__desc">Back a container workload with an external volume — a daemon-managed named volume or a host bind-mount — so app state survives restarts and scale-to-zero.</div><div class="feat__cell feat__tag">volumes</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Managed sql for containers</div><div class="feat__cell feat__desc">A docker or native workload can <code>--bind sql</code> and reach the same per-tenant SQL backend a handler gets, over a token-multiplexed shim — no long-lived database secret ever enters the guest.</div><div class="feat__cell feat__tag">--bind sql</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Rootless stock images</div><div class="feat__cell feat__desc">Run a stock image whose entrypoint <code>chown</code>s its data dir and drops privileges (a database) — rootless via <code>--user</code> against a pre-chowned volume, or add just the caps it needs with <code>--cap-add</code> (single-tenant). A managed DB picks the strategy automatically.</div><div class="feat__cell feat__tag">--user · --cap-add</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Verified boot + posture</div><div class="feat__cell feat__desc">A signed first-party kernel is verified before boot; strict posture forces microVM isolation for untrusted code.</div><div class="feat__cell feat__tag">security explain</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Cloudflare Containers <span class="chip chip--beta">beta</span></div><div class="feat__cell feat__desc">The same binary running as a Cloudflare cluster, with R2 for blobs and D1 for the SQL binding. Live cloud deploy/scale is a beta seam.</div><div class="feat__cell feat__tag">cloudflare</div></div>
       </div></div>
     </section>
 
-    <!-- 07 GATEWAY -->
+    <!-- 08 GATEWAY -->
     <section class="feat-group wrap" id="gateway">
-      <div class="module__head"><span class="eyebrow-mono">07 / GATEWAY</span><h2>Front your private services.</h2></div>
+      <div class="module__head"><span class="eyebrow-mono">08 / GATEWAY</span><h2>Front your private services.</h2></div>
       <div class="feat-wrap"><div class="feat">
         <div class="feat__row"><div class="feat__cell feat__name">Reverse-proxy pools</div><div class="feat__cell feat__desc">Route paths to a pool of backends — a compute workload, a server pool, or a private service.</div><div class="feat__cell feat__tag">gateway route add</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">TLS &amp; WebSocket upstreams</div><div class="feat__cell feat__desc">Tunnel HTTP upgrades and WebSockets to an upstream — now including <code>wss</code>/<code>https</code> targets over a real TLS handshake (webpki roots, pinned to the posture-validated address), so a private <code>graphql-ws</code> service proxies through the edge.</div><div class="feat__cell feat__tag">wss</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Load balancing</div><div class="feat__cell feat__desc">Round-robin (default) or random across the backend pool.</div><div class="feat__cell feat__tag">--lb</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Geo dispatch <span class="chip chip--seam">live seam</span></div><div class="feat__cell feat__desc">Route each request to the nearest healthy backend by region (<code>--lb nearest</code>) — compute-backed pools auto-tag replicas by their node's region, so there's no manual map.</div><div class="feat__cell feat__tag">--lb nearest</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Health checks</div><div class="feat__cell feat__desc">Passive ejection after consecutive failures, plus active path probing with a cooldown.</div><div class="feat__cell feat__tag">--probe-path</div></div>
@@ -170,9 +190,9 @@
       </div></div>
     </section>
 
-    <!-- 08 SCALE -->
+    <!-- 09 SCALE -->
     <section class="feat-group wrap" id="scale">
-      <div class="module__head"><span class="eyebrow-mono">08 / SCALE</span><h2>One node to a fleet, same commands.</h2></div>
+      <div class="module__head"><span class="eyebrow-mono">09 / SCALE</span><h2>One node to a fleet, same commands.</h2></div>
       <div class="feat-wrap"><div class="feat">
         <div class="feat__row"><div class="feat__cell feat__name">Single node</div><div class="feat__cell feat__desc">Filesystem blobs + an embedded SlateDB KV store. Nothing else to run.</div><div class="feat__cell feat__tag">serve</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Shared-store frontends</div><div class="feat__cell feat__desc">Many stateless serving processes over one shared KV, kept coherent by a changelog — scales reads without consensus.</div><div class="feat__cell feat__tag">shared-cache</div></div>
@@ -185,9 +205,9 @@
       </div></div>
     </section>
 
-    <!-- 09 SECURE -->
+    <!-- 10 SECURE -->
     <section class="feat-group wrap" id="secure">
-      <div class="module__head"><span class="eyebrow-mono">09 / SECURE</span><h2>Own the controls.</h2></div>
+      <div class="module__head"><span class="eyebrow-mono">10 / SECURE</span><h2>Own the controls.</h2></div>
       <div class="feat-wrap"><div class="feat">
         <div class="feat__row"><div class="feat__cell feat__name">COSE/CWT tokens</div><div class="feat__cell feat__desc">Signed control-plane tokens verified offline with a public key — no per-request database lookup.</div><div class="feat__cell feat__tag">token create</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Cedar RBAC</div><div class="feat__cell feat__desc">Roles map to rights (read / write / deploy / admin) per resource, via a replaceable Cedar policy.</div><div class="feat__cell feat__tag">cedar</div></div>
@@ -197,13 +217,14 @@
         <div class="feat__row"><div class="feat__cell feat__name">PoP-bound tokens (DPoP)</div><div class="feat__cell feat__desc">Bind a token to a holder key with <code>token create --pop</code>: a leaked token is inert without the separately-held key, and every request signs a fresh, short-lived proof.</div><div class="feat__cell feat__tag">token --pop</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Day-zero control plane</div><div class="feat__cell feat__desc">Reach the control plane from the first second over raw-public-key TLS (<code>--tls rpk</code>) — encrypted and pinned before any CA-signed certificate exists.</div><div class="feat__cell feat__tag">--tls rpk</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Visitor access control</div><div class="feat__cell feat__desc">Basic auth, IP allow/deny, rate limiting, and a WAF stage — per site, applied before any content is read.</div><div class="feat__cell feat__tag">access</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Cookie session auth</div><div class="feat__cell feat__desc">Treat a named <code>HttpOnly</code> session cookie as the application bearer when a request carries no <code>Authorization</code> header — so a browser app authenticates its GraphQL / handler calls without shipping a token to JS — CSRF-checked against an allowed-origins allowlist.</div><div class="feat__cell feat__tag">cookie_auth</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Postures &amp; secrets-at-rest</div><div class="feat__cell feat__desc">Operator-only security postures (multi-tenant / single-tenant / dev), and envelope-encrypted certificate keys.</div><div class="feat__cell feat__tag">security explain</div></div>
       </div></div>
     </section>
 
-    <!-- 10 STORAGE -->
+    <!-- 11 STORAGE -->
     <section class="feat-group wrap" id="storage">
-      <div class="module__head"><span class="eyebrow-mono">10 / STORAGE</span><h2>Your bytes, your backend.</h2></div>
+      <div class="module__head"><span class="eyebrow-mono">11 / STORAGE</span><h2>Your bytes, your backend.</h2></div>
       <div class="feat-wrap"><div class="feat">
         <div class="feat__row"><div class="feat__cell feat__name">Content-addressed blobs</div><div class="feat__cell feat__desc">Every file is a SHA-256 blob, stored once and streamed end-to-end — never held whole in memory.</div><div class="feat__cell feat__tag">blobs</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Filesystem or S3</div><div class="feat__cell feat__desc">Local disk, or any S3-compatible object store — AWS, Cloudflare R2, or MinIO.</div><div class="feat__cell feat__tag">--blobs s3</div></div>
@@ -213,9 +234,9 @@
       </div></div>
     </section>
 
-    <!-- 11 OPERATE -->
+    <!-- 12 OPERATE -->
     <section class="feat-group wrap" id="operate">
-      <div class="module__head"><span class="eyebrow-mono">11 / OPERATE</span><h2>See everything, fix anything.</h2></div>
+      <div class="module__head"><span class="eyebrow-mono">12 / OPERATE</span><h2>See everything, fix anything.</h2></div>
       <div class="feat-wrap"><div class="feat">
         <div class="feat__row"><div class="feat__cell feat__name">Prometheus metrics</div><div class="feat__cell feat__desc">Requests, response bytes, deployments, activations, and cert renewals at <code>/api/metrics</code>.</div><div class="feat__cell feat__tag">/api/metrics</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Structured logs</div><div class="feat__cell feat__desc">JSON access logs, plus per-site guest stdout/stderr with live tailing.</div><div class="feat__cell feat__tag">logs --follow</div></div>
@@ -227,9 +248,9 @@
       </div></div>
     </section>
 
-    <!-- 12 SHIP -->
+    <!-- 13 SHIP -->
     <section class="feat-group wrap" id="ship">
-      <div class="module__head"><span class="eyebrow-mono">12 / SHIP</span><h2>One hull, every port.</h2></div>
+      <div class="module__head"><span class="eyebrow-mono">13 / SHIP</span><h2>One hull, every port.</h2></div>
       <div class="feat-wrap"><div class="feat">
         <div class="feat__row"><div class="feat__cell feat__name">Single static binary</div><div class="feat__cell feat__desc">Server + publishing API + CLI in one file; every heavy backend lives behind a compile-time feature.</div><div class="feat__cell feat__tag">1 file</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Prebuilt everywhere</div><div class="feat__cell feat__desc">Linux (x86_64 + arm64), macOS, and Windows binaries, an install script, and a Homebrew tap.</div><div class="feat__cell feat__tag">install.sh</div></div>
@@ -240,9 +261,9 @@
       </div></div>
     </section>
 
-    <!-- 13 AGENT-NATIVE -->
+    <!-- 14 AGENT-NATIVE -->
     <section class="feat-group wrap" id="agent">
-      <div class="module__head"><span class="eyebrow-mono">13 / AGENT-NATIVE</span><h2>Hand the helm to an agent.</h2></div>
+      <div class="module__head"><span class="eyebrow-mono">14 / AGENT-NATIVE</span><h2>Hand the helm to an agent.</h2></div>
       <div class="feat-wrap"><div class="feat">
         <div class="feat__row"><div class="feat__cell feat__name">MCP server</div><div class="feat__cell feat__desc">The same binary ships a <a href="https://modelcontextprotocol.io">Model Context Protocol</a> server, so an agent like Claude (Desktop, Code) or Codex operates your control plane in natural language — list sites, activate or roll back, tail logs, invoke functions, inspect the cluster.</div><div class="feat__cell feat__tag">boatramp mcp</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Two transports</div><div class="feat__cell feat__desc">A <code>boatramp mcp</code> stdio subcommand a desktop agent spawns, and a <code>POST /mcp</code> endpoint on <code>boatramp serve</code> to drive a node over the network — on by default, same tool set on both.</div><div class="feat__cell feat__tag">stdio · /mcp</div></div>

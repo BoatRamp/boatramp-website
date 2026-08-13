@@ -288,6 +288,34 @@ a:hover { color: var(--link-hover); }
   .proj-band { grid-template-columns: 1fr; gap: 20px; padding: 22px; }
 }
 
+/* ---- GraphQL band (home 04) ----------------------------------------------- */
+/* Two-up: a GraphQL query panel + the "one SQL statement, no code" points.
+   Tide→seafoam wash to read distinct from the amber Projects band. */
+.gql-band {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: stretch;
+  margin-top: 22px; padding: 26px 28px;
+  border: 1px solid var(--hairline-seafoam); border-radius: var(--radius-card);
+  background: linear-gradient(135deg, rgba(32, 136, 193, 0.06), rgba(53, 224, 196, 0.05));
+}
+.gql-band__code { display: flex; flex-direction: column; min-width: 0; border: 1px solid rgba(53, 224, 196, 0.16); border-radius: var(--radius-btn); background: rgba(4, 18, 27, 0.6); overflow: hidden; }
+.gql-band__code-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 9px 14px; border-bottom: 1px solid rgba(53, 224, 196, 0.14); font-size: 11px; }
+.gql-band__file { color: var(--seafoam); }
+.gql-band__hint { color: var(--text-muted); }
+.gql-band__pre { margin: 0; padding: 14px 16px; font-size: 12px; line-height: 1.55; color: var(--text); overflow-x: auto; flex: 1; }
+.gql-band__pre code { font-family: var(--font-mono); }
+.gql-band__c { color: var(--text-muted); }
+.gql-band__run { padding: 11px 16px; border-top: 1px solid rgba(53, 224, 196, 0.14); font-size: 12px; color: var(--text-muted); overflow-wrap: anywhere; }
+.gql-band__you { color: var(--seafoam); margin-right: 6px; }
+.gql-band__points { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; justify-content: center; gap: 13px; }
+.gql-band__points li { position: relative; padding-left: 20px; font-size: 13.5px; line-height: 1.5; color: var(--text); }
+.gql-band__points li::before { content: "▸"; position: absolute; left: 0; top: 1px; color: var(--seafoam); font-size: 11px; }
+.gql-band__points .mono { color: var(--depth-100); font-size: 0.92em; }
+.gql-band__points strong { color: var(--text-strong); font-weight: 600; }
+.gql-band__points em { color: var(--text-strong); font-style: italic; }
+@media (max-width: 860px) {
+  .gql-band { grid-template-columns: 1fr; gap: 20px; padding: 22px; }
+}
+
 /* ---- Features page --------------------------------------------------------- */
 .feat-hero { padding: 56px 0 8px; }
 .feat-hero h1 { font-size: clamp(2.4rem, 6vw, 3.25rem); line-height: 1.04; letter-spacing: var(--tracking-tight); margin: 0 0 16px; }
