@@ -1,35 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill="none">
+<!-- boatramp avatar: the canonical mark — a ramp (orange) dipping through a launch
+     chevron (yellow) into a seafoam waterline — full-bleed on the marine background.
+     Same glyph as site/favicon.svg and the nav/OG lockups. Platforms crop to a
+     circle (Discord) or rounded square (GitHub), so the background is full-bleed. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill="none" role="img" aria-label="boatramp">
   <defs>
-    <radialGradient id="bg" cx="50%" cy="36%" r="82%">
-      <stop offset="0" stop-color="#0e3a54"/>
-      <stop offset="0.55" stop-color="#072536"/>
-      <stop offset="1" stop-color="#04121c"/>
-    </radialGradient>
-    <linearGradient id="ramp" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#ff8a4d"/>
-      <stop offset="1" stop-color="#ff5a1f"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#072436"/>
+      <stop offset="0.4" stop-color="#05141f"/>
+      <stop offset="1" stop-color="#041018"/>
     </linearGradient>
   </defs>
-
-  <!-- full-bleed marine background (Discord crops to a circle) -->
   <rect width="512" height="512" fill="url(#bg)"/>
-
-  <!-- depth waves beneath the surface -->
-  <g opacity="0.55">
-    <path d="M-24 408 q38 -30 76 0 t76 0 t76 0 t76 0 t76 0 t76 0 t76 0 V536 H-24 Z" fill="#0a2c40"/>
-    <path d="M-24 438 q38 -26 76 0 t76 0 t76 0 t76 0 t76 0 t76 0 t76 0 V536 H-24 Z" fill="#07202d"/>
-  </g>
-
-  <!-- streaming bytes down the ramp -->
-  <g opacity="0.9">
-    <rect x="322" y="150" width="15" height="15" rx="3" fill="#35e0c4" transform="rotate(18 329 157)"/>
-    <rect x="352" y="120" width="12" height="12" rx="3" fill="#ffd23f" transform="rotate(18 358 126)"/>
-  </g>
-
-  <!-- the mark: ramp · launch chevron · waterline -->
   <g stroke-linecap="round" stroke-linejoin="round" fill="none">
-    <path d="M146 148 L262 264" stroke="url(#ramp)" stroke-width="36"/>
-    <path d="M200 216 L262 312 L324 216" stroke="#ffd23f" stroke-width="32"/>
-    <path d="M108 366 q37 -32 74 0 t74 0 t74 0 t74 0" stroke="#35e0c4" stroke-width="28"/>
+    <path d="M96 144 L272 312" stroke="#ff6b35" stroke-width="41.6"/>
+    <path d="M200 256 L272 360 L344 256" stroke="#ffd23f" stroke-width="38.4"/>
+    <path d="M64 416 q56 -54.4 112 0 t112 0 t112 0" stroke="#35e0c4" stroke-width="35.2"/>
   </g>
 </svg>
