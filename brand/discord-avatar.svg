@@ -1,7 +1,8 @@
-<!-- boatramp avatar: the canonical mark — a ramp (orange) dipping through a launch
-     chevron (yellow) into a seafoam waterline — full-bleed on the marine background.
-     Same glyph as site/favicon.svg and the nav/OG lockups. Platforms crop to a
-     circle (Discord) or rounded square (GitHub), so the background is full-bleed. -->
+<!-- boatramp avatar: the canonical mark — an orange ramp descending collinearly
+     into a yellow launch chevron, then a seafoam waterline. The ramp and the
+     chevron's left arm share one line (they meet at the arm's top and read as a
+     single continuous stroke into the tick). Full-bleed on the marine gradient;
+     platforms crop to a circle (Discord) or rounded square (GitHub). -->
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill="none" role="img" aria-label="boatramp">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
@@ -12,7 +13,7 @@
   </defs>
   <rect width="512" height="512" fill="url(#bg)"/>
   <g stroke-linecap="round" stroke-linejoin="round" fill="none">
-    <path d="M96 144 L272 312" stroke="#ff6b35" stroke-width="41.6"/>
+    <path d="M92 100 L200 256" stroke="#ff6b35" stroke-width="41.6"/>
     <path d="M200 256 L272 360 L344 256" stroke="#ffd23f" stroke-width="38.4"/>
     <path d="M64 416 q56 -54.4 112 0 t112 0 t112 0" stroke="#35e0c4" stroke-width="35.2"/>
   </g>
