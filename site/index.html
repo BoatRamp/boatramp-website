@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>boatramp — launch the web from your own shore</title>
-  <meta name="description" content="boatramp is a self-hosted, streaming-first platform for publishing the web. One Rust binary is your web server, publishing API, and CLI — atomic, content-addressed deploys with instant rollback.">
+  <meta name="description" content="boatramp is a self-hosted platform that ships as one Rust binary — your web server, functions, GraphQL, databases, and edge gateway. Publish a static site in three commands, or run a multi-tenant backend on your own hardware, cloud, or edge.">
   <link rel="canonical" href="https://boatramp.dev/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 
@@ -12,7 +12,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://boatramp.dev/">
   <meta property="og:title" content="boatramp — launch the web from your own shore">
-  <meta property="og:description" content="Self-hosted, streaming-first web publishing in one Rust binary: server, publishing API, and CLI. Atomic, content-addressed deploys; instant rollback.">
+  <meta property="og:description" content="Your whole backend in one self-hosted Rust binary — web server, functions, GraphQL, databases, and an edge gateway. A static site in three commands, or a multi-tenant platform you own.">
   <meta property="og:image" content="https://boatramp.dev/og.png">
   <meta name="twitter:card" content="summary_large_image">
 
@@ -32,7 +32,7 @@
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "license": "https://spdx.org/licenses/MIT.html",
     "url": "https://boatramp.dev/",
-    "description": "Self-hosted, streaming-first platform for publishing the web, shipped as one Rust binary (server + publishing API + CLI)."
+    "description": "Self-hosted platform shipped as one Rust binary — web server, functions, GraphQL, databases, and edge gateway — from a three-command static deploy to a multi-tenant backend you own."
   }
   </script>
 </head>
@@ -76,7 +76,7 @@
       <div class="wrap hero__inner">
         <p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span>pre-1.0 · come crew it early</p>
         <h1>Launch the web from<br>your own <span class="accent">shore</span>.</h1>
-        <p class="hero__sub">One Rust binary is your web server, publishing API, and CLI. Publish static sites and functions to your own hardware, cloud, or edge — deploys are atomic and content-addressed, and every byte streams.</p>
+        <p class="hero__sub">One Rust binary is your whole backend — web server, functions, GraphQL, databases, and an edge gateway. Publish a static site in three commands, or run a multi-tenant platform on your own hardware, cloud, or edge. Deploys are atomic; every byte streams.</p>
         <div class="actions">
           <a class="btn btn--primary" href="https://docs.boatramp.dev">Read the docs <span aria-hidden="true">→</span></a>
           <a class="btn btn--ghost" href="https://github.com/BoatRamp/BoatRamp" target="_blank" rel="noopener">
@@ -104,7 +104,7 @@
     <section class="truths" aria-label="Why boatramp">
       <div class="wrap"><div class="truths__grid">
         <div class="truth"><div class="truth__idx mono">01</div><div class="truth__title">You own it</div><div class="truth__desc">Server, storage, certs, compute — your shore, not a tenancy.</div></div>
-        <div class="truth"><div class="truth__idx mono">02</div><div class="truth__title">One binary, everywhere</div><div class="truth__desc">One hull, every port — bare metal to the edge, same UX.</div></div>
+        <div class="truth"><div class="truth__idx mono">02</div><div class="truth__title">Grows with you</div><div class="truth__desc">Same binary, same commands — a static site today, a multi-tenant cluster tomorrow.</div></div>
         <div class="truth"><div class="truth__idx mono">03</div><div class="truth__title">Streaming &amp; atomic</div><div class="truth__desc">Every byte streams; a deploy flips whole or not at all.</div></div>
       </div></div>
     </section>
@@ -150,7 +150,7 @@
     <!-- ================= 02 / CAPABILITIES ================= -->
     <section class="module wrap" id="capabilities">
       <div class="module__head">
-        <span class="eyebrow-mono">02 / CAPABILITIES · 6 OF 124</span>
+        <span class="eyebrow-mono">02 / CAPABILITIES</span>
         <h2>Six you'll feel on day one.</h2>
       </div>
       <div class="spec-wrap"><div class="spec">
@@ -181,7 +181,7 @@
         <div class="spec__row" style="display:contents">
           <div class="spec__cell spec__idx">05</div>
           <div class="spec__cell spec__name"><span class="spec__icon"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><g stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="13" r="6" stroke="#ff6b35"/><path d="M12 7V4M8.5 9.5 6.5 7.5M15.5 9.5 17.5 7.5M6 13h12" stroke="#ff6b35"/><path d="M6 20q3-2 6 0t6 0" stroke="#35e0c4"/></g></svg></span><b>You own it</b></div>
-          <div class="spec__cell spec__desc">Your storage, TLS, compute — no tenancy, no phone-home.</div>
+          <div class="spec__cell spec__desc">Your storage, TLS, compute — self-hosted, no phone-home.</div>
           <div class="spec__cell spec__tag">self-host</div>
         </div>
         <div class="spec__row" style="display:contents">
@@ -207,62 +207,32 @@
       </a>
     </section>
 
-    <!-- ================= 03 / BEYOND STATIC ================= -->
+    <!-- tier: platform pillars -->
+    <div class="tier-rule wrap"><span class="tier-rule__label mono">the platform pillars</span></div>
+
+    <!-- ================= 03 / FUNCTIONS ================= -->
     <section class="module wrap" id="compute">
       <div class="module__head">
-        <span class="eyebrow-mono">03 / BEYOND STATIC</span>
-        <h2>Everything a static host isn't.</h2>
-        <a class="module__note module__note--link" href="/features">see all features →</a>
+        <span class="eyebrow-mono">03 / FUNCTIONS</span>
+        <h2>Everything that runs is a function.</h2>
+        <a class="module__note module__note--link" href="/features#compute">see all features →</a>
       </div>
-      <div class="beyond-grid">
-        <article class="beyond-card">
-          <div class="beyond-card__tag mono">function</div>
-          <h3 class="beyond-card__name">Functions</h3>
-          <p class="beyond-card__desc">One portable WASI component, many doors — run it behind a route, invoke it by name, put it on a schedule, or chain it into a workflow. SQL, KV, blob and queue bindings included.</p>
-          <a class="beyond-card__more mono" href="/features#compute">→ functions</a>
-        </article>
-        <article class="beyond-card">
-          <div class="beyond-card__tag mono">compute</div>
-          <h3 class="beyond-card__name">Containers &amp; microVMs</h3>
-          <p class="beyond-card__desc">Pick a per-function runtime — the Wasm sandbox, an OCI container, or a Firecracker-class microVM — with snapshot/restore and scale-to-zero.</p>
-          <a class="beyond-card__more mono" href="/features#containers">→ containers</a>
-        </article>
-        <article class="beyond-card">
-          <div class="beyond-card__tag mono">gateway</div>
-          <h3 class="beyond-card__name">Edge gateway</h3>
-          <p class="beyond-card__desc">Publish private services through the edge: geo-aware load balancing (nearest region), passive + active health checks, retries, and DNS discovery.</p>
-          <a class="beyond-card__more mono" href="/features#gateway">→ gateway</a>
-        </article>
-        <article class="beyond-card">
-          <div class="beyond-card__tag mono">secure</div>
-          <h3 class="beyond-card__name">Own the controls</h3>
-          <p class="beyond-card__desc">COSE/CWT tokens + Cedar policies, OIDC login, KMS/HSM signers, and per-site visitor access control at the edge.</p>
-          <a class="beyond-card__more mono" href="/features#secure">→ auth &amp; access</a>
-        </article>
-        <article class="beyond-card">
-          <div class="beyond-card__tag mono">scale</div>
-          <h3 class="beyond-card__name">Scale to a fleet</h3>
-          <p class="beyond-card__desc">One node to an HA Raft cluster with the same commands — shared-store frontends, a one-paste join ticket, and an in-binary Kubernetes operator.</p>
-          <a class="beyond-card__more mono" href="/features#scale">→ scale</a>
-        </article>
-        <article class="beyond-card">
-          <div class="beyond-card__tag mono">storage</div>
-          <h3 class="beyond-card__name">Your storage</h3>
-          <p class="beyond-card__desc">Content-addressed blobs on local disk, S3, R2, GCS, or Azure; metadata in embedded SlateDB or Cloudflare KV. Your bytes, your backend.</p>
-          <a class="beyond-card__more mono" href="/features#storage">→ storage</a>
-        </article>
-        <article class="beyond-card">
-          <div class="beyond-card__tag mono">operate</div>
-          <h3 class="beyond-card__name">Observability</h3>
-          <p class="beyond-card__desc">Prometheus metrics, JSON logs with live tailing, handler stats and dead-letter queues, health probes, and online store migrations.</p>
-          <a class="beyond-card__more mono" href="/features#operate">→ operate</a>
-        </article>
-        <article class="beyond-card">
-          <div class="beyond-card__tag mono">ship</div>
-          <h3 class="beyond-card__name">Ship anywhere</h3>
-          <p class="beyond-card__desc">One static binary — prebuilt for Linux, macOS, and Windows; an OCI image; a NixOS module; a Cloudflare Worker generator; or embedded as a Rust library.</p>
-          <a class="beyond-card__more mono" href="/features#ship">→ ship</a>
-        </article>
+      <div class="fn-band">
+        <div class="fn-band__code">
+          <div class="fn-band__code-head mono"><span class="fn-band__file">one component</span><span class="fn-band__hint">many doors</span></div>
+          <pre class="fn-band__pre mono"><code>route     "/api/*"     → handler
+invoke    "resize"     → by name, sync or async
+cron      "0 * * * *"  → scheduled
+queue     "orders"     → consumer
+workflow   a → b → c   → durable DAG</code></pre>
+          <div class="fn-band__run mono"><span class="fn-band__you">▸</span> Rust · JavaScript · Python · WASI 0.2</div>
+        </div>
+        <ul class="fn-band__points">
+          <li>One portable <strong>WASI 0.2 component</strong> — reach it as a route handler, invoke it by name, put it on a cron, or drive it from a queue. One sandbox, many doors.</li>
+          <li>Bindings, deny-by-default: <span class="mono">sql</span> (a typed query builder + vector search), <span class="mono">kv</span>, <span class="mono">blob</span>, durable <span class="mono">messaging</span> — plus a managed database boatramp runs for you.</li>
+          <li>Chain functions into a durable <strong>workflow</strong> — fan-out, barrier fan-in, per-step retries, saga compensation — that survives restarts.</li>
+          <li>Separate sync, async, and streaming lanes, so a long job or an SSE stream never starves live traffic.</li>
+        </ul>
       </div>
     </section>
 
@@ -350,10 +320,73 @@
       </div>
     </section>
 
-    <!-- ================= 07 / WHAT YOU CAN BUILD ================= -->
+    <!-- ================= 07 / THE REST OF THE PLATFORM ================= -->
+    <section class="module wrap" id="platform">
+      <div class="module__head">
+        <span class="eyebrow-mono">07 / THE REST OF THE PLATFORM</span>
+        <h2>The same binary hands you the rest.</h2>
+        <a class="module__note module__note--link" href="/features">see all features →</a>
+      </div>
+      <p class="how-lead">Serve over modern HTTP, run heavier cargo in containers and microVMs, front private services through the gateway, scale to a cluster, own your storage and controls, observe it all, and ship it anywhere — every layer in the one hull.</p>
+      <div class="beyond-grid">
+        <article class="beyond-card">
+          <div class="beyond-card__tag mono">serve</div>
+          <h3 class="beyond-card__name">A real web server</h3>
+          <p class="beyond-card__desc">HTTP/1.1, /2, and /3 over QUIC, routing and redirects, SPA fallback, caching plus an edge response cache, and compression — boatramp's own HTTP stack, not a bucket.</p>
+          <a class="beyond-card__more mono" href="/features#serve">→ serve</a>
+        </article>
+        <article class="beyond-card">
+          <div class="beyond-card__tag mono">compute</div>
+          <h3 class="beyond-card__name">Containers &amp; microVMs</h3>
+          <p class="beyond-card__desc">Pick a per-function runtime — the Wasm sandbox, an OCI container, or a Firecracker-class microVM — with snapshot/restore and scale-to-zero.</p>
+          <a class="beyond-card__more mono" href="/features#containers">→ containers</a>
+        </article>
+        <article class="beyond-card">
+          <div class="beyond-card__tag mono">gateway</div>
+          <h3 class="beyond-card__name">Edge gateway</h3>
+          <p class="beyond-card__desc">Publish private services through the edge: geo-aware load balancing (nearest region), passive + active health checks, retries, and DNS discovery.</p>
+          <a class="beyond-card__more mono" href="/features#gateway">→ gateway</a>
+        </article>
+        <article class="beyond-card">
+          <div class="beyond-card__tag mono">secure</div>
+          <h3 class="beyond-card__name">Own the controls</h3>
+          <p class="beyond-card__desc">COSE/CWT tokens + Cedar policies, OIDC login, KMS/HSM signers, and per-site visitor access control at the edge.</p>
+          <a class="beyond-card__more mono" href="/features#secure">→ auth &amp; access</a>
+        </article>
+        <article class="beyond-card">
+          <div class="beyond-card__tag mono">scale</div>
+          <h3 class="beyond-card__name">Scale to a fleet</h3>
+          <p class="beyond-card__desc">One node to an HA Raft cluster with the same commands — shared-store frontends, a one-paste join ticket, and an in-binary Kubernetes operator.</p>
+          <a class="beyond-card__more mono" href="/features#scale">→ scale</a>
+        </article>
+        <article class="beyond-card">
+          <div class="beyond-card__tag mono">storage</div>
+          <h3 class="beyond-card__name">Your storage</h3>
+          <p class="beyond-card__desc">Content-addressed blobs on local disk, S3, R2, GCS, or Azure; metadata in embedded SlateDB or Cloudflare KV. Your bytes, your backend.</p>
+          <a class="beyond-card__more mono" href="/features#storage">→ storage</a>
+        </article>
+        <article class="beyond-card">
+          <div class="beyond-card__tag mono">operate</div>
+          <h3 class="beyond-card__name">Observability</h3>
+          <p class="beyond-card__desc">Prometheus metrics, JSON logs with live tailing, handler stats and dead-letter queues, health probes, and online store migrations.</p>
+          <a class="beyond-card__more mono" href="/features#operate">→ operate</a>
+        </article>
+        <article class="beyond-card">
+          <div class="beyond-card__tag mono">ship</div>
+          <h3 class="beyond-card__name">Ship anywhere</h3>
+          <p class="beyond-card__desc">One static binary — prebuilt for Linux, macOS, and Windows; an OCI image; a NixOS module; a Cloudflare Worker generator; or embedded as a Rust library.</p>
+          <a class="beyond-card__more mono" href="/features#ship">→ ship</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- tier: proof -->
+    <div class="tier-rule wrap"><span class="tier-rule__label mono">see it in use</span></div>
+
+    <!-- ================= 08 / WHAT YOU CAN BUILD ================= -->
     <section class="module wrap" id="build">
       <div class="module__head">
-        <span class="eyebrow-mono">07 / WHAT YOU CAN BUILD</span>
+        <span class="eyebrow-mono">08 / WHAT YOU CAN BUILD</span>
         <h2>You've seen the parts. Here's the work.</h2>
         <a class="module__note module__note--link" href="/features">see all features →</a>
       </div>
@@ -363,24 +396,6 @@
           <h3 class="beyond-card__name">A SaaS backend</h3>
           <p class="beyond-card__desc">GraphQL straight from your Postgres, OIDC + cookie sessions, and cron jobs — on a database boatramp runs and whose credential it manages for you.</p>
           <a class="beyond-card__more mono" href="/features#graphql">→ graphql · sql · auth</a>
-        </article>
-        <article class="beyond-card">
-          <div class="beyond-card__tag mono">multi-tenant</div>
-          <h3 class="beyond-card__name">A multi-tenant app</h3>
-          <p class="beyond-card__desc">One project per customer, isolated at every depth — or many tenants as rows in one project, gated by a claim from your own app token.</p>
-          <a class="beyond-card__more mono" href="/features#projects">→ projects · row_filter</a>
-        </article>
-        <article class="beyond-card">
-          <div class="beyond-card__tag mono">docs + api</div>
-          <h3 class="beyond-card__name">Docs with an API</h3>
-          <p class="beyond-card__desc">A static site plus a Wasm function behind <code>/api</code>, edge-cached and shipped in one atomic deploy that rolls back just as fast.</p>
-          <a class="beyond-card__more mono" href="/features#compute">→ functions · cache</a>
-        </article>
-        <article class="beyond-card">
-          <div class="beyond-card__tag mono">internal</div>
-          <h3 class="beyond-card__name">Internal tools</h3>
-          <p class="beyond-card__desc">Front private services through the gateway — health checks, retries, geo routing — behind OIDC and per-site access control. No VPN.</p>
-          <a class="beyond-card__more mono" href="/features#gateway">→ gateway · oidc</a>
         </article>
         <article class="beyond-card">
           <div class="beyond-card__tag mono">media</div>
@@ -397,10 +412,10 @@
       </div>
     </section>
 
-    <!-- ================= 08 / HOW IT WORKS ================= -->
+    <!-- ================= 09 / HOW IT WORKS ================= -->
     <section class="module wrap" id="how">
       <div class="module__head">
-        <span class="eyebrow-mono">08 / HOW IT WORKS</span>
+        <span class="eyebrow-mono">09 / HOW IT WORKS</span>
         <h2>One binary. One request path.</h2>
       </div>
       <p class="how-lead">No control plane to run beside the data plane, no sidecars, no build servers. The same process terminates TLS, routes the request, serves a file or runs your code, and reads from a content-addressed store — everywhere it runs.</p>
@@ -423,20 +438,20 @@
       </div>
     </section>
 
-    <!-- ================= 09 / WHERE IT RUNS ================= -->
+    <!-- ================= 10 / WHERE IT RUNS ================= -->
     <section class="module wrap" id="targets">
       <div class="module__head">
-        <span class="eyebrow-mono">09 / WHERE IT RUNS</span>
+        <span class="eyebrow-mono">10 / WHERE IT RUNS</span>
         <h2>One hull, every port.</h2>
         <span class="module__note">same UX · same binary</span>
       </div>
       <div class="manifest">
-        <div class="target"><div><div class="target__name">Bare metal</div><div class="target__cmd">boatramp serve</div></div><span class="target__ok">✓ same UX</span></div>
-        <div class="target"><div><div class="target__name">NixOS</div><div class="target__cmd">services.boatramp</div></div><span class="target__ok">✓ same UX</span></div>
-        <div class="target"><div><div class="target__name">Docker / OCI</div><div class="target__cmd">ghcr.io/boatramp/boatramp</div></div><span class="target__ok">✓ same UX</span></div>
-        <div class="target"><div><div class="target__name">Cloudflare</div><div class="target__cmd">boatramp cloudflare</div></div><span class="target__ok">✓ same UX</span></div>
-        <div class="target"><div><div class="target__name">Cluster</div><div class="target__cmd">serve --cluster-init</div></div><span class="target__ok">✓ same UX</span></div>
-        <div class="target"><div><div class="target__name">Kubernetes</div><div class="target__cmd">operator · Helm</div></div><span class="target__ok">✓ same UX</span></div>
+        <div class="target"><div><div class="target__name">Bare metal</div><div class="target__cmd">boatramp serve</div></div><span class="target__ok">✓</span></div>
+        <div class="target"><div><div class="target__name">NixOS</div><div class="target__cmd">services.boatramp</div></div><span class="target__ok">✓</span></div>
+        <div class="target"><div><div class="target__name">Docker / OCI</div><div class="target__cmd">ghcr.io/boatramp/boatramp</div></div><span class="target__ok">✓</span></div>
+        <div class="target"><div><div class="target__name">Cloudflare</div><div class="target__cmd">boatramp cloudflare</div></div><span class="target__ok">✓</span></div>
+        <div class="target"><div><div class="target__name">Cluster</div><div class="target__cmd">serve --cluster-init</div></div><span class="target__ok">✓</span></div>
+        <div class="target"><div><div class="target__name">Kubernetes</div><div class="target__cmd">operator · Helm</div></div><span class="target__ok">✓</span></div>
       </div>
     </section>
 

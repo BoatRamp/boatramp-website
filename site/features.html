@@ -57,13 +57,18 @@
         <span class="chip chip--beta">beta</span>
         <span class="chip chip--wip">in progress</span>
       </div>
-      <nav class="feat-toc" aria-label="Feature groups">
-        <a href="#publish">01 Publish</a><a href="#projects">02 Projects</a><a href="#serve">03 Serve</a><a href="#tls">04 Domains &amp; TLS</a>
-        <a href="#compute">05 Functions</a><a href="#graphql">06 GraphQL</a><a href="#containers">07 Containers &amp; microVMs</a><a href="#gateway">08 Gateway</a>
-        <a href="#scale">09 Scale</a><a href="#secure">10 Secure</a><a href="#storage">11 Storage</a>
-        <a href="#operate">12 Operate</a><a href="#ship">13 Ship</a><a href="#agent">14 Agent-native</a>
-      </nav>
     </section>
+
+    <div class="feat-toc-bar" data-feat-toc-bar>
+      <nav class="feat-toc wrap" aria-label="Feature groups" data-feat-toc>
+        <div class="feat-toc__fam"><span class="feat-toc__label mono">Publish &amp; Serve</span><a href="#publish">Publish</a><a href="#projects">Projects</a><a href="#serve">Serve</a><a href="#tls">Domains &amp; TLS</a></div>
+        <div class="feat-toc__fam"><span class="feat-toc__label mono">Compute &amp; Data</span><a href="#compute">Functions</a><a href="#graphql">GraphQL</a><a href="#containers">Containers</a></div>
+        <div class="feat-toc__fam"><span class="feat-toc__label mono">Operate at scale</span><a href="#gateway">Gateway</a><a href="#scale">Scale</a><a href="#secure">Secure</a><a href="#storage">Storage</a><a href="#operate">Operate</a></div>
+        <div class="feat-toc__fam"><span class="feat-toc__label mono">Ship &amp; Automate</span><a href="#ship">Ship</a><a href="#agent">Agent-native</a></div>
+      </nav>
+    </div>
+
+    <div class="feat-family wrap"><span class="feat-family__label mono">Publish &amp; Serve</span></div>
 
     <!-- 01 PUBLISH -->
     <section class="feat-group wrap" id="publish">
@@ -122,10 +127,13 @@
       </div></div>
     </section>
 
+    <div class="feat-family wrap"><span class="feat-family__label mono">Compute &amp; Data</span></div>
+
     <!-- 05 FUNCTIONS -->
     <section class="feat-group wrap" id="compute">
       <div class="module__head"><span class="eyebrow-mono">05 / FUNCTIONS</span><h2>Everything that runs is a function.</h2></div>
       <div class="feat-wrap"><div class="feat">
+        <div class="feat__subhead">The function model</div>
         <div class="feat__row"><div class="feat__cell feat__name">One primitive, many doors</div><div class="feat__cell feat__desc">A function is a portable WASI 0.2 component. Reach the same component as a route <em>handler</em>, invoke it by name, put it on a cron, or drive it from a queue — a different door, one sandbox.</div><div class="feat__cell feat__tag">function</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Invoke by name</div><div class="feat__cell feat__desc">Top-level functions carry their own version line — <code>function deploy</code> / <code>alias</code> / <code>rollback</code> — and invoke sync or async: durable, idempotency-keyed, and dead-lettered on failure.</div><div class="feat__cell feat__tag">function invoke</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Function mesh</div><div class="feat__cell feat__desc">A site handler can call sibling functions <em>in-process</em> through a deny-by-default <code>invoke_targets</code> allowlist — the caller's bearer is forwarded unchanged, the callee quota-admitted and depth-capped. A mesh orchestrator with no network hop.</div><div class="feat__cell feat__tag">invoke_targets</div></div>
@@ -137,6 +145,7 @@
         <div class="feat__row"><div class="feat__cell feat__name">Workflows</div><div class="feat__cell feat__desc">Chain functions into a durable DAG — fan-out, barrier fan-in, per-step retries, and saga compensation on failure. Runs survive restarts.</div><div class="feat__cell feat__tag">workflow</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Long-running jobs</div><div class="feat__cell feat__desc">A durable background job — an LLM generation, an <code>--async</code> batch, a workflow step, a cron or queue trigger — runs on a separate async lane (a larger wall-clock ceiling on its own concurrency budget), so it runs to completion without ever starving live site traffic. The drain leases each invocation and redrives it if a node dies mid-run.</div><div class="feat__cell feat__tag">async_max_timeout_ms</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Streaming response lane</div><div class="feat__cell feat__desc">A long-lived streaming handler — SSE, chunked output, agent token streaming — runs on its own engine lane with a dedicated concurrency budget and a large wall-clock (defaults 15&nbsp;min, 64 concurrent), isolated from both the fast request pool and the durable async drain, so a burst of streams starves neither.</div><div class="feat__cell feat__tag">streaming = true</div></div>
+        <div class="feat__subhead">Data bindings</div>
         <div class="feat__row"><div class="feat__cell feat__name">Per-site SQL</div><div class="feat__cell feat__desc">A real libsql database per site — an embedded file on one node, or a sqld namespace across a cluster.</div><div class="feat__cell feat__tag">sql</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Bring your own SQL <span class="chip chip--seam">live seam</span></div><div class="feat__cell feat__desc">Point the <code>sql</code> binding at your own Postgres or MySQL (Neon, Supabase, PlanetScale) — opened by name, read-only enforceable, the URL kept in a secret. Guest code is unchanged.</div><div class="feat__cell feat__tag">sql-postgres · sql-mysql</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Managed database</div><div class="feat__cell feat__desc">Source the <code>sql</code> binding from a Postgres/MySQL workload boatramp runs: it resolves the live endpoint so the binding follows the database across restarts, and can fully manage the credential — generate, seal with the <code>[secrets]</code> envelope, and inject — so the operator sets no DB secret at all.</div><div class="feat__cell feat__tag">compute: db</div></div>
@@ -146,6 +155,7 @@
         <div class="feat__row"><div class="feat__cell feat__name">KV · blob · queue</div><div class="feat__cell feat__desc">Per-site key/value, blob store, and durable messaging bindings, granted to the function.</div><div class="feat__cell feat__tag">kv · blobstore · messaging</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Message-queue fabric</div><div class="feat__cell feat__desc">A project-scoped topic bus (<code>bus:&lt;topic&gt;</code>) carries events between a project's sites and functions. Subscribe as a competing-consumer work queue (lease, redelivery, dead-letter after <code>max_attempts</code>) or a named durable consumer group — fan-out where every group sees every message on its own cursor. A verified inbound webhook can publish straight onto the bus.</div><div class="feat__cell feat__tag">bus · consumer groups</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Streams (SSE / WebSocket)</div><div class="feat__cell feat__desc">Fan messaging topics out to connected clients over Server-Sent Events or WebSocket.</div><div class="feat__cell feat__tag">streams</div></div>
+        <div class="feat__subhead">The sandbox</div>
         <div class="feat__row"><div class="feat__cell feat__name">Deny-by-default imports</div><div class="feat__cell feat__desc">A function receives only the capabilities the site grants; anything else is refused at activation.</div><div class="feat__cell feat__tag">imports</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Portable capabilities</div><div class="feat__cell feat__desc">A function declares the capability features it <code>requires</code>; the host advertises what it implements (<code>boatramp capabilities</code>, each tagged stable or experimental) and activation fails loud, naming any missing feature. <code>boatramp capabilities check</code> gates a component in CI against the boatramp version it targets.</div><div class="feat__cell feat__tag">capabilities check</div></div>
       </div></div>
@@ -182,6 +192,8 @@
         <div class="feat__row"><div class="feat__cell feat__name">Cloudflare Containers <span class="chip chip--seam">live seam</span></div><div class="feat__cell feat__desc">The same binary runs on Cloudflare Containers as a single durable instance — all state in R2 (blobs + a SlateDB KV) so it survives scale-to-zero — fronted by an edge Worker + container Durable Object. Validated end-to-end live.</div><div class="feat__cell feat__tag">cloudflare</div></div>
       </div></div>
     </section>
+
+    <div class="feat-family wrap"><span class="feat-family__label mono">Operate at scale</span></div>
 
     <!-- 08 GATEWAY -->
     <section class="feat-group wrap" id="gateway">
@@ -259,6 +271,8 @@
       </div></div>
     </section>
 
+    <div class="feat-family wrap"><span class="feat-family__label mono">Ship &amp; Automate</span></div>
+
     <!-- 13 SHIP -->
     <section class="feat-group wrap" id="ship">
       <div class="module__head"><span class="eyebrow-mono">13 / SHIP</span><h2>One hull, every port.</h2></div>
@@ -322,6 +336,28 @@
   <script type="module">
     import init from "/island/boatramp_island.js";
     init().catch((e) => console.warn("boatramp island failed to load:", e));
+  </script>
+
+  <!-- progressive enhancement: highlight the current section in the sticky TOC -->
+  <script>
+    (function () {
+      var toc = document.querySelector('[data-feat-toc]');
+      if (!toc || !('IntersectionObserver' in window)) return;
+      var links = {};
+      toc.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        links[a.getAttribute('href').slice(1)] = a;
+      });
+      var current = null;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          if (current && links[current]) links[current].classList.remove('is-active');
+          current = e.target.id;
+          if (links[current]) links[current].classList.add('is-active');
+        });
+      }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+      document.querySelectorAll('.feat-group[id]').forEach(function (g) { io.observe(g); });
+    })();
   </script>
 </body>
 </html>
