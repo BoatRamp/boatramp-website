@@ -409,6 +409,18 @@ a:hover { color: var(--link-hover); }
 /* Labeled sub-cluster inside a large feature table (spans all three columns). */
 .feat__subhead { grid-column: 1 / -1; padding: 15px 18px 7px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--seafoam); border-bottom: 1px solid rgba(53, 224, 196, 0.12); }
 
+/* Features index — the four family cards (reuse .beyond-card visuals). */
+.fam-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 30px; }
+.fam-card { text-decoration: none; }
+.fam-card .beyond-card__tag { color: var(--launch-2); }
+@media (max-width: 720px) { .fam-grid { grid-template-columns: 1fr; } }
+
+/* Per-family-page nav: pill links to the four families, current one filled. */
+.feat-fam-nav { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 20px 0 6px; font-family: var(--font-mono); font-size: 12.5px; }
+.feat-fam-nav a { color: var(--text-muted); text-decoration: none; padding: 5px 13px; border: 1px solid var(--hairline); border-radius: var(--radius-pill); }
+.feat-fam-nav a:hover { color: var(--seafoam); border-color: var(--hairline-seafoam); }
+.feat-fam-nav a.is-current { color: #04121b; background: var(--seafoam); border-color: var(--seafoam); }
+
 .feat-wrap { border: 1px solid rgba(207, 230, 239, 0.1); border-radius: var(--radius-card); overflow: hidden; background: rgba(7, 26, 38, 0.4); }
 .feat { display: grid; grid-template-columns: minmax(150px, 1fr) 1.7fr auto; }
 .feat__row { display: contents; }

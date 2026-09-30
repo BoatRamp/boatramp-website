@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compute & Data — boatramp features</title>
+  <meta name="description" content="Functions, GraphQL generated from your database, host-enforced multi-tenancy, and containers & microVMs — boatramp's compute and data plane.">
+  <link rel="canonical" href="https://boatramp.dev/features/compute-data">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://boatramp.dev/features/compute-data">
+  <meta property="og:title" content="boatramp features — Compute & Data">
+  <meta property="og:description" content="Functions, GraphQL generated from your database, host-enforced multi-tenancy, and containers & microVMs — boatramp's compute and data plane.">
+  <meta property="og:image" content="https://boatramp.dev/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/ibm-plex-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles/fonts.css">
+  <link rel="stylesheet" href="/styles/tokens.css">
+  <link rel="stylesheet" href="/styles/site.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- ================= NAV ================= -->
+  <header class="nav">
+    <a class="nav__brand" href="/" aria-label="boatramp home">
+      <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M3 7 L15 18.5" stroke="#ff6b35" stroke-width="2.6" stroke-linecap="round"/>
+        <path d="M10.5 15 L15 21.5 L19.5 15" stroke="#ffd23f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M2 25.5 q3.5 -3.6 7 0 t7 0 t7 0 t2 0" stroke="#35e0c4" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      <span class="wordmark">boatramp</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/features">Features</a>
+      <a href="/#quickstart">Install</a>
+      <a href="https://docs.boatramp.dev">Docs<span class="nav__ext" aria-hidden="true">↗</span></a>
+      <a href="https://discord.gg/A78gHFF3F3">Community</a>
+      <a class="nav__star" href="https://github.com/BoatRamp/BoatRamp" data-gh-star aria-label="Star boatramp on GitHub">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>
+        Star
+        <span class="nav__star-count mono" data-gh-star-count hidden></span>
+      </a>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <section class="feat-hero wrap">
+      <p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span><a href="/features">features</a> · compute &amp; data</p>
+      <h1>Everything that runs — and the data behind it.</h1>
+      <p>WASI functions as the compute primitive, a GraphQL API generated from your database, host-enforced multi-tenancy, and containers &amp; microVMs for heavier cargo.</p>
+      <div class="feat-legend">
+        <span>Everything is <a href="https://docs.boatramp.dev/explanation/maturity.html">pre-1.0</a>. Where a capability's live validation is still in flight, it's marked:</span>
+        <span class="chip chip--seam">live seam</span>
+        <span class="chip chip--beta">beta</span>
+        <span class="chip chip--wip">in progress</span>
+      </div>
+    </section>
+
+    <nav class="feat-fam-nav wrap" aria-label="Feature families">
+      <a href="/features/publish-serve">Publish &amp; Serve</a><a class="is-current" aria-current="page" href="/features/compute-data">Compute &amp; Data</a><a href="/features/operate-at-scale">Operate at scale</a><a href="/features/ship-automate">Ship &amp; Automate</a>
+    </nav>
+
+    <!-- 05 FUNCTIONS -->
+    <section class="feat-group wrap" id="compute">
+      <div class="module__head"><span class="eyebrow-mono">01 / FUNCTIONS</span><h2>Everything that runs is a function.</h2></div>
+      <div class="feat-wrap"><div class="feat">
+        <div class="feat__subhead">The function model</div>
+        <div class="feat__row"><div class="feat__cell feat__name">One primitive, many doors</div><div class="feat__cell feat__desc">A function is a portable WASI 0.2 component. Reach the same component as a route <em>handler</em>, invoke it by name, put it on a cron, or drive it from a queue — a different door, one sandbox.</div><div class="feat__cell feat__tag">function</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Invoke by name</div><div class="feat__cell feat__desc">Top-level functions carry their own version line — <code>function deploy</code> / <code>alias</code> / <code>rollback</code> — and invoke sync or async: durable, idempotency-keyed, and dead-lettered on failure.</div><div class="feat__cell feat__tag">function invoke</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Function mesh</div><div class="feat__cell feat__desc">A site handler can call sibling functions <em>in-process</em> through a deny-by-default <code>invoke_targets</code> allowlist — the caller's bearer is forwarded unchanged, the callee quota-admitted and depth-capped. A mesh orchestrator with no network hop.</div><div class="feat__cell feat__tag">invoke_targets</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Streaming invoke</div><div class="feat__cell feat__desc">Consume a sibling function's response as a <em>stream</em> — status and headers up front, the body pulled incrementally through an <code>incoming-response</code> resource — so a large or <code>@defer</code>-style result is never buffered whole in host memory.</div><div class="feat__cell feat__tag">invoke --stream</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Compose components</div><div class="feat__cell feat__desc">Author resolvers and middleware as separate WIT-typed components and fuse them into one linked component <em>in-process</em> with <code>boatramp compose</code> — no network hop, checked at compile time — then deploy the single <code>.wasm</code>.</div><div class="feat__cell feat__tag">compose</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Event triggers</div><div class="feat__cell feat__desc">Fire a function from a signature-verified HMAC webhook, or a blob-change event — the changed key arrives as the invocation body — via the backend's native notifications.</div><div class="feat__cell feat__tag">webhook · blob</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Multi-language</div><div class="feat__cell feat__desc">Author in Rust, JavaScript (jco), or Python (componentize-py); scaffold, build, and test locally — <code>function init · build · test · dev</code>.</div><div class="feat__cell feat__tag">rust · js · py</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Metering &amp; quotas</div><div class="feat__cell feat__desc">Every invocation is metered and exported to Prometheus, with fail-closed rate-limit and concurrency quotas.</div><div class="feat__cell feat__tag">function usage</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Workflows</div><div class="feat__cell feat__desc">Chain functions into a durable DAG — fan-out, barrier fan-in, per-step retries, and saga compensation on failure. Runs survive restarts.</div><div class="feat__cell feat__tag">workflow</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Long-running jobs</div><div class="feat__cell feat__desc">A durable background job — an LLM generation, an <code>--async</code> batch, a workflow step, a cron or queue trigger — runs on a separate async lane (a larger wall-clock ceiling on its own concurrency budget), so it runs to completion without ever starving live site traffic. The drain leases each invocation and redrives it if a node dies mid-run.</div><div class="feat__cell feat__tag">async_max_timeout_ms</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Streaming response lane</div><div class="feat__cell feat__desc">A long-lived streaming handler — SSE, chunked output, agent token streaming — runs on its own engine lane with a dedicated concurrency budget and a large wall-clock (defaults 15&nbsp;min, 64 concurrent), isolated from both the fast request pool and the durable async drain, so a burst of streams starves neither.</div><div class="feat__cell feat__tag">streaming = true</div></div>
+        <div class="feat__subhead">Data bindings</div>
+        <div class="feat__row"><div class="feat__cell feat__name">Per-site SQL</div><div class="feat__cell feat__desc">A real libsql database per site — an embedded file on one node, or a sqld namespace across a cluster.</div><div class="feat__cell feat__tag">sql</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Bring your own SQL <span class="chip chip--seam">live seam</span></div><div class="feat__cell feat__desc">Point the <code>sql</code> binding at your own Postgres or MySQL (Neon, Supabase, PlanetScale) — opened by name, read-only enforceable, the URL kept in a secret. Guest code is unchanged.</div><div class="feat__cell feat__tag">sql-postgres · sql-mysql</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Managed database</div><div class="feat__cell feat__desc">Source the <code>sql</code> binding from a Postgres/MySQL workload boatramp runs: it resolves the live endpoint so the binding follows the database across restarts, and can fully manage the credential — generate, seal with the <code>[secrets]</code> envelope, and inject — so the operator sets no DB secret at all.</div><div class="feat__cell feat__tag">compute: db</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Declarative databases</div><div class="feat__cell feat__desc">Declare a per-tenant Postgres or MySQL right in the <code>apply</code> manifest — boatramp provisions the workload, mints and seals the credential, and follows it across restarts, with no secret in the manifest.</div><div class="feat__cell feat__tag">databases: [ … ]</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Schema migrations</div><div class="feat__cell feat__desc">An owner-gated migration surface — each step a wasm function, a SQL script, or an allowlisted extension — with boatramp owning ordering, a durable ledger, idempotency, and a <code>baseline</code> to adopt an existing database. Postgres, MySQL, and embedded libsql.</div><div class="feat__cell feat__tag">project migrate</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Named SQL bindings</div><div class="feat__cell feat__desc">Grant a handler <em>named</em> databases — <code>sql:product</code> for the RLS-enforced product role, <code>sql:privileged</code> for a separate cross-tenant role (or <code>sql:*</code> for all) — each its own connection and credential, capped by the site's <code>allow_imports</code>. Least-privilege that makes Postgres <code>FORCE ROW LEVEL SECURITY</code> real.</div><div class="feat__cell feat__tag">sql:name · sql:*</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Per-tenant databases</div><div class="feat__cell feat__desc">A managed <code>sql</code> binding isolates each tenant into its own database — a shared server with a database + login role per tenant, or a dedicated server per tenant — each with its own sealed credential, so one tenant's role can never reach another's. Or set <code>rls_session</code> and boatramp injects the request's tenant into the SQL session for your own row-level-security policies.</div><div class="feat__cell feat__tag">tenant · rls_session</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Typed query builder</div><div class="feat__cell feat__desc">Build queries as a typed tree instead of SQL strings — joins, <code>GROUP BY</code>/<code>HAVING</code>, <code>IN</code>/<code>BETWEEN</code>/<code>LIKE</code>, upserts, <code>RETURNING</code>, and JSON key-paths — compiled to parameterized SQL for the backend's dialect (a closed function enum, every value bound, so a guest can't construct an injection), with an optional row-<code>scope</code> folded into every write for sub-tenant isolation.</div><div class="feat__cell feat__tag">handlers/orm</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Vector search <span class="chip chip--wip">experimental</span></div><div class="feat__cell feat__desc">Nearest-neighbour search from the typed query builder — cosine (<code>&lt;=&gt;</code>) or L2 (<code>&lt;-&gt;</code>) distance over a bound <code>?::vector</code> in a select list or <code>ORDER BY</code>, on Postgres + pgvector. The metric is a compiler constant and the vector binds as a parameter, so nothing is interpolated.</div><div class="feat__cell feat__tag">pgvector</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">KV · blob · queue</div><div class="feat__cell feat__desc">Per-site key/value, blob store, and durable messaging bindings, granted to the function.</div><div class="feat__cell feat__tag">kv · blobstore · messaging</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Send email</div><div class="feat__cell feat__desc">A function calls <code>send(message)</code> and the host delivers it through an operator-configured SMTP profile — credentials host-held (never reaching the guest), a spoof-proof <code>From</code>, and optional durable retry with a dead-letter.</div><div class="feat__cell feat__tag">handlers/email</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Message-queue fabric</div><div class="feat__cell feat__desc">A project-scoped topic bus (<code>bus:&lt;topic&gt;</code>) carries events between a project's sites and functions. Subscribe as a competing-consumer work queue (lease, redelivery, dead-letter after <code>max_attempts</code>) or a named durable consumer group — fan-out where every group sees every message on its own cursor. A verified inbound webhook can publish straight onto the bus.</div><div class="feat__cell feat__tag">bus · consumer groups</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Streams (SSE / WebSocket)</div><div class="feat__cell feat__desc">Fan messaging topics out to connected clients over Server-Sent Events or WebSocket.</div><div class="feat__cell feat__tag">streams</div></div>
+        <div class="feat__subhead">The sandbox</div>
+        <div class="feat__row"><div class="feat__cell feat__name">Deny-by-default imports</div><div class="feat__cell feat__desc">A function receives only the capabilities the site grants; anything else is refused at activation.</div><div class="feat__cell feat__tag">imports</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Portable capabilities</div><div class="feat__cell feat__desc">A function declares the capability features it <code>requires</code>; the host advertises what it implements (<code>boatramp capabilities</code>, each tagged stable or experimental) and activation fails loud, naming any missing feature. <code>boatramp capabilities check</code> gates a component in CI against the boatramp version it targets.</div><div class="feat__cell feat__tag">capabilities check</div></div>
+      </div></div>
+    </section>
+
+    <!-- 06 GRAPHQL -->
+    <section class="feat-group wrap" id="graphql">
+      <div class="module__head"><span class="eyebrow-mono">02 / GRAPHQL</span><h2>GraphQL, understood at the edge.</h2></div>
+      <div class="feat-wrap"><div class="feat">
+        <div class="feat__row"><div class="feat__cell feat__name">GraphQL from your database</div><div class="feat__cell feat__desc">Generate a read + write GraphQL API from a managed database with <em>no resolver code</em>: boatramp introspects the schema and compiles each query to <em>one</em> parameterized SQL statement — relationships become correlated JSON subqueries, so a nested query is one round-trip with no N+1.</div><div class="feat__cell feat__tag">graphql.data</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Deny-by-default, tenant-isolated</div><div class="feat__cell feat__desc">Only the tables and columns the policy names are visible; a per-table row filter bound to the host-asserted <code>project</code> claim isolates tenants at <em>every</em> depth — a missing claim denies, never widens. Mutations are opt-in and transactional.</div><div class="feat__cell feat__tag">row_filter</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Multi-tenant SaaS by claim</div><div class="feat__cell feat__desc">A row filter can bind a claim from your app's own verified bearer (<code>claims_from_token</code> — sig / <code>iss</code> / <code>exp</code> / <code>kid</code> checked), so many tenants live as rows in one project, isolated by a claim like <code>tid</code> and never able to override the project.</div><div class="feat__cell feat__tag">claims_from_token</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Edge query-guard</div><div class="feat__cell feat__desc">Parse operations at the edge and reject them <em>before the handler runs</em> when they exceed a depth / complexity limit or (unless allowed) introspect — fragments expanded so nesting can't hide, cyclic ones terminated.</div><div class="feat__cell feat__tag">query-guard</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Persisted queries + safelist</div><div class="feat__cell feat__desc">Clients send a query hash instead of the full query; in safelist mode only pre-registered hashes run and the edge never registers a new one — turning persisted queries into a security allowlist.</div><div class="feat__cell feat__tag">persisted</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Edge-hidden operations</div><div class="feat__cell feat__desc">Mark a subgraph root field internal — callable server-to-server across the supergraph but structurally absent from the anonymous external <code>/graphql</code> edge, failing exactly like an unknown field with no existence oracle.</div><div class="feat__cell feat__tag">@edgeHidden</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Federation gateway</div><div class="feat__cell feat__desc">Register each subgraph's SDL — or let a wasm function self-register on deploy — and boatramp composes + validates a supergraph, then plans and executes a query across subgraphs over the in-process invoke path; the caller's identity is forwarded and re-verified per subgraph.</div><div class="feat__cell feat__tag">federated · @key</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Subscriptions over SSE</div><div class="feat__cell feat__desc">Stream a GraphQL subscription to the browser over graphql-sse — with <code>Last-Event-ID</code> resume, a heartbeat, and the site's stream connection caps.</div><div class="feat__cell feat__tag">graphql-sse</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">GraphiQL &amp; in-process supergraph</div><div class="feat__cell feat__desc">A baked GraphiQL IDE (opt-in) for exploring the schema in the browser, and a guest <code>graphql::run</code> capability so a handler runs a safelisted supergraph operation in-process — the same planner, no network hop.</div><div class="feat__cell feat__tag">graphiql</div></div>
+      </div></div>
+    </section>
+
+    <!-- 07 MULTI-TENANCY -->
+    <section class="feat-group wrap" id="tenancy">
+      <div class="module__head"><span class="eyebrow-mono">03 / MULTI-TENANCY</span><h2>Many tenants, one hull — isolated by the host.</h2></div>
+      <div class="feat-wrap"><div class="feat">
+        <div class="feat__row"><div class="feat__cell feat__name">Host-resolved scoping</div><div class="feat__cell feat__desc">Declare tenancy and every SQL, ORM, and GraphQL query is auto-scoped to the caller's tenant — resolved host-side from a verified source (a JWT claim, the routed domain, or a signed context), never supplied or spoofed by guest code.</div><div class="feat__cell feat__tag">handlers.tenancy</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Per-table scopes</div><div class="feat__cell feat__desc">A per-project tenancy schema declares how each table is keyed — tenant-keyed, session-keyed, shared-base, or global reference — and a table you don't declare is refused, deny-by-default, rather than served across tenants.</div><div class="feat__cell feat__tag">TableScope</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Cross-tenant sharing</div><div class="feat__cell feat__desc">One route can serve the caller's own data <em>and</em> another tenant's published subset — storefronts, embeds, share links — host-confined to <code>tenant = B AND &lt;public subset&gt;</code> across ORM, raw SQL, and federated GraphQL, resolved from a routed domain, a signed capability, or a public handle.</div><div class="feat__cell feat__tag">@tenant(target)</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Anonymous sessions</div><div class="feat__cell feat__desc">Host-issued, host-verified signed session cookies give anonymous-first flows (carts, onboarding drafts) a stable identity with no app JWKS or JavaScript — plus a <code>promote</code> verb that claims a session's rows for a tenant at sign-up.</div><div class="feat__cell feat__tag">TenantOrSession · promote</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">RLS backstop</div><div class="feat__cell feat__desc">boatramp sets a transaction-local Postgres session variable to the same tenant it injects into every predicate, so your own row-level-security policies enforce the exact same tenancy as a faithful, independent backstop.</div><div class="feat__cell feat__tag">session_guc</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Per-tenant secrets</div><div class="feat__cell feat__desc">A component gets and sets secrets sealed to the caller's own tenant, so each tenant's third-party credentials — a per-firm OAuth secret, per-tenant API or SMTP keys — never live in the app's database.</div><div class="feat__cell feat__tag">tenant-secrets</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Per-tenant object storage</div><div class="feat__cell feat__desc">Every object-store operation is fail-closed to the caller's own containers via a <code>{tenant}</code>-templated allowlist, so one tenant can never read, list, or destroy another's blobs on a shared site.</div><div class="feat__cell feat__tag">blobstore_containers</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Per-tenant queue fan-in</div><div class="feat__cell feat__desc">One consumer with a <code>{tenant}</code> segment in its topic services every per-tenant topic at once — each with its own cursor, dead-letter queue, and lag — and the host dead-letters any message whose sealed tenant doesn't match its topic.</div><div class="feat__cell feat__tag">{tenant} topic</div></div>
+      </div></div>
+    </section>
+
+    <!-- 08 CONTAINERS & microVMs -->
+    <section class="feat-group wrap" id="containers">
+      <div class="module__head"><span class="eyebrow-mono">04 / CONTAINERS &amp; microVMs</span><h2>Heavier cargo, still one hull.</h2></div>
+      <div class="feat-wrap"><div class="feat">
+        <div class="feat__row"><div class="feat__cell feat__name">Firecracker-class microVMs</div><div class="feat__cell feat__desc">Run an OCI image in a hardware-isolated VM with its own kernel, via an embedded rust-vmm VMM.</div><div class="feat__cell feat__tag">--isolation untrusted</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Native OCI containers</div><div class="feat__cell feat__desc">Shared-kernel containers (namespaces, cgroups, seccomp) for code you trust.</div><div class="feat__cell feat__tag">--isolation trusted</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">macOS-native microVMs <span class="chip chip--seam">live seam</span></div><div class="feat__cell feat__desc">On Apple silicon (macOS 15+), each replica runs as a lightweight Linux VM via Apple's Virtualization.framework — strong per-VM isolation, the same <code>compute</code> surface, still one binary.</div><div class="feat__cell feat__tag">vmm-vz</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Remote Docker</div><div class="feat__cell feat__desc">Run workloads against a remote Docker host — the native-container path on Windows and macOS.</div><div class="feat__cell feat__tag">remote-docker</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Scale-to-zero <span class="chip chip--seam">live seam</span></div><div class="feat__cell feat__desc">Park an idle replica to disk and wake it with its in-RAM state intact — a microVM (Linux KVM or macOS <code>vmm-vz</code>) or a native container (via CRIU). Capability-detected, so a workload only lands on a node that can wake it.</div><div class="feat__cell feat__tag">--scale-to-zero</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Persistent volumes</div><div class="feat__cell feat__desc">Back a container workload with an external volume — a daemon-managed named volume or a host bind-mount — so app state survives restarts and scale-to-zero.</div><div class="feat__cell feat__tag">volumes</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Managed sql for containers</div><div class="feat__cell feat__desc">A docker or native workload can <code>--bind sql</code> and reach the same per-tenant SQL backend a handler gets, over a token-multiplexed shim — no long-lived database secret ever enters the guest.</div><div class="feat__cell feat__tag">--bind sql</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Rootless stock images</div><div class="feat__cell feat__desc">Run a stock image whose entrypoint <code>chown</code>s its data dir and drops privileges (a database) — rootless via <code>--user</code> against a pre-chowned volume, or add just the caps it needs with <code>--cap-add</code> (single-tenant). A managed DB picks the strategy automatically.</div><div class="feat__cell feat__tag">--user · --cap-add</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Internal service discovery</div><div class="feat__cell feat__desc">Co-located workloads, handlers, and functions reach each other — and their managed databases — <em>by name</em>: boatramp runs a per-project DNS responder on the compute bridge, resolving <code>&lt;workload&gt;.&lt;project&gt;.boatramp.internal</code> to a live healthy replica. Source-IP-scoped, so a cross-project lookup is refused.</div><div class="feat__cell feat__tag">boatramp.internal</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Verified boot + posture</div><div class="feat__cell feat__desc">A signed first-party kernel is verified before boot; strict posture forces microVM isolation for untrusted code.</div><div class="feat__cell feat__tag">security explain</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Cloudflare Containers <span class="chip chip--seam">live seam</span></div><div class="feat__cell feat__desc">The same binary runs on Cloudflare Containers as a single durable instance — all state in R2 (blobs + a SlateDB KV) so it survives scale-to-zero — fronted by an edge Worker + container Durable Object. Validated end-to-end live.</div><div class="feat__cell feat__tag">cloudflare</div></div>
+      </div></div>
+    </section>
+
+
+    <section class="honesty wrap">
+      <div class="honesty__box">
+        <span class="honesty__label">pre-1.0</span>
+        <p>Every capability above is implemented and dogfooded — this site runs on it. Interfaces may still shift before 1.0. Start with <a href="/#quickstart">the quickstart</a>, dig into the <a href="https://docs.boatramp.dev">docs</a>, or <a href="https://discord.gg/A78gHFF3F3">come crew it</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <div class="footer__brand-row">
+            <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M3 7 L15 18.5" stroke="#ff6b35" stroke-width="2.6" stroke-linecap="round"/><path d="M10.5 15 L15 21.5 L19.5 15" stroke="#ffd23f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 25.5 q3.5 -3.6 7 0 t7 0 t7 0 t2 0" stroke="#35e0c4" stroke-width="2.2" stroke-linecap="round"/></svg>
+            <span class="wordmark" style="font-size:18px">boatramp</span>
+          </div>
+          <p>Launch the web from your own shore. One binary — server, API, CLI.</p>
+        </div>
+        <div class="footer__cols">
+          <div class="footer__col"><span class="footer__col-h">PRODUCT</span><a href="/features">Features</a><a href="/#quickstart">Install</a><a href="https://docs.boatramp.dev">Docs ↗</a></div>
+          <div class="footer__col"><span class="footer__col-h">CREW</span><a href="https://discord.gg/A78gHFF3F3">Community</a><a href="https://github.com/BoatRamp/BoatRamp">GitHub ↗</a></div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>MIT OR Apache-2.0 · © 2026 boatramp</span>
+        <span class="footer__served">⚓ served by boatramp · deploy <span data-deploy-id>dev-local</span></span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import init from "/island/boatramp_island.js";
+    init().catch((e) => console.warn("boatramp island failed to load:", e));
+  </script>
+
+  <!-- progressive enhancement: highlight the current section in the sticky TOC -->
+  <script>
+    (function () {
+      var toc = document.querySelector('[data-feat-toc]');
+      if (!toc || !('IntersectionObserver' in window)) return;
+      var links = {};
+      toc.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        links[a.getAttribute('href').slice(1)] = a;
+      });
+      var current = null;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          if (current && links[current]) links[current].classList.remove('is-active');
+          current = e.target.id;
+          if (links[current]) links[current].classList.add('is-active');
+        });
+      }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+      document.querySelectorAll('.feat-group[id]').forEach(function (g) { io.observe(g); });
+    })();
+  </script>
+</body>
+</html>

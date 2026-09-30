@@ -128,7 +128,7 @@
         <div class="terminal__grid">
           <div class="terminal__body">
             <div class="term-line"><span class="term-prompt">$ </span><span data-install-cmd>curl -sSf boatramp.dev/launch | sh</span></div>
-            <div class="term-line term-out">  ↳ boatramp 0.8.0 → ~/.local/bin</div>
+            <div class="term-line term-out">  ↳ boatramp 0.9.0 → ~/.local/bin</div>
             <div class="term-line"><span class="term-prompt">$ </span>boatramp serve &amp;</div>
             <div class="term-line term-out">  ↳ listening on http://127.0.0.1:8080</div>
             <div class="term-line"><span class="term-prompt">$ </span>boatramp sync ./public --site my-site</div>
@@ -215,7 +215,7 @@
       <div class="module__head">
         <span class="eyebrow-mono">03 / FUNCTIONS</span>
         <h2>Everything that runs is a function.</h2>
-        <a class="module__note module__note--link" href="/features#compute">see all features →</a>
+        <a class="module__note module__note--link" href="/features/compute-data#compute">see all features →</a>
       </div>
       <div class="fn-band">
         <div class="fn-band__code">
@@ -241,7 +241,7 @@ workflow   a → b → c   → durable DAG</code></pre>
       <div class="module__head">
         <span class="eyebrow-mono">04 / GRAPHQL</span>
         <h2>A GraphQL API from your database. No resolvers.</h2>
-        <a class="module__note module__note--link" href="/features#graphql">see all features →</a>
+        <a class="module__note module__note--link" href="/features/compute-data#graphql">see all features →</a>
       </div>
       <div class="gql-band">
         <div class="gql-band__code">
@@ -269,7 +269,7 @@ workflow   a → b → c   → durable DAG</code></pre>
       <div class="module__head">
         <span class="eyebrow-mono">05 / PROJECTS</span>
         <h2>Many sites. One tenant boundary.</h2>
-        <a class="module__note module__note--link" href="/features#projects">see all features →</a>
+        <a class="module__note module__note--link" href="/features/publish-serve#projects">see all features →</a>
       </div>
       <div class="proj-band">
         <div class="proj-band__code">
@@ -301,7 +301,7 @@ workflow   a → b → c   → durable DAG</code></pre>
       <div class="module__head">
         <span class="eyebrow-mono">06 / AGENT-NATIVE</span>
         <h2>Hand the helm to an agent.</h2>
-        <a class="module__note module__note--link" href="/features#agent">see all features →</a>
+        <a class="module__note module__note--link" href="/features/ship-automate#agent">see all features →</a>
       </div>
       <div class="mcp-band">
         <div class="mcp-band__lede">
@@ -333,49 +333,49 @@ workflow   a → b → c   → durable DAG</code></pre>
           <div class="beyond-card__tag mono">serve</div>
           <h3 class="beyond-card__name">A real web server</h3>
           <p class="beyond-card__desc">HTTP/1.1, /2, and /3 over QUIC, routing and redirects, SPA fallback, caching plus an edge response cache, and compression — boatramp's own HTTP stack, not a bucket.</p>
-          <a class="beyond-card__more mono" href="/features#serve">→ serve</a>
+          <a class="beyond-card__more mono" href="/features/publish-serve#serve">→ serve</a>
         </article>
         <article class="beyond-card">
           <div class="beyond-card__tag mono">compute</div>
           <h3 class="beyond-card__name">Containers &amp; microVMs</h3>
           <p class="beyond-card__desc">Pick a per-function runtime — the Wasm sandbox, an OCI container, or a Firecracker-class microVM — with snapshot/restore and scale-to-zero.</p>
-          <a class="beyond-card__more mono" href="/features#containers">→ containers</a>
+          <a class="beyond-card__more mono" href="/features/compute-data#containers">→ containers</a>
         </article>
         <article class="beyond-card">
           <div class="beyond-card__tag mono">gateway</div>
           <h3 class="beyond-card__name">Edge gateway</h3>
           <p class="beyond-card__desc">Publish private services through the edge: geo-aware load balancing (nearest region), passive + active health checks, retries, and DNS discovery.</p>
-          <a class="beyond-card__more mono" href="/features#gateway">→ gateway</a>
+          <a class="beyond-card__more mono" href="/features/operate-at-scale#gateway">→ gateway</a>
         </article>
         <article class="beyond-card">
           <div class="beyond-card__tag mono">secure</div>
           <h3 class="beyond-card__name">Own the controls</h3>
           <p class="beyond-card__desc">COSE/CWT tokens + Cedar policies, OIDC login, KMS/HSM signers, and per-site visitor access control at the edge.</p>
-          <a class="beyond-card__more mono" href="/features#secure">→ auth &amp; access</a>
+          <a class="beyond-card__more mono" href="/features/operate-at-scale#secure">→ auth &amp; access</a>
         </article>
         <article class="beyond-card">
           <div class="beyond-card__tag mono">scale</div>
           <h3 class="beyond-card__name">Scale to a fleet</h3>
           <p class="beyond-card__desc">One node to an HA Raft cluster with the same commands — shared-store frontends, a one-paste join ticket, and an in-binary Kubernetes operator.</p>
-          <a class="beyond-card__more mono" href="/features#scale">→ scale</a>
+          <a class="beyond-card__more mono" href="/features/operate-at-scale#scale">→ scale</a>
         </article>
         <article class="beyond-card">
           <div class="beyond-card__tag mono">storage</div>
           <h3 class="beyond-card__name">Your storage</h3>
           <p class="beyond-card__desc">Content-addressed blobs on local disk, S3, R2, GCS, or Azure; metadata in embedded SlateDB or Cloudflare KV. Your bytes, your backend.</p>
-          <a class="beyond-card__more mono" href="/features#storage">→ storage</a>
+          <a class="beyond-card__more mono" href="/features/operate-at-scale#storage">→ storage</a>
         </article>
         <article class="beyond-card">
           <div class="beyond-card__tag mono">operate</div>
           <h3 class="beyond-card__name">Observability</h3>
           <p class="beyond-card__desc">Prometheus metrics, JSON logs with live tailing, handler stats and dead-letter queues, health probes, and online store migrations.</p>
-          <a class="beyond-card__more mono" href="/features#operate">→ operate</a>
+          <a class="beyond-card__more mono" href="/features/operate-at-scale#operate">→ operate</a>
         </article>
         <article class="beyond-card">
           <div class="beyond-card__tag mono">ship</div>
           <h3 class="beyond-card__name">Ship anywhere</h3>
           <p class="beyond-card__desc">One static binary — prebuilt for Linux, macOS, and Windows; an OCI image; a NixOS module; a Cloudflare Worker generator; or embedded as a Rust library.</p>
-          <a class="beyond-card__more mono" href="/features#ship">→ ship</a>
+          <a class="beyond-card__more mono" href="/features/ship-automate#ship">→ ship</a>
         </article>
       </div>
     </section>
@@ -395,19 +395,19 @@ workflow   a → b → c   → durable DAG</code></pre>
           <div class="beyond-card__tag mono">saas</div>
           <h3 class="beyond-card__name">A SaaS backend</h3>
           <p class="beyond-card__desc">GraphQL straight from your Postgres, OIDC + cookie sessions, and cron jobs — on a database boatramp runs and whose credential it manages for you.</p>
-          <a class="beyond-card__more mono" href="/features#graphql">→ graphql · sql · auth</a>
+          <a class="beyond-card__more mono" href="/features/compute-data#graphql">→ graphql · sql · auth</a>
         </article>
         <article class="beyond-card">
           <div class="beyond-card__tag mono">media</div>
           <h3 class="beyond-card__name">Media &amp; streaming</h3>
           <p class="beyond-card__desc">Serve a 40 GB video at flat memory with range requests and HTTP/3 — every byte goes store → socket, never buffered whole.</p>
-          <a class="beyond-card__more mono" href="/features#serve">→ serve · range</a>
+          <a class="beyond-card__more mono" href="/features/publish-serve#serve">→ serve · range</a>
         </article>
         <article class="beyond-card">
           <div class="beyond-card__tag mono">agentic</div>
           <h3 class="beyond-card__name">An agent-run platform</h3>
           <p class="beyond-card__desc">Let Claude or Codex drive the whole control plane over MCP — deploy, roll back, tail logs, invoke functions, in natural language.</p>
-          <a class="beyond-card__more mono" href="/features#agent">→ agent-native</a>
+          <a class="beyond-card__more mono" href="/features/ship-automate#agent">→ agent-native</a>
         </article>
       </div>
     </section>

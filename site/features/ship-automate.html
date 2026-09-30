@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ship & Automate — boatramp features</title>
+  <meta name="description" content="Ship the one binary anywhere and drive the whole control plane from an AI agent over MCP — boatramp's distribution and agent-native surface.">
+  <link rel="canonical" href="https://boatramp.dev/features/ship-automate">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://boatramp.dev/features/ship-automate">
+  <meta property="og:title" content="boatramp features — Ship & Automate">
+  <meta property="og:description" content="Ship the one binary anywhere and drive the whole control plane from an AI agent over MCP — boatramp's distribution and agent-native surface.">
+  <meta property="og:image" content="https://boatramp.dev/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/ibm-plex-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles/fonts.css">
+  <link rel="stylesheet" href="/styles/tokens.css">
+  <link rel="stylesheet" href="/styles/site.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- ================= NAV ================= -->
+  <header class="nav">
+    <a class="nav__brand" href="/" aria-label="boatramp home">
+      <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M3 7 L15 18.5" stroke="#ff6b35" stroke-width="2.6" stroke-linecap="round"/>
+        <path d="M10.5 15 L15 21.5 L19.5 15" stroke="#ffd23f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M2 25.5 q3.5 -3.6 7 0 t7 0 t7 0 t2 0" stroke="#35e0c4" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      <span class="wordmark">boatramp</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/features">Features</a>
+      <a href="/#quickstart">Install</a>
+      <a href="https://docs.boatramp.dev">Docs<span class="nav__ext" aria-hidden="true">↗</span></a>
+      <a href="https://discord.gg/A78gHFF3F3">Community</a>
+      <a class="nav__star" href="https://github.com/BoatRamp/BoatRamp" data-gh-star aria-label="Star boatramp on GitHub">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>
+        Star
+        <span class="nav__star-count mono" data-gh-star-count hidden></span>
+      </a>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <section class="feat-hero wrap">
+      <p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span><a href="/features">features</a> · ship &amp; automate</p>
+      <h1>One hull, every port — and agent-native.</h1>
+      <p>Ship the single binary anywhere — bare metal, containers, NixOS, Cloudflare — and hand the whole control plane to an AI agent over MCP.</p>
+      <div class="feat-legend">
+        <span>Everything is <a href="https://docs.boatramp.dev/explanation/maturity.html">pre-1.0</a>. Where a capability's live validation is still in flight, it's marked:</span>
+        <span class="chip chip--seam">live seam</span>
+        <span class="chip chip--beta">beta</span>
+        <span class="chip chip--wip">in progress</span>
+      </div>
+    </section>
+
+    <nav class="feat-fam-nav wrap" aria-label="Feature families">
+      <a href="/features/publish-serve">Publish &amp; Serve</a><a href="/features/compute-data">Compute &amp; Data</a><a href="/features/operate-at-scale">Operate at scale</a><a class="is-current" aria-current="page" href="/features/ship-automate">Ship &amp; Automate</a>
+    </nav>
+
+    <!-- 14 SHIP -->
+    <section class="feat-group wrap" id="ship">
+      <div class="module__head"><span class="eyebrow-mono">01 / SHIP</span><h2>One hull, every port.</h2></div>
+      <div class="feat-wrap"><div class="feat">
+        <div class="feat__row"><div class="feat__cell feat__name">Single static binary</div><div class="feat__cell feat__desc">Server + publishing API + CLI in one file; every heavy backend lives behind a compile-time feature.</div><div class="feat__cell feat__tag">1 file</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Config from the environment</div><div class="feat__cell feat__desc">Every <code>serve</code> setting is settable from <code>BOATRAMP_*</code> variables — the whole config, layered env&nbsp;&gt;&nbsp;file&nbsp;&gt;&nbsp;default — so a node needs no <code>boatramp.cfg</code> at all, even one running a managed co-located Postgres or issuing a wildcard cert. 12-factor deploys on fly.io, Cloudflare, or any container platform.</div><div class="feat__cell feat__tag">BOATRAMP_*</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Config versioning + JSON</div><div class="feat__cell feat__desc">Author config in RON or JSON (auto-detected, so you can generate it from Nickel), and stamp an <code>apply</code> manifest with a <code>version:</code> that opts an older document into a loose-parse → migrate → typed pipeline — upgrade it in place with <code>config migrate</code>.</div><div class="feat__cell feat__tag">--format json · config migrate</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Prebuilt everywhere</div><div class="feat__cell feat__desc">Linux (x86_64 + arm64), macOS, and Windows binaries, an install script, and a Homebrew tap.</div><div class="feat__cell feat__tag">install.sh</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">OCI image</div><div class="feat__cell feat__desc">A multi-arch, non-root container image at <code>ghcr.io/boatramp/boatramp</code> — a fully-static musl binary with jemalloc, ~49 MB compressed with zero dynamic dependencies (just the binary and CA certs).</div><div class="feat__cell feat__tag">docker</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">NixOS + systemd</div><div class="feat__cell feat__desc">A flake, an overlay, and a declarative <code>services.boatramp</code> module with a hardened systemd unit.</div><div class="feat__cell feat__tag">services.boatramp</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Embed as a library</div><div class="feat__cell feat__desc"><code>boatramp_node::assemble</code> builds the exact serve-node graph the binary runs, so you can embed a full boatramp node — single-node or cluster — inside your own Rust service.</div><div class="feat__cell feat__tag">boatramp_node</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Cloudflare deploy <span class="chip chip--seam">live seam</span></div><div class="feat__cell feat__desc">Deploy to Cloudflare over the CF REST API with <code>boatramp cloudflare</code> — no wrangler, nothing generated for you to run: it provisions R2 + D1, uploads the edge Worker + Durable Object, and creates the container app. <code>--dry-run</code> previews the plan.</div><div class="feat__cell feat__tag">boatramp cloudflare</div></div>
+      </div></div>
+    </section>
+
+    <!-- 15 AGENT-NATIVE -->
+    <section class="feat-group wrap" id="agent">
+      <div class="module__head"><span class="eyebrow-mono">02 / AGENT-NATIVE</span><h2>Hand the helm to an agent.</h2></div>
+      <div class="feat-wrap"><div class="feat">
+        <div class="feat__row"><div class="feat__cell feat__name">MCP server</div><div class="feat__cell feat__desc">The same binary ships a <a href="https://modelcontextprotocol.io">Model Context Protocol</a> server, so an agent like Claude (Desktop, Code) or Codex operates your control plane in natural language — list sites, activate or roll back, tail logs, invoke functions, inspect the cluster.</div><div class="feat__cell feat__tag">boatramp mcp</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Two transports</div><div class="feat__cell feat__desc">A <code>boatramp mcp</code> stdio subcommand a desktop agent spawns, and a <code>POST /mcp</code> endpoint on <code>boatramp serve</code> to drive a node over the network — on by default, same tool set on both.</div><div class="feat__cell feat__tag">stdio · /mcp</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Typed, enumerated tools</div><div class="feat__cell feat__desc">One named tool per control-plane operation — no generic passthrough — so every call is legible in an audit log rather than an opaque shell.</div><div class="feat__cell feat__tag">no passthrough</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Your token, your authority</div><div class="feat__cell feat__desc">Every call runs with the caller's own bearer, re-checked per operation; hand the agent a least-privilege token and the write and fleet-admin tools simply <code>403</code>. The endpoint grants nothing the token doesn't.</div><div class="feat__cell feat__tag">least-privilege</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Many instances, one agent</div><div class="feat__cell feat__desc">Register several boatramp nodes by name in <code>mcp.toml</code> and address them per request (<em>"on prod, …"</em>); secrets are stored as specs, never resolved into the file.</div><div class="feat__cell feat__tag">mcp.toml</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Kill-switch &amp; rebinding guard</div><div class="feat__cell feat__desc">Turn the HTTP surface off fleet-wide with no restart (<code>config set mcp.enabled false</code>), and a <code>Host</code>-header allowlist keeps it loopback- or origin-only as a DNS-rebinding defence.</div><div class="feat__cell feat__tag">mcp.enabled</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Agent-ready scaffold</div><div class="feat__cell feat__desc">Ships an <code>AGENTS.md</code> guide so an AI coding agent (Claude Code, Codex, …) can build a project on boatramp and deploy it out of the box.</div><div class="feat__cell feat__tag">AGENTS.md</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Duplex sessions <span class="chip chip--wip">experimental</span></div><div class="feat__cell feat__desc">A resumable streaming lane for agent UIs and chat / tool-call streams: a client opens an SSE stream and POSTs frames back on the same route, and the host re-enters the guest per inbound frame while owning ordering, buffering, at-least-once redelivery, and resume-from-cursor.</div><div class="feat__cell feat__tag">handlers/session</div></div>
+      </div></div>
+    </section>
+
+    <!-- CTA -->
+
+    <section class="honesty wrap">
+      <div class="honesty__box">
+        <span class="honesty__label">pre-1.0</span>
+        <p>Every capability above is implemented and dogfooded — this site runs on it. Interfaces may still shift before 1.0. Start with <a href="/#quickstart">the quickstart</a>, dig into the <a href="https://docs.boatramp.dev">docs</a>, or <a href="https://discord.gg/A78gHFF3F3">come crew it</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <div class="footer__brand-row">
+            <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M3 7 L15 18.5" stroke="#ff6b35" stroke-width="2.6" stroke-linecap="round"/><path d="M10.5 15 L15 21.5 L19.5 15" stroke="#ffd23f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 25.5 q3.5 -3.6 7 0 t7 0 t7 0 t2 0" stroke="#35e0c4" stroke-width="2.2" stroke-linecap="round"/></svg>
+            <span class="wordmark" style="font-size:18px">boatramp</span>
+          </div>
+          <p>Launch the web from your own shore. One binary — server, API, CLI.</p>
+        </div>
+        <div class="footer__cols">
+          <div class="footer__col"><span class="footer__col-h">PRODUCT</span><a href="/features">Features</a><a href="/#quickstart">Install</a><a href="https://docs.boatramp.dev">Docs ↗</a></div>
+          <div class="footer__col"><span class="footer__col-h">CREW</span><a href="https://discord.gg/A78gHFF3F3">Community</a><a href="https://github.com/BoatRamp/BoatRamp">GitHub ↗</a></div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>MIT OR Apache-2.0 · © 2026 boatramp</span>
+        <span class="footer__served">⚓ served by boatramp · deploy <span data-deploy-id>dev-local</span></span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import init from "/island/boatramp_island.js";
+    init().catch((e) => console.warn("boatramp island failed to load:", e));
+  </script>
+
+  <!-- progressive enhancement: highlight the current section in the sticky TOC -->
+  <script>
+    (function () {
+      var toc = document.querySelector('[data-feat-toc]');
+      if (!toc || !('IntersectionObserver' in window)) return;
+      var links = {};
+      toc.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        links[a.getAttribute('href').slice(1)] = a;
+      });
+      var current = null;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          if (current && links[current]) links[current].classList.remove('is-active');
+          current = e.target.id;
+          if (links[current]) links[current].classList.add('is-active');
+        });
+      }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+      document.querySelectorAll('.feat-group[id]').forEach(function (g) { io.observe(g); });
+    })();
+  </script>
+</body>
+</html>
