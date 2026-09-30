@@ -388,21 +388,24 @@ a:hover { color: var(--link-hover); }
 /* Sticky, family-grouped table of contents. Full-bleed bar (its own solid
    background so content scrolls cleanly under it) with centered content; pinned
    below the sticky site nav. Progressive: without JS it's a plain link bar. */
-.feat-toc-bar { position: sticky; top: 61px; z-index: 20; background: var(--bg); border-bottom: 1px solid var(--hairline); }
-.feat-toc { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 0; padding: 9px 0; font-family: var(--font-mono); font-size: 12px; }
-.feat-toc__fam { display: flex; flex-wrap: wrap; align-items: baseline; gap: 3px 9px; }
-.feat-toc__label { color: var(--seafoam); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; margin-right: 2px; }
+/* Family-grouped table of contents — each family is its own labeled row (an
+   aligned label column + flowing links), so it wraps cleanly at any width and can't
+   collapse into a left-packed jumble. Not sticky: the site nav's "Features" link
+   returns here. */
+.feat-toc-bar { margin: 24px 0 4px; }
+.feat-toc { display: flex; flex-direction: column; gap: 10px; margin: 0; font-family: var(--font-mono); font-size: 12.5px; }
+.feat-toc__fam { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+.feat-toc__label { flex: 0 0 auto; min-width: 118px; color: var(--seafoam); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; }
 .feat-toc a { color: var(--text-muted); text-decoration: none; }
-.feat-toc a:hover { color: var(--seafoam); }
-.feat-toc a.is-active { color: var(--text-strong); }
-@media (max-width: 640px) { .feat-toc-bar { position: static; } }
+.feat-toc a:hover, .feat-toc a.is-active { color: var(--seafoam); }
+@media (max-width: 560px) { .feat-toc__label { flex-basis: 100%; min-width: 0; } }
 
 /* Family divider between groups of feature systems. */
-.feat-family { display: flex; align-items: center; gap: 16px; margin: 50px auto 2px; scroll-margin-top: 120px; }
+.feat-family { display: flex; align-items: center; gap: 16px; margin: 50px auto 2px; scroll-margin-top: 88px; }
 .feat-family::before, .feat-family::after { content: ""; flex: 1; height: 1px; background: var(--hairline-seafoam); }
 .feat-family__label { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--seafoam); white-space: nowrap; }
 
-.feat-group { padding: 44px 0 4px; scroll-margin-top: 118px; }
+.feat-group { padding: 44px 0 4px; scroll-margin-top: 88px; }
 /* Labeled sub-cluster inside a large feature table (spans all three columns). */
 .feat__subhead { grid-column: 1 / -1; padding: 15px 18px 7px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--seafoam); border-bottom: 1px solid rgba(53, 224, 196, 0.12); }
 
