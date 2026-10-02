@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Publish & Serve — boatramp features</title>
-  <meta name="description" content="Publishing, serving, projects, and TLS — the boatramp capabilities for getting sites and their names live, on one Rust binary.">
+  <title>Publish & Serve: boatramp features</title>
+  <meta name="description" content="Publishing, serving, projects, and TLS. The boatramp capabilities for getting sites and their names live, on one Rust binary.">
   <link rel="canonical" href="https://boatramp.dev/features/publish-serve">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://boatramp.dev/features/publish-serve">
-  <meta property="og:title" content="boatramp features — Publish & Serve">
-  <meta property="og:description" content="Publishing, serving, projects, and TLS — the boatramp capabilities for getting sites and their names live, on one Rust binary.">
+  <meta property="og:title" content="boatramp features: Publish & Serve">
+  <meta property="og:description" content="Publishing, serving, projects, and TLS. The boatramp capabilities for getting sites and their names live, on one Rust binary.">
   <meta property="og:image" content="https://boatramp.dev/og.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preload" href="/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
@@ -67,10 +67,10 @@
     <section class="feat-group wrap" id="publish">
       <div class="module__head"><span class="eyebrow-mono">01 / PUBLISH</span><h2>Cast off, roll back, never look down.</h2></div>
       <div class="feat-wrap"><div class="feat">
-        <div class="feat__row"><div class="feat__cell feat__name">Atomic deploys</div><div class="feat__cell feat__desc">Every publish is an immutable, content-addressed deployment; going live is one atomic pointer flip — readers never see a half-written mix.</div><div class="feat__cell feat__tag">sync</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Atomic deploys</div><div class="feat__cell feat__desc">Every publish is an immutable, content-addressed deployment; going live is one atomic pointer flip. Readers never see a half-written mix.</div><div class="feat__cell feat__tag">sync</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Dedup + delta uploads</div><div class="feat__cell feat__desc">Identical bytes are stored once; re-running <code>sync</code> streams only the blobs that actually changed.</div><div class="feat__cell feat__tag">content-addressed</div></div>
-        <div class="feat__row"><div class="feat__cell feat__name">Instant rollback</div><div class="feat__cell feat__desc">Re-activate any previous deployment in a single flip — nothing to rebuild, nothing to re-upload.</div><div class="feat__cell feat__tag">rollback</div></div>
-        <div class="feat__row"><div class="feat__cell feat__name">History &amp; status</div><div class="feat__cell feat__desc">Inspect the live deployment and the full history — id, age, and file count.</div><div class="feat__cell feat__tag">deployments · status</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Instant rollback</div><div class="feat__cell feat__desc">Re-activate any previous deployment in a single flip: nothing to rebuild, nothing to re-upload.</div><div class="feat__cell feat__tag">rollback</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">History &amp; status</div><div class="feat__cell feat__desc">Inspect the live deployment and the full history: id, age, and file count.</div><div class="feat__cell feat__tag">deployments · status</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Aliases &amp; previews</div><div class="feat__cell feat__desc">Named pointers for staging and per-branch previews, plus immutable per-deploy preview hosts.</div><div class="feat__cell feat__tag">alias</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Build step + bundler</div><div class="feat__cell feat__desc">Run any build tool before publishing, or the in-process Rolldown + lightningcss bundler.</div><div class="feat__cell feat__tag">build · bundle</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Dry-run &amp; validate</div><div class="feat__cell feat__desc">Preview exactly what an upload would change, and validate routing before anything ships.</div><div class="feat__cell feat__tag">--dry-run · validate</div></div>
@@ -81,12 +81,12 @@
     <section class="feat-group wrap" id="projects">
       <div class="module__head"><span class="eyebrow-mono">02 / PROJECTS</span><h2>Many sites, one tenant boundary.</h2></div>
       <div class="feat-wrap"><div class="feat">
-        <div class="feat__row"><div class="feat__cell feat__name">First-class projects</div><div class="feat__cell feat__desc">A project owns many sites plus their functions and compute. A site name is unique only <em>within</em> its project, so two teams can each own a <code>blog</code> — deploys, aliases, crons, and workflow runs stay independent.</div><div class="feat__cell feat__tag">project</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">First-class projects</div><div class="feat__cell feat__desc">A project owns many sites plus their functions and compute. A site name is unique only <em>within</em> its project, so two teams can each own a <code>blog</code>; deploys, aliases, crons, and workflow runs stay independent.</div><div class="feat__cell feat__tag">project</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Tenant data isolation</div><div class="feat__cell feat__desc">Each project is the tenant a handler's row-level scope resolves to: <code>kv</code>, <code>blobstore</code>, <code>sql</code>, and <code>messaging</code> namespaces are scoped to the owning project, so same-named resources never share a data plane.</div><div class="feat__cell feat__tag">tenant</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Per-project RBAC</div><div class="feat__cell feat__desc">A Cedar <code>Project</code> resource with <code>project_admin</code> / <code>project_publisher</code> / <code>project_viewer</code> roles; a token scoped to one project is refused (403) on any other.</div><div class="feat__cell feat__tag">cedar</div></div>
-        <div class="feat__row"><div class="feat__cell feat__name">Declarative <code>apply</code></div><div class="feat__cell feat__desc">One RON manifest declares a whole project — its sites (content + build + routing), top-level functions (with their imports, env, and limits), and compute — reconciled to desired state in a single pass.</div><div class="feat__cell feat__tag">apply.cfg</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Declarative <code>apply</code></div><div class="feat__cell feat__desc">One RON manifest declares a whole project: its sites (content + build + routing), top-level functions (with their imports, env, and limits), and compute, all reconciled to desired state in a single pass.</div><div class="feat__cell feat__tag">apply.cfg</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Upsert, never prunes</div><div class="feat__cell feat__desc"><code>apply</code> is create-or-replace and touches only what it names, so declarative and imperative management coexist; <code>--dry-run</code> prints the plan and writes nothing.</div><div class="feat__cell feat__tag">--dry-run</div></div>
-        <div class="feat__row"><div class="feat__cell feat__name">Default project = no change</div><div class="feat__cell feat__desc">Everything that predates projects lives in a reserved <code>default</code> project, so an omitted <code>--project</code> is byte-identical to single-site boatramp — no migration of your URLs or behaviour.</div><div class="feat__cell feat__tag">default</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Default project = no change</div><div class="feat__cell feat__desc">Everything that predates projects lives in a reserved <code>default</code> project, so an omitted <code>--project</code> is byte-identical to single-site boatramp. No migration of your URLs or behaviour.</div><div class="feat__cell feat__tag">default</div></div>
       </div></div>
     </section>
 
@@ -94,14 +94,14 @@
     <section class="feat-group wrap" id="serve">
       <div class="module__head"><span class="eyebrow-mono">03 / SERVE</span><h2>A real web server, not a bucket.</h2></div>
       <div class="feat-wrap"><div class="feat">
-        <div class="feat__row"><div class="feat__cell feat__name">Static serving</div><div class="feat__cell feat__desc">Range requests, conditional GETs, and strong ETags — automatic, nothing to configure.</div><div class="feat__cell feat__tag">range · 304</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Static serving</div><div class="feat__cell feat__desc">Range requests, conditional GETs, and strong ETags, all automatic, nothing to configure.</div><div class="feat__cell feat__tag">range · 304</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">HTTP/1.1, /2, /3</div><div class="feat__cell feat__desc">HTTP/3 over QUIC served alongside the TLS listener.</div><div class="feat__cell feat__tag">h1 · h2 · h3</div></div>
-        <div class="feat__row"><div class="feat__cell feat__name">First-party HTTP stack</div><div class="feat__cell feat__desc">Every connection is served through boatramp's own <code>boatramp-http</code> — a hand-rolled HTTP/1.1 codec and a multiplexed HTTP/2 driver, no hyper in the accept path — conformance-gated against h2spec, a differential oracle, and fuzzing.</div><div class="feat__cell feat__tag">boatramp-http</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">First-party HTTP stack</div><div class="feat__cell feat__desc">Every connection is served through boatramp's own <code>boatramp-http</code>, a hand-rolled HTTP/1.1 codec and a multiplexed HTTP/2 driver (no hyper in the accept path), conformance-gated against h2spec, a differential oracle, and fuzzing.</div><div class="feat__cell feat__tag">boatramp-http</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Routing</div><div class="feat__cell feat__desc">Redirects, internal rewrites, reverse-proxy targets, header rules, clean URLs, and a trailing-slash policy.</div><div class="feat__cell feat__tag">routing</div></div>
-        <div class="feat__row"><div class="feat__cell feat__name">Conditional routing</div><div class="feat__cell feat__desc">Gate redirects and rewrites on a <code>when</code> predicate (a bounded CEL subset) — language, cookie, header, or <code>file_exists</code> — with computed <code>${…}</code> destinations and automatic <code>Vary</code>. Edge logic without a handler.</div><div class="feat__cell feat__tag">when</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Conditional routing</div><div class="feat__cell feat__desc">Gate redirects and rewrites on a <code>when</code> predicate (a bounded CEL subset): language, cookie, header, or <code>file_exists</code>, with computed <code>${…}</code> destinations and automatic <code>Vary</code>. Edge logic without a handler.</div><div class="feat__cell feat__tag">when</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">SPA &amp; error docs</div><div class="feat__cell feat__desc">SPA fallback and custom error documents, folded into the immutable deployment so they roll back with content.</div><div class="feat__cell feat__tag">spa · 404</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Caching</div><div class="feat__cell feat__desc">Sensible Cache-Control + ETag defaults, with per-path immutable overrides.</div><div class="feat__cell feat__tag">cache-control</div></div>
-        <div class="feat__row"><div class="feat__cell feat__name">Edge response cache</div><div class="feat__cell feat__desc">Serve a cacheable <code>GET</code>/<code>HEAD</code> from a host-level cache <em>without re-instantiating the handler</em> — opt-in via <code>Cache-Control</code>, keyed per project scope, honoring <code>Vary</code> and never storing a private (<code>Set-Cookie</code>, <code>no-store</code>) response.</div><div class="feat__cell feat__tag">handlers.cache</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Edge response cache</div><div class="feat__cell feat__desc">Serve a cacheable <code>GET</code>/<code>HEAD</code> from a host-level cache <em>without re-instantiating the handler</em>. Opt-in via <code>Cache-Control</code>, keyed per project scope, honoring <code>Vary</code> and never storing a private (<code>Set-Cookie</code>, <code>no-store</code>) response.</div><div class="feat__cell feat__tag">handlers.cache</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Compression</div><div class="feat__cell feat__desc">Brotli and gzip precompressed at publish; on-the-fly compression for dynamic output.</div><div class="feat__cell feat__tag">br · gzip</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Netlify / CF Pages compatible</div><div class="feat__cell feat__desc">Existing <code>_redirects</code> and <code>_headers</code> files are folded into the routing manifest on <code>sync</code>.</div><div class="feat__cell feat__tag">migrate</div></div>
       </div></div>
@@ -111,11 +111,11 @@
     <section class="feat-group wrap" id="tls">
       <div class="module__head"><span class="eyebrow-mono">04 / DOMAINS &amp; TLS</span><h2>Bring a domain; keep your certs.</h2></div>
       <div class="feat-wrap"><div class="feat">
-        <div class="feat__row"><div class="feat__cell feat__name">Virtualhosts</div><div class="feat__cell feat__desc">Attach any number of hostnames — exact and wildcard — to a site, with canonical redirects.</div><div class="feat__cell feat__tag">domain add</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Virtualhosts</div><div class="feat__cell feat__desc">Attach any number of hostnames (exact and wildcard) to a site, with canonical redirects.</div><div class="feat__cell feat__tag">domain add</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Ownership verification</div><div class="feat__cell feat__desc">Prove control over a host via HTTP self-verify or a DNS-TXT record before it ever routes.</div><div class="feat__cell feat__tag">domain verify</div></div>
-        <div class="feat__row"><div class="feat__cell feat__name">Automatic HTTPS (ACME)</div><div class="feat__cell feat__desc">HTTP-01 certificates requested on first start, cached, and renewed before expiry — no cron, no certbot.</div><div class="feat__cell feat__tag">--tls acme</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Automatic HTTPS (ACME)</div><div class="feat__cell feat__desc">HTTP-01 certificates requested on first start, cached, and renewed before expiry. No cron, no certbot.</div><div class="feat__cell feat__tag">--tls acme</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Wildcard / DNS-01</div><div class="feat__cell feat__desc">Wildcard certificates via the DNS-01 challenge, plus per-deploy preview certs.</div><div class="feat__cell feat__tag">--tls acme-dns</div></div>
-        <div class="feat__row"><div class="feat__cell feat__name">10 managed DNS providers</div><div class="feat__cell feat__desc">Cloudflare, Route 53, Google, Azure, DigitalOcean, Hetzner, NS1, DNSimple, OCI, and Akamai — plus a manual fallback.</div><div class="feat__cell feat__tag">auto-dns</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">10 managed DNS providers</div><div class="feat__cell feat__desc">Cloudflare, Route 53, Google, Azure, DigitalOcean, Hetzner, NS1, DNSimple, OCI, and Akamai, plus a manual fallback.</div><div class="feat__cell feat__tag">auto-dns</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">BYO cert + transport security</div><div class="feat__cell feat__desc">Serve your own certificate, and set HSTS, CSP, and frame-options per site.</div><div class="feat__cell feat__tag">--tls custom</div></div>
       </div></div>
     </section>
@@ -124,7 +124,7 @@
     <section class="honesty wrap">
       <div class="honesty__box">
         <span class="honesty__label">pre-1.0</span>
-        <p>Every capability above is implemented and dogfooded — this site runs on it. Interfaces may still shift before 1.0. Start with <a href="/#quickstart">the quickstart</a>, dig into the <a href="https://docs.boatramp.dev">docs</a>, or <a href="https://discord.gg/A78gHFF3F3">come crew it</a>.</p>
+        <p>Every capability above is implemented and dogfooded; this site runs on it. Interfaces may still shift before 1.0. Start with <a href="/#quickstart">the quickstart</a>, dig into the <a href="https://docs.boatramp.dev">docs</a>, or <a href="https://discord.gg/A78gHFF3F3">come crew it</a>.</p>
       </div>
     </section>
   </main>
@@ -138,7 +138,7 @@
             <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M3 7 L15 18.5" stroke="#ff6b35" stroke-width="2.6" stroke-linecap="round"/><path d="M10.5 15 L15 21.5 L19.5 15" stroke="#ffd23f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 25.5 q3.5 -3.6 7 0 t7 0 t7 0 t2 0" stroke="#35e0c4" stroke-width="2.2" stroke-linecap="round"/></svg>
             <span class="wordmark" style="font-size:18px">boatramp</span>
           </div>
-          <p>Launch the web from your own shore. One binary — server, API, CLI.</p>
+          <p>Launch the web from your own shore. One binary: server, API, CLI.</p>
         </div>
         <div class="footer__cols">
           <div class="footer__col"><span class="footer__col-h">PRODUCT</span><a href="/features">Features</a><a href="/#quickstart">Install</a><a href="https://docs.boatramp.dev">Docs ↗</a></div>

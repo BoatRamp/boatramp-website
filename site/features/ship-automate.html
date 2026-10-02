@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ship & Automate — boatramp features</title>
-  <meta name="description" content="Ship the one binary anywhere and drive the whole control plane from an AI agent over MCP — boatramp's distribution and agent-native surface.">
+  <title>Ship & Automate: boatramp features</title>
+  <meta name="description" content="Ship the one binary anywhere and drive the whole control plane from an AI agent over MCP. boatramp's distribution and agent-native surface.">
   <link rel="canonical" href="https://boatramp.dev/features/ship-automate">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://boatramp.dev/features/ship-automate">
-  <meta property="og:title" content="boatramp features — Ship & Automate">
-  <meta property="og:description" content="Ship the one binary anywhere and drive the whole control plane from an AI agent over MCP — boatramp's distribution and agent-native surface.">
+  <meta property="og:title" content="boatramp features: Ship & Automate">
+  <meta property="og:description" content="Ship the one binary anywhere and drive the whole control plane from an AI agent over MCP. boatramp's distribution and agent-native surface.">
   <meta property="og:image" content="https://boatramp.dev/og.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preload" href="/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
@@ -49,8 +49,8 @@
 
     <section class="feat-hero wrap">
       <p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span><a href="/features">features</a> · ship &amp; automate</p>
-      <h1>One hull, every port — and agent-native.</h1>
-      <p>Ship the single binary anywhere — bare metal, containers, NixOS, Cloudflare — and hand the whole control plane to an AI agent over MCP.</p>
+      <h1>One hull, every port, and agent-native.</h1>
+      <p>Ship the single binary anywhere (bare metal, containers, NixOS, Cloudflare) and hand the whole control plane to an AI agent over MCP.</p>
       <div class="feat-legend">
         <span>Everything is <a href="https://docs.boatramp.dev/explanation/maturity.html">pre-1.0</a>. Where a capability's live validation is still in flight, it's marked:</span>
         <span class="chip chip--seam">live seam</span>
@@ -68,13 +68,13 @@
       <div class="module__head"><span class="eyebrow-mono">01 / SHIP</span><h2>One hull, every port.</h2></div>
       <div class="feat-wrap"><div class="feat">
         <div class="feat__row"><div class="feat__cell feat__name">Single static binary</div><div class="feat__cell feat__desc">Server + publishing API + CLI in one file; every heavy backend lives behind a compile-time feature.</div><div class="feat__cell feat__tag">1 file</div></div>
-        <div class="feat__row"><div class="feat__cell feat__name">Config from the environment</div><div class="feat__cell feat__desc">Every <code>serve</code> setting is settable from <code>BOATRAMP_*</code> variables — the whole config, layered env&nbsp;&gt;&nbsp;file&nbsp;&gt;&nbsp;default — so a node needs no <code>boatramp.cfg</code> at all, even one running a managed co-located Postgres or issuing a wildcard cert. 12-factor deploys on fly.io, Cloudflare, or any container platform.</div><div class="feat__cell feat__tag">BOATRAMP_*</div></div>
-        <div class="feat__row"><div class="feat__cell feat__name">Config versioning + JSON</div><div class="feat__cell feat__desc">Author config in RON or JSON (auto-detected, so you can generate it from Nickel), and stamp an <code>apply</code> manifest with a <code>version:</code> that opts an older document into a loose-parse → migrate → typed pipeline — upgrade it in place with <code>config migrate</code>.</div><div class="feat__cell feat__tag">--format json · config migrate</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Config from the environment</div><div class="feat__cell feat__desc">Every <code>serve</code> setting is settable from <code>BOATRAMP_*</code> variables (the whole config, layered env&nbsp;&gt;&nbsp;file&nbsp;&gt;&nbsp;default), so a node needs no <code>boatramp.cfg</code> at all, even one running a managed co-located Postgres or issuing a wildcard cert. 12-factor deploys on fly.io, Cloudflare, or any container platform.</div><div class="feat__cell feat__tag">BOATRAMP_*</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Config versioning + JSON</div><div class="feat__cell feat__desc">Author config in RON or JSON (auto-detected, so you can generate it from Nickel), and stamp an <code>apply</code> manifest with a <code>version:</code> that opts an older document into a loose-parse → migrate → typed pipeline; upgrade it in place with <code>config migrate</code>.</div><div class="feat__cell feat__tag">--format json · config migrate</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Prebuilt everywhere</div><div class="feat__cell feat__desc">Linux (x86_64 + arm64), macOS, and Windows binaries, an install script, and a Homebrew tap.</div><div class="feat__cell feat__tag">install.sh</div></div>
-        <div class="feat__row"><div class="feat__cell feat__name">OCI image</div><div class="feat__cell feat__desc">A multi-arch, non-root container image at <code>ghcr.io/boatramp/boatramp</code> — a fully-static musl binary with jemalloc, ~49 MB compressed with zero dynamic dependencies (just the binary and CA certs).</div><div class="feat__cell feat__tag">docker</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">OCI image</div><div class="feat__cell feat__desc">A multi-arch, non-root container image at <code>ghcr.io/boatramp/boatramp</code>, a fully-static musl binary with jemalloc, ~49 MB compressed with zero dynamic dependencies (just the binary and CA certs).</div><div class="feat__cell feat__tag">docker</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">NixOS + systemd</div><div class="feat__cell feat__desc">A flake, an overlay, and a declarative <code>services.boatramp</code> module with a hardened systemd unit.</div><div class="feat__cell feat__tag">services.boatramp</div></div>
-        <div class="feat__row"><div class="feat__cell feat__name">Embed as a library</div><div class="feat__cell feat__desc"><code>boatramp_node::assemble</code> builds the exact serve-node graph the binary runs, so you can embed a full boatramp node — single-node or cluster — inside your own Rust service.</div><div class="feat__cell feat__tag">boatramp_node</div></div>
-        <div class="feat__row"><div class="feat__cell feat__name">Cloudflare deploy <span class="chip chip--seam">live seam</span></div><div class="feat__cell feat__desc">Deploy to Cloudflare over the CF REST API with <code>boatramp cloudflare</code> — no wrangler, nothing generated for you to run: it provisions R2 + D1, uploads the edge Worker + Durable Object, and creates the container app. <code>--dry-run</code> previews the plan.</div><div class="feat__cell feat__tag">boatramp cloudflare</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Embed as a library</div><div class="feat__cell feat__desc"><code>boatramp_node::assemble</code> builds the exact serve-node graph the binary runs, so you can embed a full boatramp node (single-node or cluster) inside your own Rust service.</div><div class="feat__cell feat__tag">boatramp_node</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Cloudflare deploy <span class="chip chip--seam">live seam</span></div><div class="feat__cell feat__desc">Deploy to Cloudflare over the CF REST API with <code>boatramp cloudflare</code>. No wrangler, nothing generated for you to run: it provisions R2 + D1, uploads the edge Worker + Durable Object, and creates the container app. <code>--dry-run</code> previews the plan.</div><div class="feat__cell feat__tag">boatramp cloudflare</div></div>
       </div></div>
     </section>
 
@@ -82,9 +82,9 @@
     <section class="feat-group wrap" id="agent">
       <div class="module__head"><span class="eyebrow-mono">02 / AGENT-NATIVE</span><h2>Hand the helm to an agent.</h2></div>
       <div class="feat-wrap"><div class="feat">
-        <div class="feat__row"><div class="feat__cell feat__name">MCP server</div><div class="feat__cell feat__desc">The same binary ships a <a href="https://modelcontextprotocol.io">Model Context Protocol</a> server, so an agent like Claude (Desktop, Code) or Codex operates your control plane in natural language — list sites, activate or roll back, tail logs, invoke functions, inspect the cluster.</div><div class="feat__cell feat__tag">boatramp mcp</div></div>
-        <div class="feat__row"><div class="feat__cell feat__name">Two transports</div><div class="feat__cell feat__desc">A <code>boatramp mcp</code> stdio subcommand a desktop agent spawns, and a <code>POST /mcp</code> endpoint on <code>boatramp serve</code> to drive a node over the network — on by default, same tool set on both.</div><div class="feat__cell feat__tag">stdio · /mcp</div></div>
-        <div class="feat__row"><div class="feat__cell feat__name">Typed, enumerated tools</div><div class="feat__cell feat__desc">One named tool per control-plane operation — no generic passthrough — so every call is legible in an audit log rather than an opaque shell.</div><div class="feat__cell feat__tag">no passthrough</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">MCP server</div><div class="feat__cell feat__desc">The same binary ships a <a href="https://modelcontextprotocol.io">Model Context Protocol</a> server, so an agent like Claude (Desktop, Code) or Codex operates your control plane in natural language: list sites, activate or roll back, tail logs, invoke functions, inspect the cluster.</div><div class="feat__cell feat__tag">boatramp mcp</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Two transports</div><div class="feat__cell feat__desc">A <code>boatramp mcp</code> stdio subcommand a desktop agent spawns, and a <code>POST /mcp</code> endpoint on <code>boatramp serve</code> to drive a node over the network; on by default, same tool set on both.</div><div class="feat__cell feat__tag">stdio · /mcp</div></div>
+        <div class="feat__row"><div class="feat__cell feat__name">Typed, enumerated tools</div><div class="feat__cell feat__desc">One named tool per control-plane operation (no generic passthrough), so every call is legible in an audit log rather than an opaque shell.</div><div class="feat__cell feat__tag">no passthrough</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Your token, your authority</div><div class="feat__cell feat__desc">Every call runs with the caller's own bearer, re-checked per operation; hand the agent a least-privilege token and the write and fleet-admin tools simply <code>403</code>. The endpoint grants nothing the token doesn't.</div><div class="feat__cell feat__tag">least-privilege</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Many instances, one agent</div><div class="feat__cell feat__desc">Register several boatramp nodes by name in <code>mcp.toml</code> and address them per request (<em>"on prod, …"</em>); secrets are stored as specs, never resolved into the file.</div><div class="feat__cell feat__tag">mcp.toml</div></div>
         <div class="feat__row"><div class="feat__cell feat__name">Kill-switch &amp; rebinding guard</div><div class="feat__cell feat__desc">Turn the HTTP surface off fleet-wide with no restart (<code>config set mcp.enabled false</code>), and a <code>Host</code>-header allowlist keeps it loopback- or origin-only as a DNS-rebinding defence.</div><div class="feat__cell feat__tag">mcp.enabled</div></div>
@@ -98,7 +98,7 @@
     <section class="honesty wrap">
       <div class="honesty__box">
         <span class="honesty__label">pre-1.0</span>
-        <p>Every capability above is implemented and dogfooded — this site runs on it. Interfaces may still shift before 1.0. Start with <a href="/#quickstart">the quickstart</a>, dig into the <a href="https://docs.boatramp.dev">docs</a>, or <a href="https://discord.gg/A78gHFF3F3">come crew it</a>.</p>
+        <p>Every capability above is implemented and dogfooded: this site runs on it. Interfaces may still shift before 1.0. Start with <a href="/#quickstart">the quickstart</a>, dig into the <a href="https://docs.boatramp.dev">docs</a>, or <a href="https://discord.gg/A78gHFF3F3">come crew it</a>.</p>
       </div>
     </section>
   </main>
@@ -112,7 +112,7 @@
             <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M3 7 L15 18.5" stroke="#ff6b35" stroke-width="2.6" stroke-linecap="round"/><path d="M10.5 15 L15 21.5 L19.5 15" stroke="#ffd23f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 25.5 q3.5 -3.6 7 0 t7 0 t7 0 t2 0" stroke="#35e0c4" stroke-width="2.2" stroke-linecap="round"/></svg>
             <span class="wordmark" style="font-size:18px">boatramp</span>
           </div>
-          <p>Launch the web from your own shore. One binary — server, API, CLI.</p>
+          <p>Launch the web from your own shore. One binary: server, API, CLI.</p>
         </div>
         <div class="footer__cols">
           <div class="footer__col"><span class="footer__col-h">PRODUCT</span><a href="/features">Features</a><a href="/#quickstart">Install</a><a href="https://docs.boatramp.dev">Docs ↗</a></div>

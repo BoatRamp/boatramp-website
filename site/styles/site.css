@@ -416,7 +416,7 @@ a:hover { color: var(--link-hover); }
 @media (max-width: 720px) { .fam-grid { grid-template-columns: 1fr; } }
 
 /* Per-family-page nav: pill links to the four families, current one filled. */
-.feat-fam-nav { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 20px 0 6px; font-family: var(--font-mono); font-size: 12.5px; }
+.feat-fam-nav { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 20px auto 6px; font-family: var(--font-mono); font-size: 12.5px; }
 .feat-fam-nav a { color: var(--text-muted); text-decoration: none; padding: 5px 13px; border: 1px solid var(--hairline); border-radius: var(--radius-pill); }
 .feat-fam-nav a:hover { color: var(--seafoam); border-color: var(--hairline-seafoam); }
 .feat-fam-nav a.is-current { color: #04121b; background: var(--seafoam); border-color: var(--seafoam); }
